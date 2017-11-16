@@ -1,0 +1,96 @@
+package testscripts.gcRegression;
+/** Purpose		: Validate My Account Access drop down values
+ * TestCase Name: GC_REG76_ValidateMyAccountGC
+ * Created By	: Sindhu SR
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	: Sachin	
+ * Reviewed Date: 10/03/2017
+ */
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+public class GC_REG76_ValidateMyAccountGC {
+
+	CRM SW = new CRM();
+	String Username,Password;
+	String DropDownValue_1, DropDownValue_2;
+	String FirstName1,LastName1,LoginID1,Email1,Roles1;
+	String FirstName2,LastName2,LoginID2,Email2,Roles2;
+
+	@BeforeClass
+	public void StarTest(){
+		Environment.Tower= "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.GCURL);
+		Username=SW.TestData("GCUsername");
+		Password=SW.TestData("GCPassword");
+	}
+
+	@Test 
+	public void CaptureLoginUserDetails(){
+		SW.GCLogin(Username, Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+
+		SW.NormalClick("GC_MyAccount_IC");
+		DropDownValue_1=SW.GetText("GC_MyAccount_YourAccess_LK");
+		if(!SW.ObjectExists("GC_MyAccount_YourAccess_LK")){
+			Environment.loger.log(Level.ERROR, "Drop down value is not present");
+			Reporter.Write("Validate 'Your Access' option in the drop down", "'Your Access' option should be present", "'Your Access' option is not present", "FAIL");
+		}
+		SW.CompareText("AccountAccessDropDownvalue1", "Your Access", DropDownValue_1);
+		DropDownValue_2=SW.GetText("GC_MyAccount_SignOut_LK");
+		if(!SW.ObjectExists("GC_MyAccount_SignOut_LK")){
+			Environment.loger.log(Level.ERROR, "Drop down value is not present");
+			Reporter.Write("Validate 'SIGN OUT' option in the drop down", "'SIGN OUT' option should be present", "'SIGN OUT' option is not present", "FAIL");
+		}
+
+		SW.CompareText("AccountAccessDropDownvalue2", "SIGN OUT", DropDownValue_2);
+
+
+		SW.Click("GCHome_Admin_LK");
+		SW.Click("GCUsrMngmnt_LK");
+
+		SW.EnterValue("GC_LoginID_EB",Username);
+		SW.Click("GCUsrMngmnt_Search_BT");
+
+		FirstName1=SW.WebTbl_GetText("GC_CaptureAccountDetails_DT", 1, 1);
+		LastName1=SW.WebTbl_GetText("GC_CaptureAccountDetails_DT", 1, 2);
+		LoginID1=SW.WebTbl_GetText("GC_CaptureAccountDetails_DT", 1, 3);
+		Email1=SW.WebTbl_GetText("GC_CaptureAccountDetails_DT", 1, 4);
+		Roles1=SW.WebTbl_GetText("GC_CaptureAccountDetails_DT", 1, 5);
+
+		SW.NormalClick("GC_MyAccount_IC");
+		SW.WaitTillElementToBeClickable("GC_MyAccount_YourAccess_LK");
+		SW.Click("GC_MyAccount_YourAccess_LK");
+
+		FirstName2=SW.GetText("GC_CaptureAccountFirstName_DT");
+		LastName2=SW.GetText("GC_CaptureAccountLastName_DT");
+		LoginID2=SW.GetText("GC_CaptureUserName_DT");
+		Email2=SW.GetText("GC_CaptureEmail_DT");
+		Roles2=SW.GetText("GC_CaptureAccountRoles_DT");
+
+		SW.CompareText("CompareFirstName", FirstName1, FirstName2);
+		SW.CompareText("CompareLastName", LastName1, LastName2);
+		SW.CompareText("CompareLoginID", LoginID1, LoginID2);
+		SW.CompareText("CompareEmail", Email1, Email2);
+		SW.CompareText("CompareRoles", Roles1, Roles2);
+		SW.Click("GC_ClickCloseOnYourAccessScreen_BT");
+
+		SW.NormalClick("GC_MyAccount_IC");
+		SW.Click("GC_MyAccount_SignOut_LK");
+
+	}
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();
+	}
+}

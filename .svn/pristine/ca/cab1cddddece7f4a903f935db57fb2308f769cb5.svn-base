@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.gcRegression.GC_REG40_ValidateWhotelsResCanEmailwithLOS4NightsEnglish"/>
+      <class name="testscripts.gcRegression.GC_REG41_ValidateGEiPostStayEmailforFP"/>
+      <class name="testscripts.gcRegression.GC_REG42_ValidateGeiPostayEmailforWhotels"/>
+      <class name="testscripts.gcRegression.GC_REG43_ValidateSNAWestinCancellationEmailPortugueseSPGOffer4SocialMedia"/>
+      <class name="testscripts.gcRegression.GC_REG44_ValidatePromoFPCancellationEmailTurkishLanguage"/>
+      <class name="testscripts.gcRegression.GC_REG45_ValidateP100CheckInTimeWestinPreStayEnglishWithSPGPreferencesOffer"/>
+      <class name="testscripts.gcRegression.GC_REG46_ValidateTCPMultiGuestRollawaySheratonCancellationEmail"/>
+      <class name="testscripts.gcRegression.GC_REG47_ValidateWestinPreStayEmailBahasaLang"/>
+      <class name="testscripts.gcRegression.GC_REG48_ValidateSNAStRegisPreStaySpanishLangSPGOffer3SocialMedia"/>
+      <class name="testscripts.gcRegression.GC_REG49_ValidateSVODisclaimerElementPreStayFrenchLanguage"/>
+      <class name="testscripts.gcRegression.GC_REG50_ValidateSTARHOTTributePreStayKoreanWithEGN"/>
+      <class name="testscripts.gcRegression.GC_REG51_ValidateGeiPostayEmailforAloft"/>
+      <class name="testscripts.gcRegression.GC_REG52_ValidateGeiPostayEmailforLC"/>
+      <class name="testscripts.gcRegression.GC_REG53_ValidateP100FPPreStayItalianPropertyOfferSWNightsEligGreaterThan75"/>
+      <class name="testscripts.gcRegression.GC_REG54_ValidateWestinPostStayEmailinSimpChineselanguage"/>
+      <class name="testscripts.gcRegression.GC_REG55_ValidateSheratonPostStayEmailJapaneselangGEIandSPGoffer"/>
+      <class name="testscripts.gcRegression.GC_REG56_ValidateNonBrandPostStayGermanPropertyOfferEligibility3Guests"/>
+      <class name="testscripts.gcRegression.GC_REG57_ValidateP100ElementPostStayEmailEnglangPropOffand3icons"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

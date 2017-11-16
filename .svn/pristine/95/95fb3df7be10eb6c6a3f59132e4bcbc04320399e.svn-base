@@ -1,0 +1,30 @@
+package tbd;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.Environment;
+import functions.Reporter;
+import functions.SALES;
+
+public class IAM2 {
+	SALES SW = new SALES();
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "SALES";
+		Reporter.StartTest();
+		Environment.SetBrowserToUse("FF");
+		SW.LaunchBrowser("http://stardb2.pii.star:8002/sap/bc/bsp/ehr/pdm/start.htm");
+	}
+
+	String LastName,FirstName,Email; 
+	@Test(priority=1)
+	public void AMS(){
+		SW.EnterValue("AMSLogin_User_EB", "ANDRKON");
+		SW.EnterValue("AMSLogin_Password_EB", "ZQ5AWB3B");
+		SW.IAMClick("AMSLogin_LogOn_BN");
+		
+		String ExisitnHire= SW.TestData("ExtendedTitle");
+		SW.IAMClick("//*[text()='"+ExisitnHire+"']");
+	}
+}

@@ -1,0 +1,108 @@
+package testscripts.sgrRegression;
+/** Purpose		: Create Amenity Defaults and validate in Create Event page
+ * TestCase Name: Create Amenity Defaults and validate in Create Event page
+ * Created By	: Sachin G
+ * Modified By	: 	
+ * Modified Date: 
+ * Reviewed By	: 
+ * Reviewed Date: 
+ */
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SGR_REG38_Validate_AmenityDefaultsInEventScreen {
+	CRM SW = new CRM();
+	String EventNotes,ReservationNo,AmenityDetailName;
+	@BeforeClass
+	public void StartTest() {
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.SGRURL);
+	}
+	@Test
+	public void CreateAmenityAndValidate(){
+		SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1967");	//	Stage : 1965
+		SW.Click("SGRNavigation_Admin_LK");
+		SW.Click("SGRNavigation_Aminity_LK");
+		SW.Click("SGRAmenity_New_BT");
+		AmenityDetailName="Auto"+SW.RandomString(3);
+		SW.EnterValue("SGRAmenity_AmenityName_EB", AmenityDetailName);
+		SW.EnterValue("SGRAmenity_RequestTime_EB", "10");
+		SW.CheckBox("SGRAminity_Escalation_CB", "ON");
+		SW.CheckBox("SGRAminity_Active_CB", "ON");
+		SW.Click("SGRAminity_save_BT");
+		if(SW.ObjectExists("SGRAminity_saveConfirmation_ST")){
+			Environment.loger.log(Level.INFO, "Aminity Update saved successfully!");
+			SW.TakeScreenshot("AminitySaveConfirmation");
+		}else{
+			Environment.loger.log(Level.INFO, "Failed to update Aminity ");
+			Reporter.Write("NA", "Failed to update Aminity", "Failed to update Aminity","FAIL");
+		}
+		SW.Click("SGRNavigation_Admin_LK");
+		//Publish the changes
+		SW.Click("SGRAdmin_Publish_LK");
+		SW.Click("SGRPublish_PublishConfYes_BT");
+		if(SW.ObjectExists("//td[text()='Successfully published changes!']")){
+			Environment.loger.log(Level.INFO, "Successfully published changes!");
+			SW.TakeScreenshot("PublishSuccess");
+		}else{
+			Environment.loger.log(Level.ERROR, "Publish failed!");
+			Reporter.Write("NA", "Publish failed!", "Publish failed!","FAIL");
+		}
+		SW.Click("SGRNavigation_Home_LK");
+		SW.Wait(5);
+		SW.SwitchToFrame("SGRHomepage_Arriving_FR");
+		SW.SwitchToFrame("SGRHomepage_ArrivingSVOQI_FR");
+		String FirstGuestLink="(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]";
+		SW.WaitTillElementToBeClickable("(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]");
+		if(!SW.ObjectExists(FirstGuestLink)){
+			Environment.loger.log(Level.ERROR, "No Guest present in Inhouse list for the selected property");
+			Reporter.Write("NA", "No Guest present in Inhouse", "No Guest present in Inhouse","FAIL");
+		}
+
+		ReservationNo=SW.GetAttributeValue(FirstGuestLink, "href");
+		ReservationNo=ReservationNo.substring(ReservationNo.indexOf("resConf=")+8,ReservationNo.indexOf("&roomSeq"));
+		Environment.loger.log(Level.INFO, "Reservation Number Selected is :"+ReservationNo);
+		SW.Click(FirstGuestLink);
+		//SW.WaitTillElementToBeClickable("SGRGuestProfile_CreateNewAmenity_BT");
+		SW.Click("SGRGuestProfile_CreateNewAmenity_BT");
+		SW.EnterValue("SGRCreateEvent_Where_EB", "TBD");
+		SW.EnterValue("SGRAddEvent_What_EB", AmenityDetailName);
+		SW.Wait(5);
+		SW.Click("//ul[@class='ac_results']//li[1]/span");
+		SW.DropDown_SelectByText("SGRCreateEvent_Department_DD","ACCOUNTING");
+		/*String SelectedDep=SW.DropDown_GetSelectedText("SGRCreateEvent_Department_DD");
+		SW.CompareText("ValidateSelectedDep", "ACCOUNTING", SelectedDep);*/
+		
+		SW.DropDown_SelectByIndex("SGRCreateEvent_AssignTo_DD", 1);
+		SW.CheckBox("SGRCreateEvent_Escalation_CB", "OFF");
+		EventNotes=SW.RandomString(10);
+		SW.EnterValue("SGRCreateEvent_Noted_EB", EventNotes);
+		SW.Click("SGRCreateEvent_Save_BN");
+		String EventID=SW.GetEventNumbeID();
+		Environment.loger.log(Level.INFO, "Created Event ID- "+EventID);
+		SW.Click("SGRNavigation_Events_LK");
+		SW.Click("SGREvents_Amenity_LK");
+		SW.Wait(5);
+		if(SW.ObjectExists("//td[text()='"+EventID+"']")){
+			Environment.loger.log(Level.INFO, "Event is present in the Amenity list");
+			SW.TakeScreenshot("EventPresence");
+		}else{
+			Environment.loger.log(Level.INFO, "Event is not present in the Amenity list");
+			Reporter.Write("NA", "Event is not present in the Amenity list", "Event is not present in the Amenity list","FAIL");
+			
+		}
+		
+	}
+	@AfterClass
+	public void EndTest(){
+		SW.Click("SGR_Logout_LK");
+		Reporter.StopTest();	
+	}
+}

@@ -1,0 +1,48 @@
+19-May-2017 03:07:40:067 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+19-May-2017 03:07:40:073 PM Reporter   StartTest            48   INFO : Execution Started for 'SUP02_EnvironmentCheck5App' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\19May2017-030737PM
+19-May-2017 03:08:09:871 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+19-May-2017 03:08:13:040 PM Reporter   WriteLog             134  DEBUG: PASS>SGRApplicationLoginPage>SGR login page working as expected>SGR login page working as expected
+19-May-2017 03:09:33:355 PM Reporter   WriteLog             134  DEBUG: PASS>SGRApplicationLoginPage>SGR logged in successfully as expected>SGR logged in successfully as expected
+19-May-2017 03:09:42:911 PM Reporter   WriteLog             134  INFO : CEM login page working as expected.
+19-May-2017 03:11:31:136 PM Utility    IsAlertPresent       568  INFO : Alert not present
+19-May-2017 03:11:33:269 PM Reporter   WriteLog             134  ERROR: FAIL>NA_FailCurrentTest>>FAILED-CEM not logged in successfully as expected.
+19-May-2017 03:11:50:071 PM Reporter   WriteLog             134  INFO : GC login page working as expected.
+19-May-2017 03:12:20:269 PM Reporter   WriteLog             134  INFO : GC logged in successfully as expected.
+19-May-2017 03:12:30:221 PM Reporter   WriteLog             134  INFO : Discovery login page working as expected.
+19-May-2017 03:13:10:458 PM Reporter   WriteLog             134  INFO : Discovery logged in successfully as expected.
+19-May-2017 03:13:22:199 PM Reporter   WriteLog             134  ERROR: FAIL>NA_FailCurrentTest>>FAILED-BOB login page not working as expected.
+19-May-2017 03:14:24:196 PM Utility    GetObject            296  ERROR: Object not found: 'BopLogin_UserName_EB'
+19-May-2017 03:14:24:197 PM Utility    EnterValue           656  ERROR: Unable to enter the value in BopLogin_UserName_EB
+19-May-2017 03:15:25:357 PM Utility    GetObject            296  ERROR: Object not found: 'BopLogin_Password_EB'
+19-May-2017 03:15:25:361 PM Utility    EnterValue           656  ERROR: Unable to enter the value in BopLogin_Password_EB
+19-May-2017 03:16:27:032 PM Utility    GetObject            296  ERROR: Object not found: 'BopLogin_Login_BN'
+19-May-2017 03:16:45:615 PM Utility    Click                433  ERROR: Exception is captured check screenshot: Exception-031627033.png
+java.lang.NullPointerException
+	at functions.Utility.Click(Utility.java:418)
+	at support.SUP02_EnvironmentCheck5App.BOB(SUP02_EnvironmentCheck5App.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+19-May-2017 03:17:05:998 PM Reporter   WriteLog             134  ERROR: FAIL>NA_FailCurrentTest>>FAILED-BOB not logged in successfully as expected.
+19-May-2017 03:17:08:659 PM Reporter   StopTest             59   INFO : Execution Ended for 'SUP02_EnvironmentCheck5App' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\19May2017-030737PM

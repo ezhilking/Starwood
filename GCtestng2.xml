@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.gcRegression.GC_REG17_ValidateMultiRateResResconwithspgPromo"/>
+ 	  <class name="testscripts.gcRegression.GC_REG18_ValidateReservationReport"/>
+      <class name="testscripts.gcRegression.GC_REG19_ValidateAdhocBounceBackAndAudienceSizingReport"/>
+      <class name="testscripts.gcRegression.GC_REG21_ValidateImageLoadingWhileEditingBrandRescanOfferStagingState"/>
+      <class name="testscripts.gcRegression.GC_REG22_ValidateContentManagementGreetingTextfor4p"/>
+      <class name="testscripts.gcRegression.GC_REG23_ValidateReservationSearchResultsByConfirmationNumberWestinEnglish"/>
+      <class name="testscripts.gcRegression.GC_REG24_ValidateOfferExpirationEmail7DaysPrior"/>
+      <class name="testscripts.gcRegression.GC_REG25_ValidateOfferExpirationEmail1DayPrior"/>
+      <class name="testscripts.gcRegression.GC_REG26_ValidateEditingActiveGCSetupAddingSocialMediaIconsManagerTitleInReservationEmail"/>
+      <class name="testscripts.gcRegression.GC_REG27_Validate7DayWindowWarningMessageFutureOffersAHBBMPM"/>
+      <class name="testscripts.gcRegression.GC_REG29_ValidatePropertyDescriptionDisplayedAHBBD2Offer"/>
+      <class name="testscripts.gcRegression.GC_REG30_ValidateReservationSMSSentToTheGuestSaratoga"/>
+      <class name="testscripts.gcRegression.GC_REG31_ValidateStRegisPromoReservation"/>
+      <class name="testscripts.gcRegression.GC_REG32_ValidateDesignHotelsReservationEmailEnglish2SocialMediaIcons"/>
+      <class name="testscripts.gcRegression.GC_REG33_ValidateLMYour24ReservationEmailChineseLanguageWithSPGOffer"/>
+      <class name="testscripts.gcRegression.GC_REG34_ValidateLMStarhotReservationWithBrandNCrmOffer"/>
+      <class name="testscripts.gcRegression.GC_REG35_ValidateSuitNightAwardReservationWithEgnOfr"/>
+      <class name="testscripts.gcRegression.GC_REG36_ValidateSVOdisclaimerInSheratonReservationEmailArabicLanguage"/>
+      <class name="testscripts.gcRegression.GC_REG37_ValidateAtlasAndOmnitureTagsElementResEmailTradChinese"/>
+      <class name="testscripts.gcRegression.GC_REG38_ValidateSWAQCodesinResconfEmailwithSPGoffer"/>
+      <class name="testscripts.gcRegression.GC_REG39_ValidateAloftTCPMultiGuestRollawayResEmailMAGCDisclaimerEngLangPropBrandSurvey4SocialIcons"/>
+     
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

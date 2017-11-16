@@ -1,0 +1,5 @@
+28-Mar-2017 07:04:50:259 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\ORLocator.xlsx (The system cannot find the path specified)
+28-Mar-2017 07:04:50:270 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\TestData.xls (The system cannot find the path specified)
+28-Mar-2017 07:04:50:805 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+28-Mar-2017 07:04:50:807 PM Reporter   StartTest            48   INFO : Execution Started for 'sampleRDBStuff' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\28Mar2017-070450PM
+28-Mar-2017 07:04:51:160 PM DataBaseUtil <init>               153  ERROR: SQLException Exception occuredAccess denied for user 'root'@'localhost' (using password: YES)

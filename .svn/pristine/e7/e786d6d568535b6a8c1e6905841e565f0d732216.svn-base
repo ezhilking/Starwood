@@ -1,0 +1,411 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:createBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <createBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE3F8629ea29ea157dc8a1f2cba782a18</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=529982865</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=testtes14</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.41</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1476873821996</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>createBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1476873821999</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=120000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>CREATE</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>200005</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>testtes14</userID>
+                </sourceInfo>
+                <auxCommandArray>
+                    <auxCommand>
+                        <name>IS PERSONALIZABLE STAY</name>
+                    </auxCommand>
+                    <auxCommand>
+                        <name>IS UR24 ELIGIBLE</name>
+                    </auxCommand>
+                    <auxCommand>
+                        <name>RES PERMISSIONS</name>
+                    </auxCommand>
+                </auxCommandArray>
+                <itineraryDTO>
+                    <itineraryId/>
+                    <name xsi:nil="true"/>
+                    <status>1</status>
+                    <contactMethod>PHONE</contactMethod>
+                    <primaryContactInfo>1660283938</primaryContactInfo>
+                    <starlinkItinNumber xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>yExJlhoZmA iYvqiQ</lastName>
+                        <middleName/>
+                        <nmPrefix/>
+                        <nmSuffix xsi:nil="true"/>
+                        <nmTitle xsi:nil="true"/>
+                        <firstName/>
+                    </primCnct>
+                    <cancelInfo xsi:nil="true"/>
+                    <createInfo xsi:nil="true"/>
+                    <updateInfo xsi:nil="true"/>
+                    <binderArray>
+                        <BinderDTO>
+                            <countryCode>US</countryCode>
+                            <propertyId>3131</propertyId>
+                            <status>1</status>
+                            <resStatus xsi:nil="true"/>
+                            <binderId xsi:nil="true"/>
+                            <emailCode>SGNC</emailCode>
+                            <primAltInd>A</primAltInd>
+                            <context xsi:nil="true"/>
+                            <sendEmail>Y</sendEmail>
+                            <contactMethod>PHONE</contactMethod>
+                            <primContactInfo>1660283938</primContactInfo>
+                            <originalPropId>1513</originalPropId>
+                            <primCnct>
+                                <lastName>yExJlhoZmA iYvqiQ</lastName>
+                                <middleName/>
+                                <nmPrefix/>
+                                <nmSuffix xsi:nil="true"/>
+                                <nmTitle xsi:nil="true"/>
+                                <firstName/>
+                            </primCnct>
+                            <createInfo xsi:nil="true"/>
+                            <updateInfo xsi:nil="true"/>
+                            <cancelInfo xsi:nil="true"/>
+                            <awardArray xsi:nil="true"/>
+                            <confirmationArray>
+                                <ConfirmationDTO>
+                                    <confirmationId xsi:nil="true"/>
+                                    <costCurrencyCode>USD</costCurrencyCode>
+                                    <arrivalDate>2016-10-20T00:00:00.000Z</arrivalDate>
+                                    <departureDate>2016-10-21T00:00:00.000Z</departureDate>
+                                    <startTime>2016-10-20T00:00:00.000Z</startTime>
+                                    <endTime>2016-10-21T00:00:00.000Z</endTime>
+                                    <langCode>ENG</langCode>
+                                    <penalty xsi:nil="true"/>
+                                    <propId xsi:nil="true"/>
+                                    <guestSeqId>1</guestSeqId>
+                                    <primary>1</primary>
+                                    <vipInd xsi:nil="true"/>
+                                    <vipLevel xsi:nil="true"/>
+                                    <status>1</status>
+                                    <guestStatus xsi:nil="true"/>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalCostAfterDiscounts xsi:nil="true"/>
+                                    <totalCostBeforeDiscounts xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <cancelInfo xsi:nil="true"/>
+                                    <externalReference xsi:nil="true"/>
+                                    <guestInfo>
+                                    <matchMergeReason xsi:nil="true"/>
+                                    <passportCountry xsi:nil="true"/>
+                                    <passportNumber>XXXXXX</passportNumber>
+                                    <profileId>0</profileId>
+                                    <pmsProfileId xsi:nil="true"/>
+                                    <cpi xsi:nil="true"/>
+                                    <guestCommunicationArray>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>EMAIL</methodCode>
+                                    <methodType xsi:nil="true"/>
+                                    <methodValue>TSXlubustl@gmail.com</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>Y</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>G</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>BUSINESS</methodType>
+                                    <methodValue>1660283938</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>B</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber>+911660283938</normalizedNumber>
+                                    <dialingCd>91</dialingCd>
+                                    <countryPrefix>IN</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>1</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    </guestCommunicationArray>
+                                    <guestDetailsArray>
+                                    <GuestDetailsDTO>
+                                    <addrLine1>ECOSPACE</addrLine1>
+                                    <addrLine2/>
+                                    <addrLine3/>
+                                    <addrLine4/>
+                                    <city>BANGALORE</city>
+                                    <country>IN</country>
+                                    <state>INKA</state>
+                                    <zip>560103</zip>
+                                    <firstName>yExJlhoZmA</firstName>
+                                    <langCode>ENG</langCode>
+                                    <lastName>iYvqiQ</lastName>
+                                    <middleInitial/>
+                                    <prefix>MR</prefix>
+                                    <nameTitle xsi:nil="true"/>
+                                    <suffix/>
+                                    <addrType>B</addrType>
+                                    <altAddrType>B</altAddrType>
+                                    <primary xsi:nil="true"/>
+                                    <age xsi:nil="true"/>
+                                    <countryOfOrigin xsi:nil="true"/>
+                                    </GuestDetailsDTO>
+                                    </guestDetailsArray>
+                                    </guestInfo>
+                                    <accountArray>
+                                    <GuestConfirmationAccountDTO>
+                                    <accountId>18000</accountId>
+                                    <emailId xsi:nil="true"/>
+                                    <faxNumber xsi:nil="true"/>
+                                    <phoneNumber xsi:nil="true"/>
+                                    <primLangCode xsi:nil="true"/>
+                                    <roleType>0</roleType>
+                                    <spgMembershipId xsi:nil="true"/>
+                                    <titleCode xsi:nil="true"/>
+                                    <accountName>IBM/GP</accountName>
+                                    <accountNumber>18000</accountNumber>
+                                    <pmsAccountNumber xsi:nil="true"/>
+                                    <legacyAccountNumber>18544</legacyAccountNumber>
+                                    <accountType>S</accountType>
+                                    <accountDetailsArray>
+                                    <GuestConfirmationAccountDetailsDTO>
+                                    <addressLine1>PO BOX 101</addressLine1>
+                                    <addressLine2 xsi:nil="true"/>
+                                    <addressLine3 xsi:nil="true"/>
+                                    <addressLine4 xsi:nil="true"/>
+                                    <city>YORKTOWN HEIGHTS</city>
+                                    <stateProvinceCode>NY</stateProvinceCode>
+                                    <zipZone>10589-0100</zipZone>
+                                    <countryCode>US</countryCode>
+                                    <firstName xsi:nil="true"/>
+                                    <jobTitleText xsi:nil="true"/>
+                                    <langCode>ENG</langCode>
+                                    <lastName xsi:nil="true"/>
+                                    <middleName/>
+                                    <suffix xsi:nil="true"/>
+                                    <prefix xsi:nil="true"/>
+                                    <addressType xsi:nil="true"/>
+                                    <primary xsi:nil="true"/>
+                                    <title xsi:nil="true"/>
+                                    </GuestConfirmationAccountDetailsDTO>
+                                    </accountDetailsArray>
+                                    </GuestConfirmationAccountDTO>
+                                    </accountArray>
+                                    <affiliationArray>
+                                    <AffiliationDTO>
+                                    <level>A</level>
+                                    <programId>5</programId>
+                                    <type>SPG</type>
+                                    <membershipNumber>42008505114</membershipNumber>
+                                    <earnPointsIndicator xsi:nil="true"/>
+                                    </AffiliationDTO>
+                                    </affiliationArray>
+                                    <arrivalInfoArray xsi:nil="true"/>
+                                    <guestPrefArray xsi:nil="true"/>
+                                    <paymentMethodArray>
+                                    <PaymentMethodDTO>
+                                    <accountNumber>4111111111111111</accountNumber>
+                                    <accountType>VI</accountType>
+                                    <currencyCode>USD</currencyCode>
+                                    <expiryMonth>12</expiryMonth>
+                                    <expiryYear>20</expiryYear>
+                                    <paymentMethod>CC</paymentMethod>
+                                    <paymentSequence>1</paymentSequence>
+                                    <securityCode xsi:nil="true"/>
+                                    <accountFirstName>yExJlhoZmA</accountFirstName>
+                                    <accountLastName>iYvqiQ</accountLastName>
+                                    <accountMiddleName/>
+                                    <accountNamePrefix xsi:nil="true"/>
+                                    <accountNameSuffix xsi:nil="true"/>
+                                    <accountNameTitle xsi:nil="true"/>
+                                    </PaymentMethodDTO>
+                                    </paymentMethodArray>
+                                    <productIdArray>
+                                    <prodSeq>0</prodSeq>
+                                    </productIdArray>
+                                    <remarkArray xsi:nil="true"/>
+                                </ConfirmationDTO>
+                            </confirmationArray>
+                            <externalRefArray xsi:nil="true"/>
+                            <productArray>
+                                <ProductDTO>
+                                    <cost xsi:nil="true"/>
+                                    <costCurrencyCode xsi:nil="true"/>
+                                    <costUnit xsi:nil="true"/>
+                                    <startTime>2016-10-20T00:00:00.000Z</startTime>
+                                    <endTime>2016-10-21T00:00:00.000Z</endTime>
+                                    <guaranteeIndicator>G</guaranteeIndicator>
+                                    <guaranteeType>3</guaranteeType>
+                                    <guaranteeCode xsi:nil="true"/>
+                                    <reservedProductId xsi:nil="true"/>
+                                    <maxAllowedAdult xsi:nil="true"/>
+                                    <maxAllowedChild xsi:nil="true"/>
+                                    <maxAllowedRollwy xsi:nil="true"/>
+                                    <numOfAdultGst>2</numOfAdultGst>
+                                    <numOfAdultRollwy>0</numOfAdultRollwy>
+                                    <numOfChildGst>0</numOfChildGst>
+                                    <numOfChildRollwy>0</numOfChildRollwy>
+                                    <numOfCribs>0</numOfCribs>
+                                    <packageType>N</packageType>
+                                    <prodBedType>2Q</prodBedType>
+                                    <prodClass xsi:nil="true"/>
+                                    <tpRoomTyp>B</tpRoomTyp>
+                                    <prodCd>WQN</prodCd>
+                                    <productId>95251</productId>
+                                    <propertyId xsi:nil="true"/>
+                                    <roomNumber xsi:nil="true"/>
+                                    <sequenceId>0</sequenceId>
+                                    <status>0</status>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <avrgRate xsi:nil="true"/>
+                                    <upgradeBedType xsi:nil="true"/>
+                                    <upgradeProdClass xsi:nil="true"/>
+                                    <upgradeProdId xsi:nil="true"/>
+                                    <upgradeProdCd xsi:nil="true"/>
+                                    <UpgradeTpRoomTyp xsi:nil="true"/>
+                                    <checkAvail>1</checkAvail>
+                                    <upgradePath>0</upgradePath>
+                                    <chargedProdId>95251</chargedProdId>
+                                    <chargedProdCd>WQN</chargedProdCd>
+                                    <chargedTpRoomTyp>B</chargedTpRoomTyp>
+                                    <chargedProdBedType>2Q</chargedProdBedType>
+                                    <cancelDepositAmountArray>
+                                    <CancelDepositAmountDTO>
+                                    <amount>300.0</amount>
+                                    <currency>USD</currency>
+                                    <effectiveTimestamp>2016-10-17T16:00:00.000Z</effectiveTimestamp>
+                                    <rateId>BAR</rateId>
+                                    <sequence xsi:nil="true"/>
+                                    <type>C</type>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    <overrideStlmt>0</overrideStlmt>
+                                    </CancelDepositAmountDTO>
+                                    </cancelDepositAmountArray>
+                                    <cancelDepositRuleArray>
+                                    <CancelDepositRuleDTO>
+                                    <calculationAmount>100.0</calculationAmount>
+                                    <calculationType>%</calculationType>
+                                    <daysPrior>3</daysPrior>
+                                    <timingTypeId xsi:nil="true"/>
+                                    <cancelRuleTime>1600</cancelRuleTime>
+                                    <ruleType>C</ruleType>
+                                    <nonRefundableInd>N</nonRefundableInd>
+                                    <seqId xsi:nil="true"/>
+                                    <rateId>BAR</rateId>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    </CancelDepositRuleDTO>
+                                    </cancelDepositRuleArray>
+                                    <featureArray xsi:nil="true"/>
+                                    <feeArray xsi:nil="true"/>
+                                    <guestPaymentMapArray>
+                                    <ConfirmationPaymentMethodDTO>
+                                    <confSeqId>1</confSeqId>
+                                    <paymentSequence>1</paymentSequence>
+                                    </ConfirmationPaymentMethodDTO>
+                                    </guestPaymentMapArray>
+                                    <promotionArray xsi:nil="true"/>
+                                    <rateArray>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-10-20T00:00:00.000Z</startDate>
+                                    <endDate>2016-10-20T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>300.0</grossAmount>
+                                    <netAmount>300.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>BAR</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    <rateOverride>1</rateOverride>
+                                    </RateDTO>
+                                    </rateArray>
+                                    <reservedPackageArray xsi:nil="true"/>
+                                    <specialServiceArray xsi:nil="true"/>
+                                    <taxArray xsi:nil="true"/>
+                                </ProductDTO>
+                            </productArray>
+                            <remarkArray xsi:nil="true"/>
+                            <guestCommunicationArray>
+                                <GuestCommunicationDTO>
+                                    <methodCode>EMAIL</methodCode>
+                                    <methodType>A</methodType>
+                                    <methodValue>TSXlubustl@gmail.com</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>Y</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>G</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                </GuestCommunicationDTO>
+                            </guestCommunicationArray>
+                        </BinderDTO>
+                    </binderArray>
+                    <guestCommunicationArray xsi:nil="true"/>
+                    <resIdArray xsi:nil="true"/>
+                </itineraryDTO>
+            </createBookingRequest>
+        </p694:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

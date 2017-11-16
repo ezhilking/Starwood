@@ -1,0 +1,87 @@
+package tbd;
+/* Purpose		: Validate the Amb request Status
+ * TestCase Name: Validate the Amb request Status_HD_HN_Your 24 Approved_HC Y24
+ * Created By	: Sachin G 
+ * Modified By	:
+ * Modified Date:
+ * Reviewed By	:
+ * Reviewed Date:
+ */
+import java.util.Calendar;
+
+import org.apache.log4j.Level;
+import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class RPA_PoC_CreateReservation {
+
+	CRM SW = new CRM();
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower="CRM";
+		Reporter.StartTest();
+		Environment.SetBrowserToUse("GC");
+		SW.LaunchBrowser(Environment.BWURL+"1967");
+	}
+
+	String ReservationNo, AmbFileID;
+	@Test(priority=0)
+	public void createNewReservationForAMBGuest(){
+		try{
+			SW.NormalClick("BWLogin_SignInUserNameSPG_BN");
+			SW.EnterValue("BWLogin_Username_SPGNo_EB", SW.TestData("BWAMBUsername"));
+			SW.EnterValue("BWLogin_Password_EB", SW.TestData("BWAMBPassword"));
+			SW.Click("BWLogin_SignIn_BN");
+			// If Security Question appears give answer otherwise proceed 
+			if(SW.ObjectExists("BWSecurityQuestions_VerbelPassword_TB")){
+
+				String SecurityQn=SW.GetText("//label[@for='securityAnswer']");
+				String lastWord = SecurityQn.substring(SecurityQn.lastIndexOf(" ")+1, SecurityQn.indexOf("?"));
+				SW.EnterValue("BWSecurityQuestions_VerbelPassword_TB", lastWord.trim());
+				SW.Click("BWSecurityQuestions_Submit_BN");
+			}
+			if(!SW.ObjectExists("BWLogin_CheckInDate_TB")){
+				Environment.loger.log(Level.ERROR, "login is not successfull");
+				SW.FailCurrentTest("login is not successfull");
+
+			}
+			SW.Click("BrandedWeb_MarriotPopUp_LK");
+			// Enter the Check-in and Check-out time
+			SW.EnterValue("BWLogin_CheckInDate_TB", SW.DateAddDays(SW.GetTimeStamp("MM/dd/yyyy"),"MM/dd/yyyy",5,Calendar.DATE));
+			SW.EnterValue("BWLogin_CheckOutDate_TB", SW.DateAddDays(SW.GetTimeStamp("MM/dd/yyyy"),"MM/dd/yyyy",6,Calendar.DATE)+Keys.TAB);
+			SW.Click("BWLogin_BookNow_BN");
+			if(SW.ObjectExists("BWGeneral_FeedBackPopUp_BN"))
+				SW.Click("BWGeneral_FeedBackPopUp_BN");
+			//			SW.Click("BWSelectRoom_SelectYourRate_BN");
+			SW.NormalClick("(//a[@class='reserveRoom'])[1]");
+			SW.NormalClick("(//div[@class='displayPanel'])[2]/a");
+			SW.EnterValue("//input[@name='creditCardNumber']", "4111111111111111");
+			SW.DropDown_SelectByIndex("//select[@id='creditCardExpMonth']", 2);
+			SW.DropDown_SelectByText("//select[@id='creditCardExpYear']", "2018");
+			SW.Wait(4);
+			SW.Click("BWReviewReservation_CompleteYourReservation_BN");
+
+			ReservationNo = SW.GetText("BWReservationConfirmation_ConfirmationNum_DT");
+			Environment.loger.log(Level.INFO, "Reservation Confirmation Number is :"+ReservationNo);
+			SW.WriteToTestData("RPARerservationNumber", ReservationNo);
+			//			SW.Click("BWGeneral_UserName_ST");
+			//			SW.Click("BWGeneral_SignOut_LK");
+		}catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured: "+e.getMessage());
+			SW.FailCurrentTest("Exception occured!!");
+		}
+	}
+
+
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();		
+	}
+}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.vpRegression.SMOKETEST01_CreateRateplanTemplate"/>
+      <class name="testscripts.vpRegression.SMOKETEST02_CreatePropLevelCancellationPolicy"/>
+      <class name="testscripts.vpRegression.SMOKETEST03_DirectConnectPushConfiguration"/>
+      <class name="testscripts.vpRegression.SMOKETEST04_PropModeCreateGroupRatePlan"/>
+      <class name="testscripts.vpRegression.SMOKETEST05_ModifyManageDailyInventoryByDate_Range"/> 
+      <class name="testscripts.vpRegression.SMOKETEST06_ShortRangeTLPeVerifyIfDBDRateplanIsEditableInEMD"/>
+      <class name="testscripts.vpRegression.SMOKETEST07_CorpoModeCreateVerifyParentAndChildRatePlanRelationTypeInRatesSchema"/>
+      <class name="testscripts.vpRegression.SMOKETEST08_CreateModifyRoomClassfromVP"/>
+      <class name="testscripts.vpRegression.SMOKETEST09_CorpSup_Saratoga_SearchMsg_CreateConditionalScriptWithCategory"/>
+      <class name="testscripts.vpRegression.SMOKETEST10_CreateDivisionalCorpOffice"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

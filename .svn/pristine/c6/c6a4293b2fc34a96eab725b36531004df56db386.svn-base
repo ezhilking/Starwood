@@ -1,0 +1,102 @@
+package testscripts.sgrRegression;
+/* Purpose		: Validate the RES comments , Event Detail , Event Sts   in Preference tab , by generating MAR.
+ * TestCase Name: This is to validate the data displayed in the Res comments,event details, Preferences columns of the master arrival report
+ * Created By	: Ezhilarasan.S
+ * Modified By	: Sachin G	
+ * Modified Date: 04/06/2016
+ * Reviewed By	: 
+ * Reviewed Date: 
+ */
+import java.util.Calendar;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SGR_REG07_ValidatingMarByGeneratingEvents {
+	CRM SW = new CRM();
+	@BeforeClass
+	public void StartTest() {
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.SGRURL);
+	}
+	@Test
+	public void LocateGuestInMAR(){
+		try{
+			//SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1965"); // stage
+			SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1047"); // QA3
+			SW.Click("SGRNavigation_Reports_LK");
+			SW.Click("SGRNavigation_ArrivalReport_LK");
+			SW.Click("SGRArrivalReport_GenerateReport_BN");
+			SW.DropDown_SelectByText("SGRMAR_FilterByStatus_DD", "All Guests");
+			String Date = SW.DateAddDays(SW.GetTimeStamp("dd-MMM-yyyy"), "dd-MMM-yyyy", 4, Calendar.DATE);
+			SW.RunJavaScript("document.getElementsByName('endDate2')[0].value='"+Date+"';");//Set the date 
+			SW.Click("SGRMAR_Refresh_BN");
+			SW.WaitTillInvisibilityOfElement("SGRMAR_LoadImage_IC");
+			SW.WaitTillInvisibilityOfElement("SGR_PleaseWaitLoadingIcon_IC");
+			
+			SW.RunJavaScript("SGRArrivalReport_GridTableBottom_WB","document.getElementsByClassName('ui-jqgrid-bdiv')[0].style['overflow'] = 'visible';");
+			if(!SW.ObjectExists("SGRMAR_GuestDoesNotHavePref_LK")){
+				Environment.loger.log(Level.ERROR, "Guest did not found in MAR who doesn't have any events/preferences ");
+				SW.FailCurrentTest("Guest did not found in MAR who doesn't have any events/preferences ");
+			}
+			String Guestname = SW.GetText("SGRMAR_GuestDoesNotHavePref_LK");//Link text
+			SW.Click("SGRMAR_GuestDoesNotHavePref_LK");//CLick the link to get the reservation number
+			SW.WaitForWindowCount(2);
+			SW.SwitchToWindow(2);
+			String ResConfirmationNo = SW.GetText("SGRGuestProfile_ResConfirmationNo_DT");
+			SW.CloseOnlyThisBrowser();
+			SW.SwitchToWindow(1);
+
+			SW.Click("SGRMAR_CreateEvent_LK");//Click a guest which is not having '+' button
+			
+			//Create event
+			SW.WaitForWindowCount(2);
+			SW.SwitchToWindow(2);
+			
+			String EventTypeExpected = "Defect";
+			String DetailExpected = "Send Copy Of Bill";
+			if(!SW.CreateEvent(EventTypeExpected, "tbd", "tbd", "Billing", "Administration", DetailExpected, "", "", "")){
+				SW.FailCurrentTest("Event itself not created.So failing the current test");
+			}
+			SW.GetEventNumbeID();
+			SW.CloseOnlyThisBrowser();
+			SW.SwitchToWindow(1);
+			
+			//SW.EstablishConnection(Environment.getRunEnvironment());//TODO Change to Stage once the DB issue resolved
+			SW.EstablishConnection("QA3");
+			String Query = "call odsguest.pkg_guest_arvl_data_syncup.p_populate_by_resconf("+ResConfirmationNo+")";
+			SW.CallProcedure(Query);
+
+			SW.DropDown_SelectByText("SGRMAR_FilterByStatus_DD", "All Guests");//Refresh the page			
+			SW.Click("SGRMAR_Refresh_BN");	
+			SW.WaitTillInvisibilityOfElement("SGRMAR_LoadImage_IC");
+			SW.WaitTillInvisibilityOfElement("SGR_PleaseWaitLoadingIcon_IC");
+			SW.Wait(5);
+			SW.Click("(//*[text()='"+Guestname+"']//ancestor::tr/td[1]/a)[last()]");//'+' icon
+			SW.WaitTillInvisibilityOfElement("SGRMAR_LoadImage_IC");
+			SW.WaitTillInvisibilityOfElement("SGR_PleaseWaitLoadingIcon_IC");
+			SW.Wait(3);
+			String TableXapth = "(//tr[@class='ui-subgrid']//table//table)[2]";
+			String EventTypeActual = SW.WebTbl_GetText(TableXapth, 2, 2);
+			String DetailDescriptionActual = SW.WebTbl_GetText(TableXapth, 2, 3);
+
+			SW.CompareText("EventID", EventTypeExpected, EventTypeActual);
+			SW.CompareText("DetailDescription", DetailExpected, DetailDescriptionActual);
+		}catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured: "+e.getMessage());
+			SW.FailCurrentTest("Exception occured!!");
+		}
+	}
+	@AfterClass
+	public void EndTest(){
+		SW.Click("SGR_Logout_LK");
+		Reporter.StopTest();	
+	}
+}

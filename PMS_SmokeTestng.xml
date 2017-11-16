@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.pmsRegression.GalaxyPMS_REG01_CreateEvent"/>
+      <class name="testscripts.pmsRegression.GalaxyPMS_REG02_CreateComment"/>
+      <class name="testscripts.pmsRegression.GalaxyPMS_REG03_Preference"/>
+      <class name="testscripts.pmsRegression.GalaxyPMS_REG04_VIPLevelAndOptInStatus"/>     
+      <class name="testscripts.pmsRegression.GalaxyPMS_REG05_Alerts"/>
+      <class name="testscripts.pmsRegression.OperaPMS_PrerequisiteCreateReservationValidatePMS"/>
+      <class name="testscripts.pmsRegression.OperaPMS_REG01_CreateComment"/>
+      <class name="testscripts.pmsRegression.OperaPMS_REG02_Preference"/>     
+      <class name="testscripts.pmsRegression.OperaPMS_REG03_VIPLevelAndOptInStatus"/>
+      <class name="testscripts.pmsRegression.OperaPMS_REG04_Alerts"/>
+      <class name="testscripts.pmsRegression.OperaPMS_REG05_CreateEvent"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

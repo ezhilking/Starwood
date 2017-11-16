@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Automation Report</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue Jul 25 16:40:13 IST 2017<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>File:Line</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>0</td>
+<td title="main thread">main</td>
+<td title="Level">INFO</td>
+<td title="functions.Log category">functions.Log</td>
+<td>Reporter.java:47</td>
+<td title="Message">* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - </td>
+</tr>
+
+<tr>
+<td>4</td>
+<td title="main thread">main</td>
+<td title="Level">INFO</td>
+<td title="functions.Log category">functions.Log</td>
+<td>Reporter.java:48</td>
+<td title="Message">Execution Started for 'RPA' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\25Jul2017-044013PM</td>
+</tr>
+
+<tr>
+<td>20442</td>
+<td title="main thread">main</td>
+<td title="Level">INFO</td>
+<td title="functions.Log category">functions.Log</td>
+<td>Reporter.java:134</td>
+<td title="Message">URL-https://web3.qa.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=1967</td>
+</tr>
+
+<tr>
+<td>88715</td>
+<td title="main thread">main</td>
+<td title="Level">INFO</td>
+<td title="functions.Log category">functions.Log</td>
+<td>RPA.java:72</td>
+<td title="Message">Reservation Confirmation Number is :134661137</td>
+</tr>
+
+<tr>
+<td>149615</td>
+<td title="main thread">main</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="functions.Log category">functions.Log</td>
+<td>Utility.java:296</td>
+<td title="Message">Object not found: 'BWReviewReservation_ReqArrivalTime_DD'</td>
+</tr>
+
+<tr>
+<td>149616</td>
+<td title="main thread">main</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="functions.Log category">functions.Log</td>
+<td>Utility.java:1002</td>
+<td title="Message">Exception occured</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">java.lang.NullPointerException
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:44)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at functions.Utility.DropDown_SelectByIndex(Utility.java:993)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at tbd.sgrRegression.RPA.createNewReservationForAMBGuest(RPA.java:74)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.reflect.Method.invoke(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.TestRunner.run(TestRunner.java:632)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.TestNG.run(TestNG.java:1064)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+</td></tr>

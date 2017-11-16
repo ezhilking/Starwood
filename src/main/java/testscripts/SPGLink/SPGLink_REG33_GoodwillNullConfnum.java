@@ -1,0 +1,77 @@
+package testscripts.SPGLink;
+/** Purpose		: This is to validate the Confnum mandatory field under Misc Starpoints role in Starpoints request page 
+ * TestCase Name: GoodwillNullConfnum
+ * Created By	: Indushree Lokesh
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	: 
+ * Reviewed Date:
+ */ 
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SPGLink_REG33_GoodwillNullConfnum {
+	CRM SW = new CRM();
+	String Mbrshp_num;
+
+	
+	@BeforeClass
+	public void StartTest() {
+			Environment.Tower = "CRM";
+			Reporter.StartTest();
+			SW.LaunchBrowser(Environment.SPGLINK);
+			
+	}
+	
+	@Test(priority=1)
+	public void getDataGoodwillNullConfnum() {
+		SW.EstablishConnection("QA3");
+		String query = "select * from freq_travel_mbrshp where mbrshp_lvl='A' and mbrshp_sts='A' and join_Date > (sysdate-10) AND src_cd='IPSA'";
+		Mbrshp_num=SW.GetColumnValues(query, "Mbrshp_num").get(0);
+		System.out.println(Mbrshp_num);
+	}
+	
+	@Test(priority=2,dependsOnMethods="getDataGoodwillNullConfnum")
+	public void GoodwillNullConfnum(){
+		SW.SPGLinkLogin(SW.TestData("SPGLinkUsername"),SW.TestData("SPGLinkPassword"),SW.TestData("SPGLinkPropId"));
+		SW.SPGLinkChangeUserRole("Misc Starpoints");
+		SW.Click("SPGLink_Home_BT");
+		SW.Click("SPGLink_StarPointRequest_BT");
+		SW.EnterValue("SPGLink_OtherStarPoint_Mbrshpnum_EB", Mbrshp_num);
+		SW.CheckBox("SPGLink_OtherStarPoint_AssociatedStay_CB","ON");
+		SW.EnterValue("SPGLink_OtherStarPoints_ConfNum_EB", "0");
+		SW.EnterValue("SPGLink_OtherStarPoints_Arvdate_EB","01-Nov_2016");
+		SW.EnterValue("SPGLink_OtherStarPoints_Dprtdate_EB","03-Nov-2016");
+		SW.DropDown_SelectByText("SPGLink_OtherStarPoint_StarPointsRequestReason_DD", "2061: GOODWILL BY HOTEL THRU LINK (A");
+		SW.EnterValue("SPGLink_OtherStarPoints_StarPoints_EB","1000");
+		SW.Click("SPGLink_OtherStarPoints_ConfNum_EB");
+		SW.ClickAndProceed("SPGLink_OtherStarPoints_Submit_BT");
+		SW.Wait(5);
+		SW.HandleAlert(true);
+		
+		/* System should throw an error notifying confirmation number is a mandatory field it cannot be null*/
+		if (SW.ObjectExists("SPGLinkEventPosting_Success_DT")) {
+			Environment.loger.log(Level.INFO, "Request  has been saved successfully");
+			System.out.println("Request saved successfull");
+		} else if(SW.ObjectExists("SPGLink_OtherStarPoints_Err_DT"))	{
+			String ErrorMsg = SW.GetText("SPGLink_OtherStarPoints_Err_DT");
+			Environment.loger.log(Level.ERROR, "Error in Request Creation" + ErrorMsg);
+			System.out.println("Request has some error");
+		}
+	}
+	
+	@AfterClass
+	public void EndTest(){
+		SW.Click("SPGLinkLogout_BT");
+	Reporter.StopTest();
+	
+	}
+
+}

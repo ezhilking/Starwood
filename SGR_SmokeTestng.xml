@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.sgrRegression.SGR_REG31_Validate_Evnt_Escalation_Report"/>
+      <class name="testscripts.sgrRegression.SGR_REG46_Validate_Create_Edit_Delete_Service_Opportunity"/>
+      <class name="testscripts.sgrRegression.SGR_REG51_Validate_Create_Edit_Delete_Comments"/>
+      <class name="testscripts.sgrRegression.SGR_REG30_ValidateSavingViewInMAR"/>
+      <class name="testscripts.sgrRegression.SGR_REG49_Validate_Create_Edit_Delete_Preferences"/>
+      <class name="testscripts.sgrRegression.SGR_REG04_Validate_ResDetailsSVOUser"/>
+      <class name="testscripts.sgrRegression.SGR_REG02_ValidateColumns_MasterArrivalReport"/>
+      <class name="testscripts.sgrRegression.SGR_REG07_ValidatingMarByGeneratingEvents"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

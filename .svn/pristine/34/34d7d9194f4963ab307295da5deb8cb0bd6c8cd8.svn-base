@@ -1,0 +1,13 @@
+package testscripts.gcRegression;
+
+public class Sample {
+
+	public static void main(String args[]) {
+		String GrnTxt = " Success"
+				+ "+/n+"
+				+ "The Communication Message Has Been Created Successfully.";
+		System.out.println(GrnTxt);
+	}
+
+	
+}

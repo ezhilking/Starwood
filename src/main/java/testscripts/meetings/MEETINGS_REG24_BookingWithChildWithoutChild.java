@@ -1,0 +1,273 @@
+package testscripts.meetings;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CHANNELS;
+import functions.Environment;
+import functions.Reporter;
+
+public class MEETINGS_REG24_BookingWithChildWithoutChild {
+
+	CHANNELS SW = new CHANNELS();
+	String lastName = SW.RandomString(5);
+	String cnfcNumber;
+
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CHANNELS";
+		Reporter.StartTest();
+		Environment.SetBrowserToUse("FF");
+	}
+
+	@Test(priority=1)
+
+	public void BookingWithChildrenCount(){
+
+		String url = SW.TestData("URL");
+		SW.LaunchBrowser(url);
+		SW.Click("MeetingsBooking_ClickonBook_BT");
+		SW.EnterValue("MeetingsBooking_CheckIn_EB", SW.TestData("SGP_CheckIn"));
+		SW.EnterValue("MeetingsBooking_CheckOut_EB", SW.TestData("SGP_CheckOut"));
+		SW.DropDown_SelectByValue("MeetingsBooking_Adult_BT", "1");
+		SW.DropDown_SelectByValue("MeetingsBooking_Children_EB", "1");
+		SW.Click("MeetingsBooking_Search_BT");
+
+		String [] ValidateAvailableRoom = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");		
+		String roomAvailableRoom = ValidateAvailableRoom[0];
+		String adultAvailableRoom = ValidateAvailableRoom[1].trim();
+		String childrenAvailableRoom = ValidateAvailableRoom[2].trim();
+		if(SW.CompareText("AvailableRoom_ChildrenValidation_DD", "1 room(s), 1 adult(s), 1 children", roomAvailableRoom+", "+adultAvailableRoom+", "+childrenAvailableRoom))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		SW.Click("MeetingsBooking_reserveLink_BT");
+
+		String [] ValidateGuestInformation = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomGuestInformation = ValidateGuestInformation[0];
+		String adultGuestInformation = ValidateGuestInformation[1].trim();
+		String childrenGuestInformation = ValidateGuestInformation[2].trim();
+		if(SW.CompareText("GuestInformation_ChildrenValidation_DD", "1 room(s), 1 adult(s), 1 children", roomGuestInformation+", "+adultGuestInformation+", "+childrenGuestInformation))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		
+		SW.DropDown_SelectByValue("MeetingsBooking_Title_DD", "Mr.");
+		SW.EnterValue("MeetingsBooking_FirstName_EB", SW.RandomString(5));
+		SW.EnterValue("MeetingsBooking_LastName_EB", lastName);
+		SW.EnterValue("MeetingsBooking_Address_EB", SW.RandomString(5));
+		SW.EnterValue("MeetingsBooking_city_EB", SW.RandomString(5));
+		SW.DropDown_SelectByValue("MeetingsBooking_state_DD", "PA");
+		SW.EnterValue("MeetingsBooking_zipCode_EB", "98562");
+		SW.DropDown_SelectByValue("MeetingsBooking_telephone_DD", "0");
+		SW.EnterValue("MeetingsBooking_phn_EB", "9985632103");
+		SW.DropDown_SelectByValue("MeetingsBooking_cardType_DD", "VI");
+		SW.EnterValue("MeetingsBooking_cardNumber_DD", "4111111111111111");
+		SW.DropDown_SelectByValue("MeetingsBooking_month_DD", "09");
+		SW.DropDown_SelectByValue("MeetingsBooking_year_DD", "2020");
+		SW.CheckBox("MeetingsBooking_Agree_BT", "ON");
+		SW.Click("MeetingsBooking_reviewReservation_BT");
+
+		String [] ValidateReservationReview = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomReservationReview = ValidateReservationReview[0];
+		String adultReservationReview = ValidateReservationReview[1].trim();
+		String childrenReservationReview = ValidateReservationReview[2].trim();
+		if(SW.CompareText("ReservationReview_ChildrenValidation_DD", "1 room(s), 1 adult(s), 1 children", roomReservationReview+", "+adultReservationReview+", "+childrenReservationReview))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		
+		SW.Click("MeetingsBooking_confirmButton_BT");
+
+		String [] ValidateReservationConfirmed = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomReservationConfirmed = ValidateReservationConfirmed[0];
+		String adultReservationConfirmed = ValidateReservationConfirmed[1].trim();
+		String childrenReservationConfirmed = ValidateReservationConfirmed[2].trim();
+		if(SW.CompareText("ReservationConfirmed_ChildrenValidation_DD", "1 room(s), 1 adult(s), 1 children", roomReservationConfirmed+", "+adultReservationConfirmed+", "+childrenReservationConfirmed))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		
+		try{String ConfNumber = SW.GetText("MeetingsBooking_confNo_BT");	
+		String Isindex = "is";
+		int StartingIndex = ConfNumber.indexOf(Isindex);
+		int EndIndex  = ConfNumber.indexOf(".");
+		cnfcNumber = ConfNumber.substring(StartingIndex+Isindex.length(), EndIndex).trim();
+		Environment.loger.log(Level.INFO, "Confirnmation Number:"+cnfcNumber);
+		if(SW.CompareText("BookingConfirnmationNumberMessage_DT", "Your confirmation number is "+cnfcNumber+".", SW.GetText("MeetingsBooking_confNo_BT")))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		}
+		catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured in",e);
+		}
+	}	
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+
+	@Test(priority=2,dependsOnMethods="BookingWithChildrenCount")
+
+	public void ModifyWithoutChildrenCount(){
+
+		SW.Click("MeetingsLocate_checkReservation_BT");
+		SW.EnterValue("MeetingsLocate_cnfcNumber_EB", cnfcNumber);
+		SW.EnterValue("MeetingsLocate_lastname_BT", lastName);
+		SW.Click("MeetingsLocate_Submit_BT");
+
+		String [] ValidateReservationReview = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomReservationReview = ValidateReservationReview[0];
+		String adultReservationReview = ValidateReservationReview[1].trim();
+		String childrenReservationReview = ValidateReservationReview[2].trim();
+		if(SW.CompareText("ModifyPageGuestInformation_ChildrenValidation_DD", "1 room(s), 1 adult(s), 1 children", roomReservationReview+", "+adultReservationReview+", "+childrenReservationReview))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		SW.Click("MeetingsBooking_ModifyButton_BT");
+
+		SW.DropDown_SelectByValue("MeetingsBooking_Children_EB", "0");
+		SW.Click("MeetingsBooking_Search_BT");
+		SW.Click("MeetingsBooking_reserveLink_BT");
+
+		String [] ValidateGuestInformation = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomGuestInformation = ValidateGuestInformation[0];
+		String adultGuestInformation = ValidateGuestInformation[1].trim();
+		if(SW.CompareText("ModifyGuestInformation_ChildrenValidation_DD", "1 room(s), 1 adult(s)", roomGuestInformation+", "+adultGuestInformation))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		SW.EnterValue("MeetingsBooking_ModifyFirstName_EB", SW.RandomString(5));
+		SW.Click("MeetingsBooking_ModifycreditCard_BT");
+		SW.DropDown_SelectByValue("MeetingsBooking_ModifycardType_DD", "MC");
+		SW.EnterValue("MeetingsBooking_ModifycardNumber_DD", "5555555555554444");
+		SW.DropDown_SelectByValue("MeetingsBooking_Modifymonth_DD", "05");
+		SW.DropDown_SelectByValue("MeetingsBooking_Modifyyear_DD", "2020");
+		SW.CheckBox("MeetingsBooking_Agree_BT", "ON");
+		SW.Click("MeetingsBooking_ModifyreviewReservation_BT");
+
+		String [] ModifyReservationReview = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomModifyReservationReview = ModifyReservationReview[0];
+		String adultModifyReservationReview = ModifyReservationReview[1].trim();
+		if(SW.CompareText("ModifyReservationReview_ChildrenValidation_DD", "1 room(s), 1 adult(s)", roomModifyReservationReview+", "+adultModifyReservationReview))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		SW.Click("MeetingsBooking_confirmButton_BT");
+
+		String [] ModifyReservationConfirmed = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomModifyReservationConfirmed = ModifyReservationConfirmed[0];
+		String adultModifyReservationConfirmed = ModifyReservationConfirmed[1].trim();
+		if(SW.CompareText("ModifyReservationConfirmed_ChildrenValidation_DD", "1 room(s), 1 adult(s)", roomModifyReservationConfirmed+", "+adultModifyReservationConfirmed))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		try{
+			String ConfNumber = SW.GetText("MeetingsBooking_confNo_BT");	
+			String Isindex = "is";
+			int StartingIndex = ConfNumber.indexOf(Isindex);
+			int EndIndex  = ConfNumber.indexOf(".");
+			cnfcNumber = ConfNumber.substring(StartingIndex+Isindex.length(), EndIndex).trim();
+			Environment.loger.log(Level.INFO, "Confirnmation Number:"+cnfcNumber);
+		}
+		catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured in",e);
+		}
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+	@Test(priority=3,dependsOnMethods="ModifyWithoutChildrenCount")
+
+	public void CancelModifyBookingWithoutChildren(){
+		String cancelNumber;
+
+		SW.Click("MeetingsLocate_checkReservation_BT");
+		SW.EnterValue("MeetingsLocate_cnfcNumber_EB", cnfcNumber);
+		SW.EnterValue("MeetingsLocate_lastname_BT", lastName);
+		SW.Click("MeetingsLocate_Submit_BT");
+
+		String [] ValidateReservationReview = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomReservationReview = ValidateReservationReview[0];
+		String adultReservationReview = ValidateReservationReview[1].trim();
+		if(SW.CompareText("CancelGuestInformation_ChildrenValidation_DD", "1 room(s), 1 adult(s)", roomReservationReview+", "+adultReservationReview))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+
+		SW.ClickAndProceed("MeetingsCancel_CancelButton_BT");
+		SW.HandleAlert(true);
+
+		String [] CancelReservationConfirmed = SW.GetText("MeetingsBooking_ChildrenValidation_ST").trim().split(",");
+		String roomCancelReservationConfirmed = CancelReservationConfirmed[0];
+		String adultCancelReservationConfirmed = CancelReservationConfirmed[1].trim();
+		if(SW.CompareText("CancelReservationConfirmed_ChildrenValidation_DD", "1 room(s), 1 adult(s)", roomCancelReservationConfirmed+", "+adultCancelReservationConfirmed))
+		{
+			Reporter.WriteLog(Level.ERROR, "PASS");
+		}
+		else
+		{
+			Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+		try{
+			String cancellationNumber = SW.GetText("MeetingsBooking_cancellationNumber_BT");	
+			String Isindex = "is";
+			int StartingIndex = cancellationNumber.indexOf(Isindex);
+			int EndIndex  = cancellationNumber.indexOf(".");
+			cancelNumber = cancellationNumber.substring(StartingIndex+Isindex.length(), EndIndex).trim();
+			Environment.loger.log(Level.INFO, "Cancellation Number:"+cancelNumber);
+		}
+		catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured in",e);
+		}
+	}	
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();		
+	}
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.gcRegression.GC_REG58_ValidateWestinInstayArrivalDocEnglishlang"/>
+      <class name="testscripts.gcRegression.GC_REG59_ValidateSheratonInStayDepartureDocEngLang"/>
+      <class name="testscripts.gcRegression.GC_REG60_ValidateElementAHBBSBMPEmailSpanishLang"/>
+      <class name="testscripts.gcRegression.GC_REG61_ValidateAloftAHBBSBMPEnglishSPGPromoOfferEligibility"/>
+      <class name="testscripts.gcRegression.GC_REG62_ValidateFPAHBB_SBMPItalianLanguage"/>
+      <class name="testscripts.gcRegression.GC_REG64_ValidateAHBBMBMPEmailJapanlangTributeandDesignbrands"/>
+      <class name="testscripts.gcRegression.GC_REG65_ValidateAHBBMBMPEmailEngLangFP_WH_LMbrands"/>
+      <class name="testscripts.gcRegression.GC_REG66_ValidateAHBBMBMPEmailFrenchlangAloft_NB_StRegis"/>
+     <class name="testscripts.gcRegression.GC_REG67_ValidateSheratonAHBBSBSPGuestEmailEngLangNDS"/>
+      <class name="testscripts.gcRegression.GC_REG69_ValidateStRegisAHBBSBSPChineseEligibilityIncludeSingleValueOfDepMonth"/>
+      <class name="testscripts.gcRegression.GC_REG70_ValidateOmnitureCodeCreatorCancellationOffer"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

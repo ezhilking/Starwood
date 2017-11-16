@@ -1,0 +1,241 @@
+package testscripts.gcRegression;
+/** Purpose		: Validate accessibility of the OMT application when user access is updated as Field Marketer
+ * TestCase Name: GC_REG85_ValidateYourAccessAsFieldMarketer
+ * Created By	: Sindhu SR
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	: 	
+ * Reviewed Date: 
+ */
+
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class GC_REG85_ValidateYourAccessAsFieldMarketer {
+
+	CRM SW = new CRM();
+	String Username, Password, Username1, Password1;
+	String PropertyID="110", sMessage, OfferID;
+
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower="CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.GCURL);
+		Username=SW.TestData("GCUsername");
+		Password=SW.TestData("GCPassword");
+	//	Username1=SW.TestData("EmailUserName");
+	//	Password1=SW.TestData("EmailPassword");
+		Username1 = "aneeama";
+		Password1 = "Anzoom@95";
+	}
+
+
+	@Test
+	public void FieldMarketerAccessibility(){
+		SW.GCLogin(Username, Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+		SW.Click("GCHome_Admin_LK");
+		SW.Click("GCUsrMngmnt_LK");
+		SW.Click("GCUsrMngmnt_Userid_EB");
+		SW.EnterValue("GCUsrMngmnt_Userid_EB", Username1);
+		SW.Click("GCUsrMngmnt_Search_BT");
+		SW.Click("GCUsrMngmnt_Edit_BT");
+		SW.CheckBox("//input[@name='roleCTOInd']", "OFF");
+		SW.CheckBox("//input[@name='rolePropertyInd']", "ON");
+		SW.Wait(5);
+		SW.EnterValue("GCAdmin_UserManagement_PropertyId_EB", "110");
+		SW.CheckBox("GCAdmin_FieldMarketerCheckBox_CB", "ON");
+		SW.Click("GCAdmin_UserManagement_Save_BT");
+		if(SW.ObjectExists("GCHome_GreenMsg_DT")){
+			Environment.loger.log(Level.INFO,"Field Marketer access is given to the user and data is saved successfully");
+			if(SW.ObjectExists("GC_MyAccount_IC")){
+				SW.NormalClick("GC_MyAccount_IC");
+				SW.Click("GC_MyAccount_SignOut_LK");	
+			}
+			SW.GCLogin(Username1, Password1);
+			if(SW.ObjectExists("GCHome_Message_DT")){
+				SW.NormalClick("GCHome_Message_Close_IC");
+				if(SW.ObjectExists("GCHome_Message_DT")){
+					SW.DoubleClick("GCHome_Message_Close_IC");
+				}
+			}
+			if(!SW.ObjectExists("GCHome_Admin_LK")){
+				Environment.loger.log(Level.INFO," 'Admin' tab is not present as logged in with Field Marketer Role"); 
+				//Creating Offer with Field Marketer User role to make sure Activate Offers permission is not there
+				SW.Click("GCCreateOffer_LK");
+				SW.Click("GCCreatePropertyOffer_LK");
+				SW.Click("GCCreateResConfOffer_LK");
+				SW.EnterValue("GCCreateResConf_InternalOfferName_EB", "AutomatedOfferName");
+				SW.EnterValue("GCCreateResConf_PresentationStartDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+				SW.EnterValue("GCCreateResConf_presentationEndDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+				SW.SelectRadioButton("GCCreateResConf_offerObjctvType_RB");
+				SW.CheckBox("GCCreateResConf_InstayBenefits_CB","ON");
+				SW.DropDown_SelectByText("GCCreateResConf_GeoScope_DD","Global");
+				SW.Click("GCCreateResConf_Continue_BN");
+				SW.Wait(10);
+				SW.Click("GCCreateResConf_Continue_BN");
+				SW.Wait(10);
+				if(SW.ObjectExists("GCCreateResConf_LandingPageDestinationURL_RB")){
+					Environment.loger.log(Level.INFO,"Eligibility Criteria Page naviagation SuccessFull");
+					SW.WaitTillElementToBeClickable("GCCreateResConf_PropertyImageExpand_IC");
+					SW.NormalClick("GCCreateResConf_PropertyImageExpand_IC");
+					if(!SW.ObjectExists("GCCreateResConf_PropertyImageSelect_IC"))
+						SW.NormalClick("GCCreateResConf_PropertyImageExpand_IC");
+					SW.NormalClick("GCCreateResConf_PropertyImageSelect_IC");
+					SW.Wait(4);
+					SW.SwitchToFrame("GC_MessageGreetingFrame_FR");
+					SW.Click("GC_EmergencyMsg_Message_EB");
+					sMessage = SW.RandomString(15);
+					SW.EnterValue("GC_EmergencyMsg_Message_EB",sMessage);
+					SW.SwitchToFrame("");
+					SW.Wait(4);
+					SW.SwitchToFrame("GCCreateResConf_OfferTitle_FR");
+					SW.Click("GCCreateResConf_OfferTitleAndLandingPageBody_EB");
+					sMessage = SW.RandomString(15);
+					SW.EnterValue("GCCreateResConf_OfferTitleAndLandingPageBody_EB",sMessage);
+					SW.SwitchToFrame("");
+					SW.Click("GCCreateResConf_Continue_BN");	
+					if(SW.ObjectExists("GCCreateResConf_suppressCallToActionInd_RB")){
+						Environment.loger.log(Level.INFO,"MessageSetup Page naviagation SuccessFull");
+						SW.WaitTillElementToBeClickable("GCCreateResConf_LandingImageExpand_IC");
+						SW.NormalClick("GCCreateResConf_LandingImageExpand_IC");
+						if(!SW.ObjectExists("GCCreateResConf_LandingImageSelect_IC"))
+							SW.NormalClick("GCCreateResConf_LandingImageExpand_IC");
+						SW.NormalClick("GCCreateResConf_LandingImageSelect_IC");
+						SW.SelectRadioButton("GCCreateResConf_suppressCallToActionInd_RB");
+						SW.SwitchToFrame("GCCreateResConf_LandingPageDescription_FR");
+						SW.Click("GCCreateResConf_OfferTitleAndLandingPageBody_EB");
+						SW.EnterValue("GCCreateResConf_OfferTitleAndLandingPageBody_EB",sMessage);
+						SW.SwitchToFrame("");
+						SW.Click("GCCreateResConf_Continue_BN");
+						if(SW.ObjectExists("GCCreateResConf_Rank_EB")){
+							Environment.loger.log(Level.INFO,"Landing Page naviagation SuccessFull");
+							SW.EnterValue("GCCreateResConf_Rank_EB","1");
+							SW.Click("GCCreateResConf_RankMove_BT");
+							SW.Click("GCCreateResConf_Continue_BN");
+							SW.WaitForPageload();
+							SW.Wait(10);
+							if(SW.ObjectExists("GCCreateCRMRescon_Save&Preview_BT")){
+								Environment.loger.log(Level.INFO,"Ranking naviagation SuccessFull");
+								SW.Click("GCCreateCRMRescon_Save&Preview_BT");
+								SW.SwitchToWindow(2);
+								SW.CloseOnlyThisBrowser();
+								SW.SwitchToWindow(1);
+								SW.Click("GCCreateResConf_Continue_BN");
+								if(SW.ObjectExists("GCCreateResConf__Submit_BN")){
+									Environment.loger.log(Level.INFO,"Final Preview naviagation SuccessFull");
+									SW.Click("GCCreateResConf__Submit_BN");
+								//	SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+									SW.Wait(5);
+									if (SW.ObjectExists("GCHome_GreenMsg_DT")){
+										String sSuccessMessage=SW.GetText("GCHome_GreenMsg_DT");
+										Environment.loger.log(Level.INFO,sSuccessMessage );
+										String sOfferId=sSuccessMessage.substring(sSuccessMessage.indexOf("Offer")+5, sSuccessMessage.indexOf("'s")).trim();
+										Environment.loger.log(Level.INFO,"Offer is created successfully");
+										Environment.loger.log(Level.INFO,"Created OfferId "+sOfferId);
+										SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+										SW.Click("GCOfferCreate_Submit_BN");
+										SW.WaitTillElementToBeClickable("GCOffer_ApproveIt_IC");
+										if(SW.ObjectExists("GCOffer_ApproveIt_IC")){
+											SW.Click("GCOffer_ApproveIt_IC");
+											//SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+											Environment.loger.log(Level.INFO, "Offer Is Approved Successfully");
+											SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+											SW.Click("GCOfferCreate_Submit_BN");
+											//SW.WaitTillElementToBeClickable("GCOffer_Generate_IC");
+											if(!SW.ObjectExists("GCOffer_Generate_IC")){
+												Environment.loger.log(Level.INFO,"Generate Icon Is is not present. Field marketer user role has only offer approve permission.");
+												if(SW.ObjectExists("GC_MyAccount_IC")){
+													SW.DoubleClick("GC_MyAccount_IC");
+													SW.NormalClick("GC_MyAccount_SignOut_LK");
+												}
+												SW.GCLogin(Username, Password);
+												if(SW.ObjectExists("GCHome_Message_DT")){
+													SW.NormalClick("GCHome_Message_Close_IC");
+												}
+												SW.Click("GCHome_Admin_LK");
+												SW.Click("GCUsrMngmnt_LK");
+												SW.Click("GCUsrMngmnt_Userid_EB");
+												SW.EnterValue("GCUsrMngmnt_Userid_EB", Username1);
+												SW.Click("GCUsrMngmnt_Search_BT");
+												SW.Click("GCUsrMngmnt_Edit_BT");
+												
+												SW.CheckBox("//input[@name='roleCTOInd']", "ON");
+												SW.CheckBox("//input[@name='rolePropertyInd']", "OFF");
+												SW.CheckBox("GCAdmin_FieldMarketerCheckBox_CB", "OFF");
+												
+											//	SW.CheckBox("GCAdmin_CTOCheckBox_CB", "ON");
+											//	SW.CheckBox("GCAdmin_PropertyCheckBox_CB", "OFF");
+												SW.Click("GCAdmin_UserManagement_Save_BT");
+												if(SW.ObjectExists("GCHome_GreenMsg_DT")){
+													Environment.loger.log(Level.INFO,"CTO access is given to the user and data is saved successfully");
+												}else{
+													Environment.loger.log(Level.INFO,"Data is not saved");
+													Reporter.Write("Validate Your Account Access Update status", " CTO account access updates to the user are saved", "CTO account access updates to the user are not saved", "Fail");
+													SW.NormalClick("GC_MyAccount_IC");
+													SW.Click("GC_MyAccount_SignOut_LK");
+												}
+											}else{
+												Environment.loger.log(Level.INFO, "Generate Icon is present. Field marketer user role should not have offer Generate permission");
+												Reporter.Write("Validate 'Generate' icon", "Generate Icon should not be available", "Generate icon is available", "Fail");
+											}
+										}else{
+											Environment.loger.log(Level.ERROR,"Offer Approve Icon is not present");
+											Reporter.Write("Validate Offer Approve Icon Is Present", "Offer Approve Icon is present", "Offer Approve Icon is not present", "Fail");
+										}
+									}else{
+										Environment.loger.log(Level.ERROR,"Offer creation failed");
+										Reporter.Write("Validate Offer is creation", "Offer is created SuccessFully", "Offer Creation failed", "Fail");
+									}
+								}else{
+									Environment.loger.log(Level.ERROR,"Final Preview naviagation Failed");
+									Reporter.Write("Validate navigation from Final Preview page to Offer Overview page", "Final Preview page naviagation SuccessFull", "Final pagePreview naviagation Failed", "Fail");
+								}
+							}else{
+								Environment.loger.log(Level.ERROR,"Ranking Page naviagation Failed");
+								Reporter.Write("Validate navigation from Ranking page to Offer Overview page", "Ranking page naviagation SuccessFull", "Ranking page naviagation Failed", "Fail");
+							}
+						}else{
+							Environment.loger.log(Level.ERROR,"Landing Page naviagation Failed");
+							Reporter.Write("Validate navigation from Landing page to Ranking page", "Landing Page naviagation SuccessFull", "Landing Page naviagation Failed", "Fail");
+						}
+					}else{
+						Environment.loger.log(Level.ERROR,"MessageSetup Page naviagation Failed");
+						Reporter.Write("Validate navigation from Message SetUp page to Landing Page", "MessageSetup Page naviagation SuccessFull", "MessageSetup Page naviagation Failed", "Fail");
+					}
+				}else{
+					Environment.loger.log(Level.ERROR,"Eligibility Criteria Page naviagation Failed");
+					Reporter.Write("Validate navigation from Eligibility Criteria page to Message SetUp Page", "Eligibility Criteria page navigation is successfull", "Eligibility Criteria page navigation is not success", "Fail");
+				}
+			}
+			else{
+				Environment.loger.log(Level.ERROR," 'Admin' tab is present and the loged in User role is not Field Marketer");
+				Reporter.Write("Validate 'Field Marketer' User Role Acsess", " 'Admin' tab should not be present", "'Admin' tab is be present", "Fail");
+			}
+		}else{
+			Environment.loger.log(Level.INFO,"Data is not saved");
+			Reporter.Write("Validate Your Account Access Update status", " Field Marketer account access updates to the user are saved", "Field Marketer account access updates to the user are not saved", "Fail");
+		}
+	}
+
+
+	@AfterClass	
+	public void EndTest(){
+		if(SW.ObjectExists("GCNavigation_SignOut_LK")){
+			SW.Click("GCNavigation_SignOut_LK");
+		}
+		Reporter.StopTest();
+	}
+
+}

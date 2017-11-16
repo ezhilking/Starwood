@@ -1,0 +1,124 @@
+package support;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SUP02_EnvironmentCheck5App {
+	CRM SW = new CRM();
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.SGRURL);
+	}
+
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*CRM Applications-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	@Test(priority=2)
+	public void SGR(){
+		if(SW.ObjectExists("SGRLogin_Username_EB")){
+			Reporter.Write("SGRApplicationLoginPage", "SGR login page working as expected", "SGR login page working as expected", "PASS");
+			//			Reporter.WriteLog(Level.INFO, "SGR login page working as expected.");
+		}else{
+			SW.FailCurrentTest("SGR login page not working as expected.");
+		}
+		SW.EnterValue("SGRLogin_Username_EB", SW.TestData("SGRUsername"));
+		SW.EnterValue("SGRLogin_Password_EB", SW.TestData("SGRPassword"));
+		SW.Click("SGRLogin_LoginOrContinue_BN");
+		SW.DropDown_SelectByValue("SGRLogin_Property_DD", "1965");
+		SW.Click("SGRLogin_LoginOrContinue_BN");
+		if(SW.ObjectExists("SGRHomePage_JumpTo_EB")){
+			Reporter.Write("SGRApplicationLoginPage", "SGR logged in successfully as expected", "SGR logged in successfully as expected", "PASS");
+			//			Reporter.WriteLog(Level.INFO, "SGR logged in successfully as expected.");
+		}else{
+			SW.FailCurrentTest("SGR not logged in successfully as expected.");
+		}
+	}
+
+	@Test(priority=3)
+	public void CEM(){
+		SW.NavigateTo(Environment.CEMURL);
+		if(SW.ObjectExists("CEMLogin_Username_BN")){
+			Reporter.WriteLog(Level.INFO, "CEM login page working as expected.");
+		}else{
+			SW.FailCurrentTest("CEM login page not working as expected.");
+		}
+		SW.EnterValue("CEMLogin_Username_BN", SW.TestData("CEMUsername") );
+		SW.EnterValue("CEMLogin_Password_BN",  SW.TestData("CEMPassword"));
+		SW.Click("CEMLogin_Submit_BN");
+		SW.ClickAndProceed("CEMNavigation_Home_LK");
+		if(SW.ObjectExists("CEMHome_AcknowledgeMsg_LK"))
+			SW.ClickAndProceed("CEMHome_AcknowledgeMsg_LK");
+		SW.HandleAlert(true);
+		if(SW.ObjectExists("CEMHome_EnterCSFID_TB")){
+			Reporter.WriteLog(Level.INFO, "CEM logged in successfully as expected.");
+		}else{
+			SW.FailCurrentTest("CEM not logged in successfully as expected.");
+		}
+	}
+	@Test(priority=4)
+	public void GC(){//TODO QA#3 based
+		SW.NavigateTo(Environment.GCURL);
+		if(SW.ObjectExists("GCLogin_Username_EB")){
+			Reporter.WriteLog(Level.INFO, "GC login page working as expected.");
+		}else{
+			SW.FailCurrentTest("GC login page not working as expected.");
+		}
+		SW.EnterValue("GCLogin_Username_EB",SW.TestData("GCUsername") );
+		SW.EnterValue("GCLogin_Password_EB", SW.TestData("GCPassword"));
+		SW.Click("GCLogin_Login_BN");
+		if(SW.ObjectExists("GCHome_Search_EB")){
+			Reporter.WriteLog(Level.INFO, "GC logged in successfully as expected.");
+		}else{
+			SW.FailCurrentTest("GC not logged in successfully as expected.");
+		}
+	}
+
+	@Test(priority=5)
+	public void Discovery(){//QA#3
+		SW.NavigateTo(Environment.DISCOVERYURL);
+		if(SW.ObjectExists("DiscLogin_UserName_EB")){
+			Reporter.WriteLog(Level.INFO, "Discovery login page working as expected.");
+		}else{
+			SW.FailCurrentTest("Discovery login page not working as expected.");
+		}
+		SW.EnterValue("DiscLogin_UserName_EB", SW.TestData("DisUsername"));
+		SW.EnterValue("DiscLogin_Password_EB", SW.TestData("DisPassword"));
+		SW.Click("DiscLogin_Login_BT");
+		if(SW.ObjectExists("DiscManageSurvey_CreateSurvey_BT")){
+			Reporter.WriteLog(Level.INFO, "Discovery logged in successfully as expected.");
+		}else{
+			SW.FailCurrentTest("Discovery not logged in successfully as expected.");
+		}
+	}
+
+	@Test(priority=6)
+	public void BOB(){//TODO QA#3 based
+		SW.NavigateTo(Environment.BOB);
+		if(SW.ObjectExists("BopLogin_UserName_EB")){
+			Reporter.WriteLog(Level.INFO, "BOB login page working as expected.");
+		}else{
+			SW.FailCurrentTest("BOB login page not working as expected.");
+		}
+		SW.EnterValue("BopLogin_UserName_EB", SW.TestData("GCUsername"));
+		SW.EnterValue("BopLogin_Password_EB", SW.TestData("GCPassword"));
+		SW.Click("BopLogin_Login_BN");
+		if(SW.ObjectExists("BopHome_GCAdmin_Lk")){
+			Reporter.WriteLog(Level.INFO, "BOB logged in successfully as expected.");
+		}else{
+			SW.FailCurrentTest("BOB not logged in successfully as expected.");
+		}
+	}
+
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();		
+	}
+
+}

@@ -1,0 +1,4 @@
+25-Jul-2017 03:30:54:796 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+25-Jul-2017 03:30:54:802 PM Reporter   StartTest            48   INFO : Execution Started for 'SGR_REG09_CreateNormalReservation_Validate_Comments' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\25Jul2017-033051PM
+25-Jul-2017 03:32:30:047 PM Reporter   WriteLog             134  INFO : URL-https://web3.qa.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=1967
+25-Jul-2017 03:33:25:143 PM Utility    EnterValue           657  ERROR: Unable to enter the value in BWLogin_Username_SPGNo_EB

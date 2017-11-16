@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.Navigator.Navigator_pre_requisite"/>
+      <class name="testscripts.Navigator.SMOKE001_Enrollment"/>
+      <class name="testscripts.Navigator.SMOKE002_LocateGuestBySPGnumber"/>
+      <class name="testscripts.Navigator.SMOKE003_LocateGuestByNameFirstAndLast"/>
+      <class name="testscripts.Navigator.SMOKE004_LocateGuestByLastNameAndZipCode"/>
+      <class name="testscripts.Navigator.SMOKE005_LocateReservationWithConfirmationTab"/>
+      <class name="testscripts.Navigator.SMOKE006_LocateReservationByNameTab"/>
+      <class name="testscripts.Navigator.SMOKE007_UpdateGuestProfile"/>
+      <class name="testscripts.Navigator.SMOKE008_GuestBenefitTracker"/>
+      <class name="testscripts.Navigator.SMOKE009_LocateReservationByAssociate"/>
+      <class name="testscripts.Navigator.SMOKE010_VerifyPropComm"/>
+      <class name="testscripts.Navigator.SMOKE011_LocateGuestByWebUserID"/>
+      <class name="testscripts.Navigator.SMOKE012_LocateGuestByLastNameAndCity"/>
+      <class name="testscripts.Navigator.SMOKE013_LocateGuestByLastNameCountryState"/>
+      <class name="testscripts.Navigator.SMOKE014_LocateReservationWithCancellationNum"/>
+      <class name="testscripts.Navigator.SMOKE015_LocateReservationByNumTabUsingSPGnum"/> 
+      <class name="testscripts.Navigator.SMOKE016_LocateReservationByNumTabUsingPhoneNum"/>
+      <class name="testscripts.Navigator.SMOKE017_LocateReservationByNameTabBookingDate"/>
+      <class name="testscripts.Navigator.SMOKE018_LocateReservationByNameTabWildCardSearch"/>
+      <class name="testscripts.Navigator.SMOKE019_LocateGuestByEmailID"/>
+      <class name="testscripts.Navigator.SMOKE020_LocateReservationByAssociateOfToday"/>      
+      <class name="testscripts.Navigator.SMOKE021_LocateReservationByAssociateOfThisWeek"/>
+      <class name="testscripts.Navigator.SMOKE022_ResendConfirmationFromNavigator"/>
+      <class name="testscripts.Navigator.SMOKE023_LocateReservationBySPGGuestUpcommingStay"/>
+      <class name="testscripts.Navigator.SMOKE024_LocateReservationBySPGGuestPreviousReservations"/>
+      <class name="testscripts.Navigator.SMOKE027_CancelReservation"/>
+      <class name="testscripts.Navigator.SMOKE028_ModifyGuestEditInformationCardByFirstAndLastName"/>
+      <class name="testscripts.Navigator.SMOKE029_ModifyGuestEditInformationCardLevelAndStatusChange"/>
+      <class name="testscripts.Navigator.SMOKE030_ModifyGuestEditPaymentInformation"/>
+      <class name="testscripts.Navigator.SMOKE031_ModifyGuestEditMemberPreferenceCard"/>     
+      <class name="testscripts.Navigator.SMOKE032_ModifyGuestEditCompanyInformation"/>
+      <class name="testscripts.Navigator.SMOKE034_ModifyGuestEditCommPreference"/>
+      <class name="testscripts.Navigator.SMOKE035_IssueAwardToGuest"/>
+      <class name="testscripts.Navigator.SMOKE036_LocateGuestByPhoneNum"/>
+      <class name="testscripts.Navigator.SMOKE037_VerifyAgentMessage"/>
+      <class name="testscripts.Navigator.SMOKE039_SecurityVerifyByDMAndAMA"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

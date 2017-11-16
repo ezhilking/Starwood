@@ -1,0 +1,161 @@
+package testscripts.sgrRegression;
+/** Purpose		: This is to validate the workflow of the propcomm  file when the file is with property
+ * 				  Validate the closed COM file in the Closed tab in SGR
+ * TestCase Name: Modify Csf_HN_HC
+ * Created By	: Ezhilarasan.S
+ * Modified By	: Sachin G
+ * Modified Date: 01/31/2017
+ * Reviewed By	:	
+ * Reviewed Date:
+ */
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.Environment;
+import functions.Reporter;
+import functions.CRM;
+
+public class SGR_REG01_Modify_CSF_HN_HC {
+	CRM SW = new CRM();
+	String CSFFileNo;
+
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.CSFURL);
+	}
+
+	@Test(priority=0)
+	public void CSFCreateFile(){
+		SW.CSFLogin(SW.TestData("CSFUsername"), SW.TestData("CSFPassword"));//Login to CSF Application
+		if(SW.ObjectExists("CSF_AcknowledgePopUp_LK")){
+			SW.Click("CSF_AcknowledgePopUp_LK");
+		}
+		SW.EnterValue("CSFHome_Firstname_EB", "Fname");
+		SW.EnterValue("CSFHome_Lastaname_EB", "Lname");
+		SW.SelectRadioButton("CSFHome_GuestYes_RB");
+		SW.EnterValue("CSFHome_PropertyID_EB", SW.TestData("SGRPropertyID"));
+		SW.Click("CSFHome_Find_BN");
+		SW.DropDown_SelectByText("CSFHome_TypeCreate_DD", "Customer Service");
+		SW.Click("CSFHome_CreateNewCSF_BN");
+		SW.WaitForAppLoad();
+		if(SW.ObjectExists("CSF_AcknowledgePopUp_LK")){
+			SW.Click("CSF_AcknowledgePopUp_LK");
+		}
+		SW.DropDown_SelectByText("CSFSummary_IntialContact_DD", "Email");
+		SW.EnterValue("CSFSummary_PrimaryPhoneNo_EB", "12345");
+		SW.EnterValue("CSFSummary_Email_EB", "test@accenture.com");
+		SW.DropDown_SelectByText("CSFSummary_NoRESconf_DD", "No res conf# found");
+		SW.Click("CSFNavigation_Details_LK");
+		SW.EnterValue("CSFDetails_LookUp_EB", "good");
+		SW.Click("CSFAddGCD_LookUp_LK");
+		SW.Click("CSFDetails_AddGCD_BN");
+		SW.DropDown_SelectByText("CSFDetails_OnExitSetStatus_DD", "Hotel New");
+		SW.ClickAndProceed("CSFDetails_SaveAndExit_BN");
+		SW.Wait(8);
+		SW.HandleAlert(true);
+		SW.WaitTillElementToBeClickable("CSFHome_CSFNumber_LK");
+		SW.Wait(10);
+		String CSFText = SW.GetText("CSFHome_CSFNumber_LK");
+		CSFFileNo = CSFText.substring(CSFText.indexOf("(")+1, CSFText.indexOf(")"));
+		SW.ClickAndProceed("CSF_Logout_LK");
+		SW.HandleAlert(true);
+
+	}
+
+	@Test(priority=1, dependsOnMethods ="CSFCreateFile")
+	public void ValidateInSGR_One(){
+		SW.WaitTillElementToBeClickable("CSFLogin_Password_BN");//To avoid immediate navigate to SGRUURL, It will wait till CSF application log out successfully.
+		SW.NavigateTo(Environment.SGRURL);
+		SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), SW.TestData("SGRPropertyID"));//Login to SGR application
+		SW.Click("SGRNavigation_CSFS_LK");
+		SW.DoubleClick("//*[text()='"+CSFFileNo+" "+"']/..");
+		SW.WaitForAppLoad();
+		SW.DropDown_SelectByText("SGRViewCSF_CurrentStatus_DD", "Temp Close - Additional Research");
+		SW.HandleAlert(true);
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.HandleAlert(true);
+		SW.WaitForAppLoad();
+		SW.WaitTillElementToBeClickable("General_ErrorMessage_DT");
+		String ErrorMessage = SW.GetText("General_ErrorMessage_DT");
+		String Expected = "Please enter the necessary information on how the file was closed and what information was communicated to the guest under the ~Hotel Close comments and Guest Communication~ textbox.".replace('~', '"');
+		SW.CompareTextContained("HowFileClosedOne_ErrorMessage_DT",Expected, ErrorMessage);
+	}
+
+	@Test(priority=2, dependsOnMethods ="CSFCreateFile")
+	public void FirstValidation_Two(){
+
+		SW.EnterValue("SGRViewCSF_PropertyComment_EB", "Comments-"+SW.RandomString(5));
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.HandleAlert(true);
+		SW.WaitForAppLoad();
+		SW.WaitTillElementToBeClickable("//*[text()='"+CSFFileNo+" "+"']/..");
+		SW.DoubleClick("//*[text()='"+CSFFileNo+" "+"']/..");
+		SW.CheckBox("SGRViewCSF_NoCompensationRequired_CB", "ON");
+		SW.DropDown_SelectByText("SGRViewCSF_CurrentStatus_DD", "Closed");
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.HandleAlert(true);
+		String ErrorMessage = SW.GetText("General_ErrorMessage_DT");
+		String Expected = "Please enter the necessary information on how the file was closed and what information was communicated to the guest under the ~Hotel Close comments and Guest Communication~ textbox.".replace('~', '"');
+		SW.CompareTextContained("HowFileClosedTwo_ErrorMessage_DT",Expected, ErrorMessage);
+
+		SW.EnterValue("SGRViewCSF_PropertyComment_EB", "Comments-"+SW.RandomString(5));
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.Wait(8);
+		SW.HandleAlert(true);
+		SW.WaitTillInvisibilityOfElement("SGR_PleaseWaitLoadingIcon_IC");
+		ErrorMessage = SW.GetText("General_ErrorMessage_DT");
+		Expected = "A resolution should be selected when saving the file in the Closed status.";
+		SW.CompareTextContained("ResolutionShuouldBeClosed_ErrorMessage_DT",Expected, ErrorMessage);
+
+		SW.DropDown_SelectByText("SGRViewCSF_Resolution_DD", "Apology Sent");
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.Wait(8);
+		SW.HandleAlert(true);
+		ErrorMessage = SW.GetText("General_ErrorMessage_DT");
+		Expected = "Please select a value in the Guest Communication field in the resolution section.";
+		SW.CompareTextContained("ResolutionSection_ErrorMessage_DT",Expected, ErrorMessage);
+
+		SW.DropDown_SelectByText("SGRViewCSF_GuestCommunication_DD", "Email");
+		SW.ClickAndProceed("SGRViewCSF_Save_BT");
+		SW.Wait(8);
+		SW.HandleAlert(true);
+		//Validate closed file in closed tab inside csf page
+		SW.Click("SGRNavigation_CSFS_LK");
+		SW.Click("SGRCSF_ClosedTab_LK");
+		if(SW.ObjectExists("//td[text()='"+CSFFileNo+" ']")){
+			Environment.loger.log(Level.INFO, "Closed CSF-CSV File is present in the closed tab");
+			SW.GetScreenshot("ClosedCSVFile");
+		}else{
+			Environment.loger.log(Level.INFO, "Closed CSF-CSV File is not present in the closed tab");
+			SW.FailCurrentTest("Closed CSF-CSV File is not present in the closed tab");
+		}
+		
+		SW.Click("SGR_Logout_LK");
+	}
+
+	@Test(priority=3, dependsOnMethods ="CSFCreateFile")
+	public void ValidateInCSF(){
+		SW.NavigateTo(Environment.CSFURL);
+		SW.WaitTillPresenceOfElementLocated("CSFLogin_Password_BN");
+		SW.CSFLogin(SW.TestData("CSFUsername"), SW.TestData("CSFPassword"));
+		SW.EnterValue("CSF_EnterCSFID_EB", CSFFileNo);
+		SW.Click("CSF_EnterCSFIDGo_BN");
+		if(SW.ObjectExists("CSF_AcknowledgePopUp_LK")){
+			SW.Click("CSF_AcknowledgePopUp_LK");
+		}
+		SW.CompareText("FinalStatus_DD","Closed", SW.DropDown_GetSelectedText("CSF_StatusCode_DD"));
+		SW.ClickAndProceed("CSF_Logout_LK");
+		SW.HandleAlert(true);
+		
+	}
+
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();		
+	}
+
+}

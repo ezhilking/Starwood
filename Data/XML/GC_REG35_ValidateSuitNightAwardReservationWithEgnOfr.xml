@@ -1,0 +1,427 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:createBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <createBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE3F8619816922155265f928d1c85bdb9</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=530217013</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=areddy</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.41</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1465227645581</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>createBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1465227645590</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=40000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>CREATE</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>819999</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>areddy</userID>
+                </sourceInfo>
+                <auxCommandArray>
+                    <auxCommand>
+                        <name>IS PERSONALIZABLE STAY</name>
+                    </auxCommand>
+                    <auxCommand>
+                        <name>IS UR24 ELIGIBLE</name>
+                    </auxCommand>
+                </auxCommandArray>
+                <itineraryDTO>
+                    <itineraryId/>
+                    <name xsi:nil="true"/>
+                    <status>1</status>
+                    <contactMethod>PHONE</contactMethod>
+                    <primaryContactInfo>973-442-3241</primaryContactInfo>
+                    <starlinkItinNumber xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>feb snaapa</lastName>
+                        <middleName/>
+                        <nmPrefix/>
+                        <nmSuffix xsi:nil="true"/>
+                        <nmTitle xsi:nil="true"/>
+                        <firstName/>
+                    </primCnct>
+                    <cancelInfo xsi:nil="true"/>
+                    <createInfo xsi:nil="true"/>
+                    <updateInfo xsi:nil="true"/>
+                    <binderArray>
+                        <BinderDTO>
+                            <countryCode>US</countryCode>
+                            <propertyId>1471</propertyId>
+                            <status>1</status>
+                            <resStatus xsi:nil="true"/>
+                            <binderId xsi:nil="true"/>
+                            <emailCode>SGNC</emailCode>
+                            <primAltInd>P</primAltInd>
+                            <context xsi:nil="true"/>
+                            <sendEmail>Y</sendEmail>
+                            <contactMethod>PHONE</contactMethod>
+                            <primContactInfo>973-442-3241</primContactInfo>
+                            <originalPropId>1471</originalPropId>
+                            <primCnct>
+                                <lastName>feb snaapa</lastName>
+                                <middleName/>
+                                <nmPrefix/>
+                                <nmSuffix xsi:nil="true"/>
+                                <nmTitle xsi:nil="true"/>
+                                <firstName/>
+                            </primCnct>
+                            <createInfo xsi:nil="true"/>
+                            <updateInfo xsi:nil="true"/>
+                            <cancelInfo xsi:nil="true"/>
+                            <confirmableUpgradeInfo>
+                                <noOfCertsUsed>1</noOfCertsUsed>
+                                <certBalance>9</certBalance>
+                                <upgradeRatePlan>SPGCU</upgradeRatePlan>
+                                <preferencesArray>
+                                    <PreferenceDTO>
+                                    <productId>102058</productId>
+                                    <prodBedType>K</prodBedType>
+                                    <preferenceOrder>1</preferenceOrder>
+                                    </PreferenceDTO>
+                                </preferencesArray>
+                                <cancellationPolicy>
+                                    <cutOffNoOfDays>1</cutOffNoOfDays>
+                                    <cutOffTime>1500</cutOffTime>
+                                </cancellationPolicy>
+                            </confirmableUpgradeInfo>
+                            <awardArray xsi:nil="true"/>
+                            <confirmationArray>
+                                <ConfirmationDTO>
+                                    <confirmationId xsi:nil="true"/>
+                                    <costCurrencyCode>USD</costCurrencyCode>
+                                    <arrivalDate>2016-07-17T00:00:00.000Z</arrivalDate>
+                                    <departureDate>2016-07-18T00:00:00.000Z</departureDate>
+                                    <startTime>2016-07-17T00:00:00.000Z</startTime>
+                                    <endTime>2016-07-18T00:00:00.000Z</endTime>
+                                    <langCode>ENG</langCode>
+                                    <penalty xsi:nil="true"/>
+                                    <propId xsi:nil="true"/>
+                                    <guestSeqId>1</guestSeqId>
+                                    <primary>1</primary>
+                                    <vipInd xsi:nil="true"/>
+                                    <vipLevel xsi:nil="true"/>
+                                    <status>1</status>
+                                    <guestStatus xsi:nil="true"/>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalCostAfterDiscounts xsi:nil="true"/>
+                                    <totalCostBeforeDiscounts xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <cancelInfo xsi:nil="true"/>
+                                    <externalReference xsi:nil="true"/>
+                                    <guestInfo>
+                                    <matchMergeReason xsi:nil="true"/>
+                                    <passportCountry xsi:nil="true"/>
+                                    <passportNumber>XXXXXX</passportNumber>
+                                    <profileId>0</profileId>
+                                    <pmsProfileId xsi:nil="true"/>
+                                    <cpi xsi:nil="true"/>
+                                    <guestCommunicationArray>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>EMAIL</methodCode>
+                                    <methodType xsi:nil="true"/>
+                                    <methodValue>sachin.ganapathi@accenture.com</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>Y</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>G</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>FAX</methodCode>
+                                    <methodType xsi:nil="true"/>
+                                    <methodValue>914-555-1212</methodValue>
+                                    <sequenceId>4</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType xsi:nil="true"/>
+                                    <sendReceipt xsi:nil="true"/>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>HOME</methodType>
+                                    <methodValue>973-442-3241</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>H</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd>55</dialingCd>
+                                    <countryPrefix>BR</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>BUSINESS</methodType>
+                                    <methodValue>914-640-1812</methodValue>
+                                    <sequenceId>2</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>B</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd>55</dialingCd>
+                                    <countryPrefix>BR</countryPrefix>
+                                    <extension>1812</extension>
+                                    <prioritySequence>2</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>914-843-5694</methodValue>
+                                    <sequenceId>3</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd>55</dialingCd>
+                                    <countryPrefix>BR</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>3</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    </guestCommunicationArray>
+                                    <guestDetailsArray>
+                                    <GuestDetailsDTO>
+                                    <addrLine1>56 neon street</addrLine1>
+                                    <addrLine2>rainford</addrLine2>
+                                    <addrLine3/>
+                                    <addrLine4/>
+                                    <city>Para</city>
+                                    <country>BR</country>
+                                    <state>AL</state>
+                                    <zip>88000004</zip>
+                                    <firstName>feb</firstName>
+                                    <langCode>ENG</langCode>
+                                    <lastName>snaapa</lastName>
+                                    <middleInitial>L</middleInitial>
+                                    <prefix>Mr</prefix>
+                                    <nameTitle xsi:nil="true"/>
+                                    <suffix/>
+                                    <addrType>H</addrType>
+                                    <altAddrType>H</altAddrType>
+                                    <primary xsi:nil="true"/>
+                                    <age xsi:nil="true"/>
+                                    <countryOfOrigin xsi:nil="true"/>
+                                    </GuestDetailsDTO>
+                                    </guestDetailsArray>
+                                    </guestInfo>
+                                    <accountArray xsi:nil="true"/>
+                                    <affiliationArray>
+                                    <AffiliationDTO>
+                                    <level>P</level>
+                                    <programId>5</programId>
+                                    <type>SPG</type>
+                                    <membershipNumber>42712112454</membershipNumber>
+                                    <earnPointsIndicator xsi:nil="true"/>
+                                    </AffiliationDTO>
+                                    </affiliationArray>
+                                    <arrivalInfoArray xsi:nil="true"/>
+                                    <guestPrefArray xsi:nil="true"/>
+                                    <paymentMethodArray>
+                                    <PaymentMethodDTO>
+                                    <accountNumber>4111111111111111</accountNumber>
+                                    <accountType>VI</accountType>
+                                    <currencyCode>USD</currencyCode>
+                                    <expiryMonth>12</expiryMonth>
+                                    <expiryYear>16</expiryYear>
+                                    <paymentMethod>CC</paymentMethod>
+                                    <paymentSequence>1</paymentSequence>
+                                    <securityCode xsi:nil="true"/>
+                                    <accountFirstName>feb</accountFirstName>
+                                    <accountLastName>snaapa</accountLastName>
+                                    <accountMiddleName>L</accountMiddleName>
+                                    <accountNamePrefix xsi:nil="true"/>
+                                    <accountNameSuffix xsi:nil="true"/>
+                                    <accountNameTitle xsi:nil="true"/>
+                                    </PaymentMethodDTO>
+                                    </paymentMethodArray>
+                                    <productIdArray>
+                                    <prodSeq>0</prodSeq>
+                                    </productIdArray>
+                                    <remarkArray xsi:nil="true"/>
+                                </ConfirmationDTO>
+                            </confirmationArray>
+                            <externalRefArray xsi:nil="true"/>
+                            <productArray>
+                                <ProductDTO>
+                                    <cost xsi:nil="true"/>
+                                    <costCurrencyCode xsi:nil="true"/>
+                                    <costUnit xsi:nil="true"/>
+                                    <startTime>2016-07-17T00:00:00.000Z</startTime>
+                                    <endTime>2016-07-18T00:00:00.000Z</endTime>
+                                    <guaranteeIndicator>G</guaranteeIndicator>
+                                    <guaranteeType>3</guaranteeType>
+                                    <guaranteeCode xsi:nil="true"/>
+                                    <reservedProductId xsi:nil="true"/>
+                                    <maxAllowedAdult xsi:nil="true"/>
+                                    <maxAllowedChild xsi:nil="true"/>
+                                    <maxAllowedRollwy xsi:nil="true"/>
+                                    <numOfAdultGst>2</numOfAdultGst>
+                                    <numOfAdultRollwy>0</numOfAdultRollwy>
+                                    <numOfChildGst>0</numOfChildGst>
+                                    <numOfChildRollwy>0</numOfChildRollwy>
+                                    <numOfCribs>0</numOfCribs>
+                                    <packageType>N</packageType>
+                                    <prodBedType>K</prodBedType>
+                                    <prodClass xsi:nil="true"/>
+                                    <tpRoomTyp>I</tpRoomTyp>
+                                    <prodCd>M1KN</prodCd>
+                                    <productId>87055</productId>
+                                    <propertyId xsi:nil="true"/>
+                                    <roomNumber xsi:nil="true"/>
+                                    <sequenceId>0</sequenceId>
+                                    <status>0</status>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <avrgRate xsi:nil="true"/>
+                                    <upgradeBedType xsi:nil="true"/>
+                                    <upgradeProdClass xsi:nil="true"/>
+                                    <upgradeProdId xsi:nil="true"/>
+                                    <upgradeProdCd xsi:nil="true"/>
+                                    <UpgradeTpRoomTyp xsi:nil="true"/>
+                                    <checkAvail>1</checkAvail>
+                                    <upgradePath>0</upgradePath>
+                                    <chargedProdId>87055</chargedProdId>
+                                    <chargedProdCd>M1KN</chargedProdCd>
+                                    <chargedTpRoomTyp>I</chargedTpRoomTyp>
+                                    <chargedProdBedType>K</chargedProdBedType>
+                                    <cancelDepositAmountArray xsi:nil="true"/>
+                                    <cancelDepositRuleArray xsi:nil="true"/>
+                                    <featureArray xsi:nil="true"/>
+                                    <feeArray xsi:nil="true"/>
+                                    <guestPaymentMapArray>
+                                    <ConfirmationPaymentMethodDTO>
+                                    <confSeqId>1</confSeqId>
+                                    <paymentSequence>1</paymentSequence>
+                                    </ConfirmationPaymentMethodDTO>
+                                    </guestPaymentMapArray>
+                                    <promotionArray xsi:nil="true"/>
+                                    <rateArray>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-07-17T00:00:00.000Z</startDate>
+                                    <endDate>2016-07-17T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>1000.0</grossAmount>
+                                    <netAmount>1000.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>RACK</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    </rateArray>
+                                    <reservedPackageArray xsi:nil="true"/>
+                                    <specialServiceArray xsi:nil="true"/>
+                                    <taxArray xsi:nil="true"/>
+                                </ProductDTO>
+                            </productArray>
+                            <remarkArray xsi:nil="true"/>
+                            <guestCommunicationArray>
+                                <GuestCommunicationDTO>
+                                    <methodCode>EMAIL</methodCode>
+                                    <methodType>A</methodType>
+                                    <methodValue>sachin.ganapathi@accenture.com</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>Y</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>G</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                </GuestCommunicationDTO>
+                                <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>914-843-5694</methodValue>
+                                    <sequenceId>3</sequenceId>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd>55</dialingCd>
+                                    <countryPrefix>BR</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>3</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                </GuestCommunicationDTO>
+                            </guestCommunicationArray>
+                        </BinderDTO>
+                    </binderArray>
+                    <guestCommunicationArray xsi:nil="true"/>
+                    <resIdArray xsi:nil="true"/>
+                </itineraryDTO>
+            </createBookingRequest>
+        </p694:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

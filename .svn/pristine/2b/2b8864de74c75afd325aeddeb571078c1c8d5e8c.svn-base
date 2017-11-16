@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+  <test name="Test">
+    <classes>
+      <class name="testscripts.gcRegression.GC_REG01_ValidateTheNewlyCreatedBroadcastMessageisDisplayedWhenUserIsLoggedintotheApplication"/>
+      <!-- class name="testscripts.gcRegression.GC_REG02_ValidatethatinChineseOMTthenewlycreatedbroadcastmessagearedisplayed"/>
+      <class name="testscripts.gcRegression.GC_REG03_ValidateNewlyCreatedEmergencyMessageInEmail"/>
+      <class name="testscripts.gcRegression.GC_REG04_ValidateResconfOfferWithSpgPromoInEnglishLanguage"/>
+      <class name="testscripts.gcRegression.GC_REG05_ValidateResCanWithLengthOfStayEligibilityinEnglish"/>
+      <class name="testscripts.gcRegression.GC_REG06_ValidatePrestayofferwithEligibilityofgreaterthan75starwoodnights"/>
+      <class name="testscripts.gcRegression.GC_REG07_VAlidateNonBrandPostStayOfferwithEligibilityof3guestsOnReservation"/>
+      <class name="testscripts.gcRegression.GC_REG08_ValidateEGNofferforTributebrandinEnglish"/>
+      <class name="testscripts.gcRegression.GC_REG09_ValidatePostStayGEIOfferInJapanese"/>
+      <class name="testscripts.gcRegression.GC_REG10_ValidateUserManagement"/>
+      <class name="testscripts.gcRegression.GC_REG11_ValidateScrubberjob"/>
+      <class name="testscripts.gcRegression.GC_REG12_ValidatePropertyAdminScreen"/>
+      <class name="testscripts.gcRegression.GC_REG13_ValidateSPGPrefPreStayOffer"/>
+      <class name="testscripts.gcRegression.GC_REG14_ValidateBrandSurveyOfrEdit"/>
+      <class name="testscripts.gcRegression.GC_REG15_ValidateSpgCancellationOfferPortugese"/>
+      <class name="testscripts.gcRegression.GC_REG16_ValidateLMBrandResConOfferEnglish"/> -->
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

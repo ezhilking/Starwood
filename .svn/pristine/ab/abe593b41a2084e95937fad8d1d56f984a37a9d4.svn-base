@@ -1,0 +1,169 @@
+/* Purpose		:All environmental related stuffs.
+ * Developed By	:Ezhilarasan.S
+ * Modified By	:Ezhilarasan.S
+ * Modified Date:07-Mar-2017
+ * Reviewed By	:
+ * Reviewed Date:
+ */
+
+package functions;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+
+public class Environment extends org.apache.log4j.HTMLLayout  {
+
+	//Environment Configuration
+	static String runEnvironment = "QA3";//QA2 or QA3 0r QA4 or STAGE
+	public static String getRunEnvironment() {
+		return runEnvironment;
+	}
+	static void setRunEnvironment(String runEnvironment) {
+		Environment.runEnvironment = runEnvironment;
+	}
+
+	public static Boolean IsRunningFromMaven = false;
+
+	//Global Path Configuration
+	protected static String frameworkPath = System.getProperty("user.dir");
+	public static String DataPath = frameworkPath+"\\Data";
+	public static String ResultPath = frameworkPath+"\\test-output";
+	protected static String LibraryPath = DataPath+"\\Library";
+	public static String Documents = DataPath+"\\Documents";
+
+	//Logger object
+	public static Logger loger = null;
+
+	//Application URL Initialization
+	public static String SGRURL,VPURL,SARATOGAURL,CSFURL,BWURL,CEMURL,ABCD,GCURL,BOB,PMS_1965,PMS_1967,	MEETING,SOAPEndPointURL,GRIP1URL,GRIP2URL,
+	SEAS1URL,SEAS2URL,BoBTaskRunner,GALAXYURL,SIMPLIFIGRCURL,SPGCORONAURL,NAVIGATORURL,WECHATURL,CEM_AMBURL,SPGLINK,DISCOVERYURL,AMSURL,OIMURL,BRIDGE,
+	RESCON,ECCA,WEBOUTLOOK,SPGCENTRO,SPGLIGHT,BOOKING;
+
+	//Browser Object
+	protected static WebDriver BrowserObj = null;
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*Default Browser*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	public static String defaultBrowser = "IE";
+	public static void SetBrowserToUse(String BrowserName){
+		defaultBrowser = BrowserName.toUpperCase();
+	}
+	public static String GetBrowserUsed(){
+		return defaultBrowser;
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*Application Tower*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	public static String Tower = null;
+	protected static String ORDataSheet = null;
+	protected static String TestDataSheet = null;
+
+	public static void LoadSheetName(){
+		if(Tower.equalsIgnoreCase("CRM")){
+			ORDataSheet = "CRM";
+			TestDataSheet = "CRM";
+		}else if(Tower.equalsIgnoreCase("CRS")){
+			ORDataSheet = "CRS";
+			TestDataSheet = "CRS";
+		}else if(Tower.equalsIgnoreCase("SALES")){
+			ORDataSheet = "SALES";
+			TestDataSheet = "SALES";
+		}else if(Tower.equalsIgnoreCase("CHANNELS")){
+			ORDataSheet = "CHANNELS";
+			TestDataSheet = "CHANNELS";
+		}
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*Applications URL declaration*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	//IF ANY NEW URL TO BE INCLUDED CONTACT AUTOMATION TEAM
+	public static void LoadURL(){
+		if(runEnvironment.equalsIgnoreCase("QA3")){
+			SGRURL = "https://sgr.qa3.nssd.star/sgr/";
+			CSFURL = "https://sgr.qa3.nssd.star/csf/";
+			CEMURL = "https://ccc.qa3.nssd.star/lia/";
+			BWURL = "https://web3.qa.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=";
+			SOAPEndPointURL = "http://booking.qa3.nssd.star:9245/BookingWeb/services/BookingPort";
+			SPGCORONAURL = "https://spg.qa3.nssd.star:19161/corona/login.jsp";
+			WEBOUTLOOK = "https://outlook.office365.com/";
+			BOOKING = "http://phxengqas72.nssd.star:9245/BookingWeb/";
+			
+			GALAXYURL = "https://10.20.245.41:8443/lightspeed/en_US/login.jsp";//Property 1005
+			OIMURL = "http://phxiamqws61.nssd.star:7777/identity";
+			GRIP1URL = "http://phxaplqas71.nssd.star:9166/grip/";
+			GRIP2URL = "http://phxaplqas72.nssd.star:9166/grip/";
+			SEAS1URL = "http://phxaplqas71.nssd.star:9165/seas/";
+			SEAS2URL = "http://phxaplqas72.nssd.star:9165/seas/";
+			AMSURL = "https://hrtest.starwoodcareers.com/sap/bc/bsp/ehr/pdm/";
+			NAVIGATORURL = "https://ccn3.qa.starwoodhotels.com/ccn/";
+
+			GCURL = "https://omt.qa3.nssd.star/SGCommunications/";
+			BOB = "http://phxaplqas72.nssd.star:9168/bop/";
+			BoBTaskRunner="http://phxaplqas72.nssd.star:9168/bop/taskRunner.do ";
+			MEETING = "https://qa3.starwoodmeeting.nssd.star/StarGroupsWeb/";
+			PMS_1967 = "http://auw2opeqas43/";
+			VPURL = "https://valhallaportal.qa3.nssd.star/";
+			DISCOVERYURL = "http://phxaplqas71.nssd.star:9172/discovery/admin/";
+			SPGLINK = "https://phxapxias61.corp.star:4443/apex/ndsqa3/f?p=201";
+			RESCON = "https://qa3.starwoodmeeting.nssd.star/ResConWeb/";
+			ECCA = "https://qa3.starwoodmeeting.nssd.star/ecca";
+			SPGCENTRO = "https://phxapxias61.corp.star:4443/apex/ndsqa3/f?p=101";
+			SPGLIGHT = "https://phxapxias61.corp.star:4443/apex/ndsqa3/f?p=401";
+
+		}else if(runEnvironment.equalsIgnoreCase("STAGE")){
+			SGRURL = "https://stg-sgr.starwoodhotels.com/sgr/";
+			CSFURL = "https://stg-sgr.starwoodhotels.com/csf/";
+			CEMURL = "https://ccc.stg1.ssd.star/lia/csf/bcclogin.jsp";
+			BWURL = "https://stg.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=";
+			SOAPEndPointURL = "http://booking.stg1.ssd.star:9245/BookingWeb/services/BookingPort";
+			SPGCORONAURL = "http://stg-services.star/corona/login.jsp";
+			WEBOUTLOOK = "https://outlook.office365.com/";
+			GCURL = "https://omt.stg1.ssd.star/SGCommunications/gc";
+			BOB = "http://phxaplsas01.ssd.star:9168/bop";
+			
+			GALAXYURL = "http://10.132.68.132:8080/lightspeed/en_US/login.jsp";//Property 1055
+			MEETING = "https://stg.starwoodmeeting.com/StarGroupsWeb/";
+			OIMURL = "https://stage.identity.starwoodhotels.com/identity";
+			BRIDGE = "https://starwoodhotels-preview.jiveon.com";
+			ABCD = "https://phxabcqas61.nssd.star:9443/";
+			PMS_1965 = "http://auw2opeqas40/";
+			SIMPLIFIGRCURL = "http://10.133.164.50:16200/cs";
+			CEM_AMBURL = "https://stg-ccc.starwoodhotels.com/amb/";
+			DISCOVERYURL = "http://stg-guest.starwoodhotels.com/discovery/admin/";
+			VPURL = "https://stg-valhallaportal.starwoodhotels.com/";
+			RESCON = "https://qa3.starwoodmeeting.nssd.star/ResConWeb/";
+			NAVIGATORURL = "https://phx-stg-ccn.starwoodhotels.com/ccn/";
+
+		}else if(runEnvironment.equalsIgnoreCase("QA4")){
+			BWURL = "https://web4.qa.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=";
+			CSFURL = "https://sgr.qa4.nssd.star/csf";
+			SOAPEndPointURL = "http://10.132.168.93:9245/BookingWeb/services/BookingPort";
+			SPGCORONAURL = "http://spg.qa4.nssd.star:9161/corona/login.jsp";
+			WEBOUTLOOK = "https://outlook.office365.com/";
+
+			GRIP1URL = "http://phxaplqas71.nssd.star:6166/grip/";
+			GRIP2URL = "http://phxaplqas72.nssd.star:6166/grip/";
+			SEAS1URL = "http://phxaplqas71.nssd.star:6165/seas/";
+			SEAS2URL = "http://phxaplqas72.nssd.star:6165/seas/";
+			WECHATURL = "https://m.web4.qa.starwoodhotels.com/preferredguest/property/overview/index.html?propertyID=";
+			NAVIGATORURL = "https://ccn4.qa.starwoodhotels.com/ccn/";
+
+		}else if(runEnvironment.equalsIgnoreCase("QA2")){
+			CSFURL = "https://sgr.qa2.nssd.star/csf";
+			SOAPEndPointURL = "http://booking.qa2.nssd.star:9245/BookingWeb/services/BookingPort";
+			WEBOUTLOOK = "https://outlook.office365.com/";
+
+			GRIP1URL = "http://phxaplqas61.nssd.star:6166/grip/";
+			GRIP2URL = "http://phxaplqas62.nssd.star:6166/grip/";
+			SEAS1URL = "http://phxaplqas61.nssd.star:6165/seas/";
+			SEAS2URL = "http://phxaplqas62.nssd.star:6165/seas/";
+
+			GCURL = "https://omt.qa2.nssd.star/SGCommunications/";
+			BOB = "http://phxaplqas61.nssd.star:6168/bop/";
+			BoBTaskRunner="http://phxaplqas61.nssd.star:6168/bop/taskRunner.do";
+
+		}else{
+			Environment.loger.log(Level.FATAL, "Environment -'"+runEnvironment +"'is Invlaid");
+			throw new RuntimeException("Environment -"+runEnvironment +" is Invlaid");
+		}
+	}
+}
+

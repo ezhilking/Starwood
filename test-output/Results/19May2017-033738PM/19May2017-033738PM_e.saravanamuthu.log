@@ -1,0 +1,12 @@
+19-May-2017 03:37:42:305 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+19-May-2017 03:37:42:314 PM Reporter   StartTest            48   INFO : Execution Started for 'SUP02_EnvironmentCheck5App' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\19May2017-033738PM
+19-May-2017 03:38:18:782 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+19-May-2017 03:38:21:784 PM Reporter   WriteLog             134  DEBUG: PASS>SGRApplicationLoginPage>SGR login page should work as expected>SGR login page working as expected
+19-May-2017 03:39:07:113 PM Reporter   WriteLog             134  DEBUG: PASS>SGRApplicationHomePage>SGR home page should work as expected>SGR home page working as expected
+19-May-2017 03:39:18:211 PM Reporter   WriteLog             134  DEBUG: PASS>CEMApplicationLoginPage>CEM login page should work as expected>CEM login page working as expected
+19-May-2017 03:40:19:028 PM Reporter   WriteLog             134  DEBUG: PASS>CEMApplicationHomePage>CEM home page should work as expected>CEM home page working as expected
+19-May-2017 03:40:30:453 PM Reporter   WriteLog             134  DEBUG: PASS>GCApplicationLoginPage>GC login page should work as expected>GC login page working as expected
+19-May-2017 03:40:52:515 PM Reporter   WriteLog             134  DEBUG: PASS>GCApplicationHomePage>GC home page should work as expected>GC home page working as expected
+19-May-2017 03:41:00:239 PM Reporter   WriteLog             134  DEBUG: PASS>DiscoveryApplicationLoginPage>Discovery login page should work as expected>Discovery login page working as expected
+19-May-2017 03:41:24:835 PM Reporter   WriteLog             134  DEBUG: PASS>DiscoveryApplicationHomePage>Discovery home page should work as expected>Discovery home page working as expected
+19-May-2017 03:41:27:273 PM Reporter   StopTest             59   INFO : Execution Ended for 'SUP02_EnvironmentCheck5App' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\19May2017-033738PM

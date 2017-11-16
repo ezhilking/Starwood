@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.ABCD.MUSTRUN01_AddOpportunity"/>
+      <class name="testscripts.ABCD.MUSTRUN02_DealNextStepNotesServices"/>
+      <class name="testscripts.ABCD.MUSTRUN03_AddActivity"/>
+      <class name="testscripts.ABCD.MUSTRUN04_AddAccount"/>
+      <class name="testscripts.ABCD.MUSTRUN05_GDCCommitteeMeeting"/>
+      <class name="testscripts.ABCD.MUSTRUN06_PropertyIntelReport"/>
+      <class name="testscripts.ABCD.MUSTRUN07_CreateDeal_Incremental"/>
+      <class name="testscripts.ABCD.MUSTRUN08_AddContacts"/>
+      <class name="testscripts.ABCD.MUSTRUN09_CreateDeal_NonIncremental"/>
+      <class name="testscripts.ABCD.MUSTRUN13_AddSubmittalNotes"/>      
+      <class name="testscripts.ABCD.MUSTRUN14_ODIntelReport"/>
+      <class name="testscripts.ABCD.MUSTRUN15_PropertiesReport"/>
+      <class name="testscripts.ABCD.MUSTRUN16_AddNotes_DealDetails"/>
+      <class name="testscripts.ABCD.MUSTRUN17_GoalSettingAdd"/>
+      <class name="testscripts.ABCD.MUSTRUN18_ChangeLog_DealLogReport"/>
+      <class name="testscripts.ABCD.MUSTRUN18_DealLogChangeLog"/>
+      <class name="testscripts.ABCD.MUSTRUN19_UploadDocument_iframe"/>
+      <class name="testscripts.ABCD.MUSTRUN20_Document_upload_Server_Server_Integration"/>
+      <class name="testscripts.ABCD.MUSTRUN21_ORStatusReport"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

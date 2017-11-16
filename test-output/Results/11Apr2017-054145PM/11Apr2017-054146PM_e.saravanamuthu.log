@@ -1,0 +1,5 @@
+11-Apr-2017 05:41:49:376 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+11-Apr-2017 05:41:49:382 PM Reporter   StartTest            48   INFO : Execution Started for 'sampleRDBStuff' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\11Apr2017-054145PM
+11-Apr-2017 05:42:35:709 PM DataBaseUtil <init>               153  ERROR: SQLException Exception occuredListener refused the connection with the following error:
+ORA-12514, TNS:listener does not currently know of service requested in connect descriptor
+ 

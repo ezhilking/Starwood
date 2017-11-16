@@ -1,0 +1,4 @@
+06-Apr-2017 02:27:27:474 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\ORLocator.xlsx (The system cannot find the path specified)
+06-Apr-2017 02:27:27:498 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\TestData.xls (The system cannot find the path specified)
+06-Apr-2017 02:27:27:831 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+06-Apr-2017 02:27:27:832 PM Reporter   StartTest            48   INFO : Execution Started for 'SGR_REG08_ValidatingLeadDetailExplorerPreview' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\06Apr2017-022727PM

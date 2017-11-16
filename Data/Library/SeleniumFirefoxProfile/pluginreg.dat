@@ -1,0 +1,168 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version|0.17|$
+Arch|x86-msvc|$
+
+[PLUGINS]
+nppdf32.dll|$
+C:\Program Files\Adobe\Reader 11.0\Reader\browser\nppdf32.dll|$
+11.0.11.18|$
+1430503842000|0|0|0|$
+Adobe PDF Plug-In For Firefox and Netscape 11.0.11|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+nppdf32.dll|$
+C:\Program Files\Adobe\Reader 11.0\Reader\AIR\nppdf32.dll|$
+11.0.11.18|$
+1430503842000|0|0|0|$
+Adobe PDF Plug-In For Firefox and Netscape 11.0.11|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+npGoogleUpdate3.dll|$
+C:\Program Files\Google\Update\1.3.28.15\npGoogleUpdate3.dll|$
+1.3.28.15|$
+1442491085471|0|0|0|$
+Google Update|$
+Google Update|$
+2
+0|application/x-vnd.google.update3webcontrol.3|||$
+1|application/x-vnd.google.oneclickctrl.9|||$
+NPSPWRAP.DLL|$
+C:\PROGRA~1\MICROS~1\Office15\NPSPWRAP.DLL|$
+15.0.4514.1000|$
+1390510572000|0|0|0|$
+The plugin allows you to have a better experience with Microsoft SharePoint|$
+Microsoft Office 2013|$
+2
+0|application/x-sharepoint|SharePoint Plug-in for Firefox||$
+1|application/x-sharepoint-uc|||$
+npctrl.dll|$
+c:\Program Files\Microsoft Silverlight\5.1.40416.0\npctrl.dll|$
+5.1.40416.0|$
+1429157890000|0|0|0|$
+5.1.40416.0|$
+Silverlight Plug-In|$
+2
+0|application/x-silverlight|npctrl|scr|$
+1|application/x-silverlight-2|||$
+NPJinit13125.dll|$
+C:\Program Files\Mozilla Firefox\plugins\NPJinit13125.dll|$
+1.3.1.25|$
+1135020224000|0|0|0|$
+JInitiator 1.3.1.25 for Netscape Navigator (DLL Helper)|$
+Oracle JInitiator|$
+2
+0|application/x-jinit-applet;version=1.3.1.25|Java Applet||$
+1|application/x-jinit-bean;version=1.3.1.25|JavaBeans||$
+npMeetingJoinPluginOC.dll|$
+C:\Program Files\Mozilla Firefox\plugins\npMeetingJoinPluginOC.dll|$
+15.0.4545.1000|$
+1423595592000|0|0|0|$
+The plugin allows you to have a better experience with Microsoft Lync|$
+Microsoft Office 2013|$
+1
+0|application/vnd.microsoft.communicator.ocsmeeting|Lync Plug-in for Firefox||$
+npjp2.dll|$
+C:\Program Files\Java\jre7\bin\plugin2\npjp2.dll|$
+10.80.2.15|$
+1439976712640|0|0|0|$
+Next Generation Java Plug-in 10.80.2 for Mozilla browsers|$
+Java(TM) Platform SE 7 U80|$
+38
+0|application/x-java-applet|Java Applet||$
+1|application/x-java-bean|JavaBeans||$
+2|application/x-java-vm|||$
+3|application/x-java-applet;version=1.1.1|||$
+4|application/x-java-bean;version=1.1.1|||$
+5|application/x-java-applet;version=1.1|||$
+6|application/x-java-bean;version=1.1|||$
+7|application/x-java-applet;version=1.2|||$
+8|application/x-java-bean;version=1.2|||$
+9|application/x-java-applet;version=1.1.3|||$
+10|application/x-java-bean;version=1.1.3|||$
+11|application/x-java-applet;version=1.1.2|||$
+12|application/x-java-bean;version=1.1.2|||$
+13|application/x-java-applet;version=1.3|||$
+14|application/x-java-bean;version=1.3|||$
+15|application/x-java-applet;version=1.2.2|||$
+16|application/x-java-bean;version=1.2.2|||$
+17|application/x-java-applet;version=1.2.1|||$
+18|application/x-java-bean;version=1.2.1|||$
+19|application/x-java-applet;version=1.3.1|||$
+20|application/x-java-bean;version=1.3.1|||$
+21|application/x-java-applet;version=1.4|||$
+22|application/x-java-bean;version=1.4|||$
+23|application/x-java-applet;version=1.4.1|||$
+24|application/x-java-bean;version=1.4.1|||$
+25|application/x-java-applet;version=1.4.2|||$
+26|application/x-java-bean;version=1.4.2|||$
+27|application/x-java-applet;version=1.5|||$
+28|application/x-java-bean;version=1.5|||$
+29|application/x-java-applet;version=1.6|||$
+30|application/x-java-bean;version=1.6|||$
+31|application/x-java-applet;version=1.7|||$
+32|application/x-java-bean;version=1.7|||$
+33|application/x-java-applet;jpi-version=1.7.0_80|||$
+34|application/x-java-bean;jpi-version=1.7.0_80|||$
+35|application/x-java-vm-npruntime|||$
+36|application/x-java-applet;deploy=10.80.2|||$
+37|application/x-java-applet;javafx=2.2.80|||$
+npdeployJava1.dll|$
+C:\Program Files\Java\jre7\bin\dtplugin\npdeployJava1.dll|$
+10.80.2.15|$
+1439976712444|0|0|0|$
+NPRuntime Script Plug-in Library for Java(TM) Deploy|$
+Java Deployment Toolkit 7.0.800.15|$
+1
+0|application/java-deployment-toolkit|||$
+npicaN.dll|$
+C:\Program Files\Citrix\ICA Client\npicaN.dll|$
+14.3.0.5014|$
+1435094400000|0|0|0|$
+Citrix Receiver Plugin (Win32)|$
+Citrix Receiver|$
+1
+0|application/x-ica|Citrix ICA|ica|$
+npURLInterceptorPlugin.dll|$
+C:\Program Files\Citrix\ICA Client\npURLInterceptorPlugin.dll|$
+14.3.0.5014|$
+1435094942000|0|0|0|$
+Citrix URL-Redirection Helper Plugin |$
+Citrix URL-Redirection Helper Plugin |$
+1
+0|application/npurlinterceptor|||$
+npUnity3D32.dll|$
+C:\Users\e.saravanamuthu\AppData\LocalLow\Unity\WebPlayer\loader\npUnity3D32.dll|$
+4.6.5.47901|$
+1430130938000|0|0|0|$
+Unity Player 4.6.5f1|$
+Unity Player|$
+1
+0|application/vnd.unity|Unity Player datafile|unity3d|$
+nptblive-4-x86.dll|$
+C:\Users\e.saravanamuthu\AppData\Local\PKI Client\4\32\nptblive-4-x86.dll|$
+4.12.0.0|$
+1442986796427|0|0|0|$
+Symantec PKI Client - Browser Support|$
+Symantec PKI Client|$
+1
+0|application/x-tblive-4-plugin|Symantec PKI Client||$
+
+[INVALID]
+c:\Program Files\Microsoft Silverlight\5.1.40416.0\npctrlui.dll|$
+1429157890000|$

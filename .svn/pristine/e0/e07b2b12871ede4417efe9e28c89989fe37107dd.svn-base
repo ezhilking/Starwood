@@ -1,0 +1,390 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:createBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <createBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE7316e700e701550b89287ea85b0d9e</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=530207547</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=ttest5</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.42</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1464777386110</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>createBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1464777386150</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=40000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>CREATE</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>830366</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>ttest5</userID>
+                </sourceInfo>
+                <auxCommandArray>
+                    <auxCommand>
+                        <name>IS PERSONALIZABLE STAY</name>
+                    </auxCommand>
+                    <auxCommand>
+                        <name>IS UR24 ELIGIBLE</name>
+                    </auxCommand>
+                </auxCommandArray>
+                <itineraryDTO>
+                    <itineraryId/>
+                    <name xsi:nil="true"/>
+                    <status>1</status>
+                    <contactMethod>PHONE</contactMethod>
+                    <primaryContactInfo>+112244565767</primaryContactInfo>
+                    <starlinkItinNumber xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>KRISTIN CURREY</lastName>
+                        <middleName/>
+                        <nmPrefix/>
+                        <nmSuffix xsi:nil="true"/>
+                        <nmTitle xsi:nil="true"/>
+                        <firstName/>
+                    </primCnct>
+                    <cancelInfo xsi:nil="true"/>
+                    <createInfo xsi:nil="true"/>
+                    <updateInfo xsi:nil="true"/>
+                    <binderArray>
+                        <BinderDTO>
+                            <countryCode>IN</countryCode>
+                            <propertyId>1967</propertyId>
+                            <status>1</status>
+                            <resStatus xsi:nil="true"/>
+                            <binderId xsi:nil="true"/>
+                            <emailCode>SGNC</emailCode>
+                            <primAltInd>P</primAltInd>
+                            <context xsi:nil="true"/>
+                            <sendEmail>Y</sendEmail>
+                            <contactMethod>PHONE</contactMethod>
+                            <primContactInfo>+112244565767</primContactInfo>
+                            <originalPropId>1967</originalPropId>
+                            <primCnct>
+                                <lastName>KRISTIN CURREY</lastName>
+                                <middleName/>
+                                <nmPrefix/>
+                                <nmSuffix xsi:nil="true"/>
+                                <nmTitle xsi:nil="true"/>
+                                <firstName/>
+                            </primCnct>
+                            <createInfo xsi:nil="true"/>
+                            <updateInfo xsi:nil="true"/>
+                            <cancelInfo xsi:nil="true"/>
+                            <awardArray xsi:nil="true"/>
+                            <confirmationArray>
+                                <ConfirmationDTO>
+                                    <confirmationId xsi:nil="true"/>
+                                    <costCurrencyCode>CNY</costCurrencyCode>
+                                    <arrivalDate>2016-06-08T00:00:00.000Z</arrivalDate>
+                                    <departureDate>2016-06-09T00:00:00.000Z</departureDate>
+                                    <startTime>2016-06-08T00:00:00.000Z</startTime>
+                                    <endTime>2016-06-09T00:00:00.000Z</endTime>
+                                    <langCode>ENG</langCode>
+                                    <penalty xsi:nil="true"/>
+                                    <propId xsi:nil="true"/>
+                                    <guestSeqId>1</guestSeqId>
+                                    <primary>1</primary>
+                                    <vipInd xsi:nil="true"/>
+                                    <vipLevel xsi:nil="true"/>
+                                    <status>1</status>
+                                    <guestStatus xsi:nil="true"/>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalCostAfterDiscounts xsi:nil="true"/>
+                                    <totalCostBeforeDiscounts xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <cancelInfo xsi:nil="true"/>
+                                    <externalReference xsi:nil="true"/>
+                                    <guestInfo>
+                                    <matchMergeReason xsi:nil="true"/>
+                                    <passportCountry xsi:nil="true"/>
+                                    <passportNumber>XXXXXX</passportNumber>
+                                    <profileId>0</profileId>
+                                    <pmsProfileId xsi:nil="true"/>
+                                    <cpi xsi:nil="true"/>
+                                    <guestCommunicationArray>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>12244565767</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode xsi:nil="true"/>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber>+12244565767</normalizedNumber>
+                                    <dialingCd>1</dialingCd>
+                                    <countryPrefix>US</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>1</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    </guestCommunicationArray>
+                                    <guestDetailsArray>
+                                    <GuestDetailsDTO>
+                                    <addrLine1>1601 BONNIE DOONE TER</addrLine1>
+                                    <addrLine2/>
+                                    <addrLine3/>
+                                    <addrLine4/>
+                                    <city>CORONA DL MAR</city>
+                                    <country>US</country>
+                                    <state>CA</state>
+                                    <zip>92625-1719</zip>
+                                    <firstName>KRISTIN</firstName>
+                                    <langCode>ENG</langCode>
+                                    <lastName>CURREY</lastName>
+                                    <middleInitial/>
+                                    <prefix/>
+                                    <nameTitle xsi:nil="true"/>
+                                    <suffix/>
+                                    <addrType>H</addrType>
+                                    <altAddrType>H</altAddrType>
+                                    <primary xsi:nil="true"/>
+                                    <age xsi:nil="true"/>
+                                    <countryOfOrigin xsi:nil="true"/>
+                                    </GuestDetailsDTO>
+                                    </guestDetailsArray>
+                                    </guestInfo>
+                                    <accountArray xsi:nil="true"/>
+                                    <affiliationArray>
+                                    <AffiliationDTO>
+                                    <level>P</level>
+                                    <programId>5</programId>
+                                    <type>SPG</type>
+                                    <membershipNumber>50948611411</membershipNumber>
+                                    <earnPointsIndicator xsi:nil="true"/>
+                                    </AffiliationDTO>
+                                    </affiliationArray>
+                                    <arrivalInfoArray xsi:nil="true"/>
+                                    <guestPrefArray xsi:nil="true"/>
+                                    <paymentMethodArray>
+                                    <PaymentMethodDTO>
+                                    <accountNumber>4111111111111111</accountNumber>
+                                    <accountType>VI</accountType>
+                                    <currencyCode>CNY</currencyCode>
+                                    <expiryMonth>12</expiryMonth>
+                                    <expiryYear>21</expiryYear>
+                                    <paymentMethod>CC</paymentMethod>
+                                    <paymentSequence>1</paymentSequence>
+                                    <securityCode xsi:nil="true"/>
+                                    <accountFirstName>KRISTIN</accountFirstName>
+                                    <accountLastName>CURREY</accountLastName>
+                                    <accountMiddleName/>
+                                    <accountNamePrefix xsi:nil="true"/>
+                                    <accountNameSuffix xsi:nil="true"/>
+                                    <accountNameTitle xsi:nil="true"/>
+                                    </PaymentMethodDTO>
+                                    </paymentMethodArray>
+                                    <productIdArray>
+                                    <prodSeq>0</prodSeq>
+                                    </productIdArray>
+                                    <remarkArray xsi:nil="true"/>
+                                </ConfirmationDTO>
+                            </confirmationArray>
+                            <externalRefArray xsi:nil="true"/>
+                            <productArray>
+                                <ProductDTO>
+                                    <cost xsi:nil="true"/>
+                                    <costCurrencyCode xsi:nil="true"/>
+                                    <costUnit xsi:nil="true"/>
+                                    <startTime>2016-06-08T00:00:00.000Z</startTime>
+                                    <endTime>2016-06-09T00:00:00.000Z</endTime>
+                                    <guaranteeIndicator>D</guaranteeIndicator>
+                                    <guaranteeType>4</guaranteeType>
+                                    <guaranteeCode xsi:nil="true"/>
+                                    <reservedProductId xsi:nil="true"/>
+                                    <maxAllowedAdult xsi:nil="true"/>
+                                    <maxAllowedChild xsi:nil="true"/>
+                                    <maxAllowedRollwy xsi:nil="true"/>
+                                    <numOfAdultGst>2</numOfAdultGst>
+                                    <numOfAdultRollwy>0</numOfAdultRollwy>
+                                    <numOfChildGst>0</numOfChildGst>
+                                    <numOfChildRollwy>0</numOfChildRollwy>
+                                    <numOfCribs>0</numOfCribs>
+                                    <packageType>N</packageType>
+                                    <prodBedType>K</prodBedType>
+                                    <prodClass xsi:nil="true"/>
+                                    <tpRoomTyp>I</tpRoomTyp>
+                                    <prodCd>DKS</prodCd>
+                                    <productId>59576</productId>
+                                    <propertyId xsi:nil="true"/>
+                                    <roomNumber xsi:nil="true"/>
+                                    <sequenceId>0</sequenceId>
+                                    <status>0</status>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <avrgRate xsi:nil="true"/>
+                                    <upgradeBedType xsi:nil="true"/>
+                                    <upgradeProdClass xsi:nil="true"/>
+                                    <upgradeProdId xsi:nil="true"/>
+                                    <upgradeProdCd xsi:nil="true"/>
+                                    <UpgradeTpRoomTyp xsi:nil="true"/>
+                                    <checkAvail>0</checkAvail>
+                                    <upgradePath>0</upgradePath>
+                                    <chargedProdId>59576</chargedProdId>
+                                    <chargedProdCd>DKS</chargedProdCd>
+                                    <chargedTpRoomTyp>I</chargedTpRoomTyp>
+                                    <chargedProdBedType>K</chargedProdBedType>
+                                    <cancelDepositAmountArray>
+                                    <CancelDepositAmountDTO>
+                                    <amount>2.25</amount>
+                                    <currency>CNY</currency>
+                                    <effectiveTimestamp>2016-06-07T01:00:00.000Z</effectiveTimestamp>
+                                    <rateId>OPE76</rateId>
+                                    <sequence xsi:nil="true"/>
+                                    <type>C</type>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    <overrideStlmt>0</overrideStlmt>
+                                    </CancelDepositAmountDTO>
+                                    <CancelDepositAmountDTO>
+                                    <amount>1.5</amount>
+                                    <currency>CNY</currency>
+                                    <effectiveTimestamp>2016-06-01T10:34:09.000Z</effectiveTimestamp>
+                                    <rateId>OPE76</rateId>
+                                    <sequence xsi:nil="true"/>
+                                    <type>D</type>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>2</orderSeq>
+                                    <overrideStlmt>0</overrideStlmt>
+                                    </CancelDepositAmountDTO>
+                                    </cancelDepositAmountArray>
+                                    <cancelDepositRuleArray>
+                                    <CancelDepositRuleDTO>
+                                    <calculationAmount>0.75</calculationAmount>
+                                    <calculationType>%</calculationType>
+                                    <daysPrior>1</daysPrior>
+                                    <timingTypeId xsi:nil="true"/>
+                                    <cancelRuleTime>100</cancelRuleTime>
+                                    <ruleType>C</ruleType>
+                                    <nonRefundableInd>N</nonRefundableInd>
+                                    <seqId xsi:nil="true"/>
+                                    <rateId>OPE76</rateId>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    </CancelDepositRuleDTO>
+                                    <CancelDepositRuleDTO>
+                                    <calculationAmount>0.5</calculationAmount>
+                                    <calculationType>%</calculationType>
+                                    <daysPrior>0</daysPrior>
+                                    <timingTypeId>C</timingTypeId>
+                                    <cancelRuleTime xsi:nil="true"/>
+                                    <ruleType>D</ruleType>
+                                    <nonRefundableInd xsi:nil="true"/>
+                                    <seqId xsi:nil="true"/>
+                                    <rateId>OPE76</rateId>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>2</orderSeq>
+                                    </CancelDepositRuleDTO>
+                                    </cancelDepositRuleArray>
+                                    <featureArray xsi:nil="true"/>
+                                    <feeArray xsi:nil="true"/>
+                                    <guestPaymentMapArray>
+                                    <ConfirmationPaymentMethodDTO>
+                                    <confSeqId>1</confSeqId>
+                                    <paymentSequence>1</paymentSequence>
+                                    </ConfirmationPaymentMethodDTO>
+                                    </guestPaymentMapArray>
+                                    <promotionArray xsi:nil="true"/>
+                                    <rateArray>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>CNY</currencyCode>
+                                    <startDate>2016-06-08T00:00:00.000Z</startDate>
+                                    <endDate>2016-06-08T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>300.0</grossAmount>
+                                    <netAmount>300.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>OPE76</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>CNY</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    </rateArray>
+                                    <reservedPackageArray xsi:nil="true"/>
+                                    <specialServiceArray xsi:nil="true"/>
+                                    <taxArray xsi:nil="true"/>
+                                </ProductDTO>
+                            </productArray>
+                            <remarkArray xsi:nil="true"/>
+                            <guestCommunicationArray>
+                                <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>12244565767</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode xsi:nil="true"/>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber>+12244565767</normalizedNumber>
+                                    <dialingCd>1</dialingCd>
+                                    <countryPrefix>US</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>1</isValid>
+                                    </guestCommunicationDetails>
+                                </GuestCommunicationDTO>
+                            </guestCommunicationArray>
+                        </BinderDTO>
+                    </binderArray>
+                    <guestCommunicationArray xsi:nil="true"/>
+                    <resIdArray xsi:nil="true"/>
+                </itineraryDTO>
+            </createBookingRequest>
+        </p694:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,13 @@
+Feature: GC Regression 
+
+Background:
+    Given the user is navigated to GC Stage url
+    And logins with username as "suviyen" and password as "StarwooD@121"
+
+Scenario: GC_REG01_ValidateTheNewlyCreatedBroadcastMessageisDisplayedWhenUserIsLoggedintotheApplication
+
+	When I GCValidateBroadCasteMsg
+	And I GCBroadCasteMsgDeletion
+	Then I close browser
+	
+

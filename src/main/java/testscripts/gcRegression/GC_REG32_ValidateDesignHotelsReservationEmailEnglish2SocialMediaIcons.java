@@ -1,0 +1,253 @@
+package testscripts.gcRegression;
+/** Purpose		: Validate  Design hotels reservation email in English language with 2 social media icons
+ * TestCase Name: Validate  Design hotels reservation email in English language with 2 social media icons
+ * Created By	: Sachin
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	:	
+ * Reviewed Date:
+ */
+import java.util.Calendar;
+
+import javax.xml.soap.SOAPMessage;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+import functions.SoapUtility;
+
+public class GC_REG32_ValidateDesignHotelsReservationEmailEnglish2SocialMediaIcons {
+
+	CRM SW = new CRM();	
+	String ReservationNumber;
+	String TestCaseName= getClass().getName();
+	String Username,Password;
+	String RequestXMLFile, sPropID;
+
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.GCURL);
+		TestCaseName=TestCaseName.substring(TestCaseName.lastIndexOf(".")+1, TestCaseName.length()).trim();
+		Username=SW.TestData("GCUsername");
+		Password=SW.TestData("GCPassword");
+		if(Environment.getRunEnvironment().equalsIgnoreCase("QA3")){
+			RequestXMLFile= "GC_REG32_DesignHotel_Booking RequestQA3.xml";
+			sPropID="1105";
+		}
+		if(Environment.getRunEnvironment().equalsIgnoreCase("QA2")){
+			RequestXMLFile= ".xml";
+			sPropID="";
+		}
+	}
+	@Test(priority=1)
+	public void ValidateEditGCSetup(){
+
+		SW.GCLogin(Username,Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+		SW.Click("GCNavigation_GCSetup_LK");
+		SW.Click("GCSetUp_Active_LK");
+		SW.EnterValue("GCSetUp_PropertyID_EB", sPropID);
+		SW.Click("GCSetUp_Apply_BN");
+		if(!SW.ObjectExists("GCOffer_Overview_IC")){
+			Environment.loger.log(Level.ERROR, "Overview Icon is not present");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Overview Icon is not present");
+		}
+		SW.Click("GCOffer_Overview_IC");
+		SW.WaitTillElementToBeClickable("GCSetUp_EditActive_BN");
+		if(!SW.ObjectExists("GCSetUp_EditActive_BN")){
+			Environment.loger.log(Level.ERROR, "EditActive Icon is not present");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("EditActive Icon is not present");
+		}
+		
+		SW.Click("GCSetUp_EditActive_BN");
+		if(SW.ObjectExists("GCSetUp_TwiterImageResConf_CB")&& SW.ObjectExists("GCSetUp_FacebookImageResConf_CB")){
+			SW.CheckBox("GCSetUp_TwiterImageResConf_CB","ON");
+			String FbURL="https://facebook.com";
+			SW.EnterValue("GCSetUp_FBURL_EB",FbURL );
+			SW.CheckBox("GCSetUp_FacebookImageResConf_CB", "ON");
+			SW.WriteToEmailTestData(TestCaseName, "ValiadtionString1", FbURL);
+			
+			String TwiterURL="https://twiter.com";
+			SW.EnterValue("GCSetUp_TwitterURL_EB", TwiterURL);
+			SW.WriteToEmailTestData(TestCaseName, "ValiadtionString2", TwiterURL);
+			Environment.loger.log(Level.INFO, "Facebook and Twiter buttons are selected ");
+			
+		}else{
+			Environment.loger.log(Level.ERROR, "Social Media Icons are not selected" );
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Social Media Icons are not selected");
+		}
+
+		SW.Click("GCSetUp_Submit_BN");
+		SW.WaitTillElementToBeClickable("GCSetUp_Approve_LK");
+		if(!SW.ObjectExists("GCSetUp_Approve_LK")){
+			Environment.loger.log(Level.ERROR, "Changes are not moved to Stage");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Changes are not moved to Stage");
+		}
+		SW.Click("GCSetUp_Approve_LK");
+		SW.WaitTillElementToBeClickable("GCSetUp_Activate_LK");
+		if(!SW.ObjectExists("GCSetUp_Activate_LK")){
+			Environment.loger.log(Level.ERROR, "Changes are not moved to Approved");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Changes are not moved to Approved");
+		}
+		SW.Click("GCSetUp_Activate_LK");
+		SW.WaitTillElementToBeClickable("GCSetUp_EditActivate_LK");
+		if(!SW.ObjectExists("GCSetUp_EditActivate_LK")){
+			Environment.loger.log(Level.ERROR, "Changes are not moved to Active");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Changes are not moved to Active");
+		}
+		Environment.loger.log(Level.INFO, "GC Setup has updated and activated ");
+	}
+	@Test(priority=2, dependsOnMethods="ValidateEditGCSetup")
+	public void RefreshGCSetupCache(){
+
+		SW.Click("GCHome_Admin_LK");
+		SW.Click("GC_GCAdmin_Lk");
+		if(SW.ObjectExists("GC_CacheRefreshTable_TB")){
+			SW.Click("GCSetup_SetupCache_LK");
+			SW.Click("GCSetup_Content_LK");
+			SW.Wait(5);
+			//SW.Click("GCSetup_update_BT");
+			Environment.loger.log(Level.INFO, "Cache refreshed successfully");
+			SW.Click("//img[@id='accountImage']");
+			SW.Wait(5);
+			SW.Click("GCSetup_Logout_LK");
+			Environment.loger.log(Level.INFO, "logout Successfull");
+		}
+	}
+
+	@Test(priority=3, dependsOnMethods="ValidateEditGCSetup")
+	public void RefreshGripCache(){
+		boolean node1Login=false;
+		boolean node2Login=false;
+		SW.LaunchBrowser(Environment.GRIP1URL);
+		if(SW.LoginToGrip(Username,Password)){
+			boolean Cache1=SW.GripCacheRefresh("com.starwood.gc.app.SgcSetupVersionsCache");
+			boolean Cache2=SW.GripCacheRefresh("com.starwood.gcc.cache.SocialMediumMessageLkupCache");
+			boolean Cache3=SW.GripCacheRefresh("com.starwood.corona.services.system.data.jdbc.cache.PropertyMasterCache");
+			if(Cache1 && Cache2 && Cache3){
+				Environment.loger.log(Level.INFO, "All the cache's in grip node 1 refreshed successfully ");
+				node1Login=true;
+			}else{
+				Environment.loger.log(Level.ERROR, "Node 1 Cache refresh Failed");
+				node1Login=false;
+			}
+		}else{
+			Environment.loger.log(Level.ERROR, "Grip Node 1 Login Failed");
+			node1Login=false;
+		}
+
+		//Refresh Second node
+		SW.LaunchBrowser(Environment.GRIP2URL);
+		if(SW.LoginToGrip(Username,Password)){
+
+			boolean Cache11=SW.GripCacheRefresh("com.starwood.gc.app.SgcSetupVersionsCache");
+			boolean Cache22=SW.GripCacheRefresh("com.starwood.gcc.cache.SocialMediumMessageLkupCache");
+			boolean Cache33=SW.GripCacheRefresh("com.starwood.corona.services.system.data.jdbc.cache.PropertyMasterCache");
+			if(Cache11 && Cache22 && Cache33){
+				Environment.loger.log(Level.INFO, "All the cache's in grip node 2 refreshed successfully ");
+				node2Login=true;
+			}else{
+				Environment.loger.log(Level.ERROR, "Node 2 Cache refresh Failed");
+				node2Login=false;
+			}
+		}else{
+			Environment.loger.log(Level.ERROR, "Grip Node 2 Login Failed");
+			node1Login=false;
+		}
+		if(node1Login||node2Login){//if nay one node cache is refreshed successfully
+			Environment.loger.log(Level.INFO, "All the cache's in grip nodes refreshed successfully ");
+		}else{
+			Environment.loger.log(Level.ERROR, "Grip Cache refresh Failed in Both the Nodes");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Grip Cache refresh Failed in Both the Nodes");
+		}
+	}
+	@Test(priority=4, dependsOnMethods="ValidateEditGCSetup")
+	public void RefreshSeasCache(){
+		boolean node1SeasLogin=false;
+		boolean node2SeasLogin=false;
+		SW.LaunchBrowser(Environment.SEAS1URL);
+		if(SW.LoginToSeas(Username,Password)){
+			if(SW.SeasCacheRefresh("com.starwood.corona.services.system.data.jdbc.cache.PropertyMasterCache")){
+				Environment.loger.log(Level.INFO, "All the cache's in Seas node 1 refreshed successfully ");
+				node1SeasLogin=true;
+			}else{
+				Environment.loger.log(Level.ERROR, "Seas Node 1 Cache refresh Failed");
+				node1SeasLogin=false;
+			}
+		}else{
+			Environment.loger.log(Level.ERROR, "Seas Node 1 Login Failed");
+			node1SeasLogin=false;
+		}
+
+		//Refresh Second node
+		SW.LaunchBrowser(Environment.SEAS2URL);
+		if(SW.LoginToSeas(Username,Password)){
+			if(SW.SeasCacheRefresh("com.starwood.corona.services.system.data.jdbc.cache.PropertyMasterCache")){
+				Environment.loger.log(Level.INFO, "All the cache's in Seas node 2 refreshed successfully ");
+				node2SeasLogin=true;
+			}else{
+				Environment.loger.log(Level.ERROR, "Seas Node 2 Cache refresh Failed");
+				node2SeasLogin=false;
+			}
+		}else{
+			Environment.loger.log(Level.ERROR, "Seas Node 2 Login Failed");
+			node2SeasLogin=false;
+		}
+		if(node1SeasLogin||node2SeasLogin){//if nay one node cache is refreshed successfully
+			Environment.loger.log(Level.INFO, "All the cache's in Seas nodes refreshed successfully ");
+		}else{
+			Environment.loger.log(Level.ERROR, "Seas Cache refresh Failed in Both the Nodes");
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Seas Cache refresh Failed in Both the Nodes");
+		}
+	}
+	@Test(priority=5, dependsOnMethods="RefreshSeasCache")
+	public void CreateReservationForEditedProperty(){
+		//call to soap server 
+		SOAPMessage soapRequest=SoapUtility.getSOAPRequest(RequestXMLFile);
+		//Modify the SOAP Request as per the requirement 
+		SOAPMessage newSoapMessage=SW.ChangeTransactionIDInSoapRequest(soapRequest);
+
+		String FutureArrivalDate= SW.DateAddDays(SW.GetTimeStamp("yyyy-MM-dd"), "yyyy-MM-dd", 15, Calendar.DATE);
+		String FutureDepartureDate=SW.DateAddDays(SW.GetTimeStamp("yyyy-MM-dd"), "yyyy-MM-dd", 16, Calendar.DATE);
+
+		newSoapMessage=SW.ChangeArrivalDepartureDateINSoapRequest(newSoapMessage,FutureArrivalDate,FutureDepartureDate);
+
+		SOAPMessage soapResponse=SoapUtility.getSOAPResponse(newSoapMessage, Environment.SOAPEndPointURL);
+		boolean result=SoapUtility.validateSOAPResponseForFault(soapResponse);
+		if(result){
+			ReservationNumber=SoapUtility.getXMLElementText(soapResponse, "BinderDTO", "binderId");
+			Environment.loger.log(Level.INFO, "Reservation Confirmation Number= "+ReservationNumber);
+			SW.WriteToEmailTestData(TestCaseName, "ReservationNumber", ReservationNumber);
+			SW.WriteToEmailTestData(TestCaseName, "EmailSubjectLine", ReservationNumber);
+		}else{
+			Environment.loger.log(Level.INFO, "Error in SOAP Response see response file for more details");
+			SoapUtility.printSOAPResponse(soapResponse);// To print response in console 
+			SW.WriteToEmailTestData(TestCaseName, "ExeecutionFlag", "N");
+			SW.FailCurrentTest("Error in SOAP Response see response file for more details");
+		}
+	}
+	@AfterClass
+	public void EndTest(){
+		if(SW.ObjectExists("GCNavigation_SignOut_LK")){
+			SW.Click("GCNavigation_SignOut_LK");
+		}
+		Reporter.StopTest();		
+	}
+}

@@ -1,0 +1,462 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:createBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <createBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE7316e700e7015506a10461d5ebc95b</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=530204747</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=shubbir</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.42</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1464695063650</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>createBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1464695063689</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=40000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>CREATE</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>819999</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>shubbir</userID>
+                </sourceInfo>
+                <auxCommandArray>
+                    <auxCommand>
+                        <name>IS PERSONALIZABLE STAY</name>
+                    </auxCommand>
+                    <auxCommand>
+                        <name>IS UR24 ELIGIBLE</name>
+                    </auxCommand>
+                </auxCommandArray>
+                <itineraryDTO>
+                    <itineraryId/>
+                    <name xsi:nil="true"/>
+                    <status>1</status>
+                    <contactMethod>PHONE</contactMethod>
+                    <primaryContactInfo>9876543210</primaryContactInfo>
+                    <starlinkItinNumber xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>subash</lastName>
+                        <middleName/>
+                        <nmPrefix/>
+                        <nmSuffix xsi:nil="true"/>
+                        <nmTitle xsi:nil="true"/>
+                        <firstName/>
+                    </primCnct>
+                    <cancelInfo xsi:nil="true"/>
+                    <createInfo xsi:nil="true"/>
+                    <updateInfo xsi:nil="true"/>
+                    <binderArray>
+                        <BinderDTO>
+                            <countryCode>IN</countryCode>
+                            <propertyId>1005</propertyId>
+                            <status>1</status>
+                            <resStatus xsi:nil="true"/>
+                            <binderId xsi:nil="true"/>
+                            <emailCode>SGNC</emailCode>
+                            <primAltInd>P</primAltInd>
+                            <context xsi:nil="true"/>
+                            <sendEmail>Y</sendEmail>
+                            <contactMethod>PHONE</contactMethod>
+                            <primContactInfo>9876543210</primContactInfo>
+                            <originalPropId>1005</originalPropId>
+                            <primCnct>
+                                <lastName>subash</lastName>
+                                <middleName/>
+                                <nmPrefix/>
+                                <nmSuffix xsi:nil="true"/>
+                                <nmTitle xsi:nil="true"/>
+                                <firstName/>
+                            </primCnct>
+                            <createInfo xsi:nil="true"/>
+                            <updateInfo xsi:nil="true"/>
+                            <cancelInfo xsi:nil="true"/>
+                            <awardArray xsi:nil="true"/>
+                            <confirmationArray>
+                                <ConfirmationDTO>
+                                    <confirmationId xsi:nil="true"/>
+                                    <costCurrencyCode>USD</costCurrencyCode>
+                                    <arrivalDate>2016-06-11T00:00:00.000Z</arrivalDate>
+                                    <departureDate>2016-06-15T00:00:00.000Z</departureDate>
+                                    <startTime>2016-06-11T00:00:00.000Z</startTime>
+                                    <endTime>2016-06-15T00:00:00.000Z</endTime>
+                                    <langCode>ENG</langCode>
+                                    <penalty xsi:nil="true"/>
+                                    <propId xsi:nil="true"/>
+                                    <guestSeqId>1</guestSeqId>
+                                    <primary>1</primary>
+                                    <vipInd xsi:nil="true"/>
+                                    <vipLevel xsi:nil="true"/>
+                                    <status>1</status>
+                                    <guestStatus xsi:nil="true"/>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalCostAfterDiscounts xsi:nil="true"/>
+                                    <totalCostBeforeDiscounts xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <cancelInfo xsi:nil="true"/>
+                                    <externalReference xsi:nil="true"/>
+                                    <guestInfo>
+                                    <matchMergeReason xsi:nil="true"/>
+                                    <passportCountry xsi:nil="true"/>
+                                    <passportNumber>XXXXXX</passportNumber>
+                                    <profileId>0</profileId>
+                                    <pmsProfileId xsi:nil="true"/>
+                                    <cpi xsi:nil="true"/>
+                                    <guestCommunicationArray>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>9620096200</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode xsi:nil="true"/>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd xsi:nil="true"/>
+                                    <countryPrefix>IND</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                    </GuestCommunicationDTO>
+                                    </guestCommunicationArray>
+                                    <guestDetailsArray>
+                                    <GuestDetailsDTO>
+                                    <addrLine1>Pallakadu</addrLine1>
+                                    <addrLine2/>
+                                    <addrLine3/>
+                                    <addrLine4/>
+                                    <city>kochin</city>
+                                    <country>IN</country>
+                                    <state>KER</state>
+                                    <zip>706489</zip>
+                                    <firstName>Sujitha</firstName>
+                                    <langCode>ENG</langCode>
+                                    <lastName>Mohan</lastName>
+                                    <middleInitial/>
+                                    <prefix/>
+                                    <nameTitle xsi:nil="true"/>
+                                    <suffix/>
+                                    <addrType xsi:nil="true"/>
+                                    <primary xsi:nil="true"/>
+                                    <age xsi:nil="true"/>
+                                    <countryOfOrigin xsi:nil="true"/>
+                                    </GuestDetailsDTO>
+                                    </guestDetailsArray>
+                                    </guestInfo>
+                                    <accountArray xsi:nil="true"/>
+                                    <affiliationArray xsi:nil="true"/>
+                                    <arrivalInfoArray xsi:nil="true"/>
+                                    <guestPrefArray xsi:nil="true"/>
+                                    <paymentMethodArray>
+                                    <PaymentMethodDTO>
+                                    <accountNumber>4111111111111111</accountNumber>
+                                    <accountType>VI</accountType>
+                                    <currencyCode>USD</currencyCode>
+                                    <expiryMonth>12</expiryMonth>
+                                    <expiryYear>20</expiryYear>
+                                    <paymentMethod>CC</paymentMethod>
+                                    <paymentSequence>1</paymentSequence>
+                                    <securityCode xsi:nil="true"/>
+                                    <accountFirstName>Sujitha</accountFirstName>
+                                    <accountLastName>Mohan</accountLastName>
+                                    <accountMiddleName/>
+                                    <accountNamePrefix xsi:nil="true"/>
+                                    <accountNameSuffix xsi:nil="true"/>
+                                    <accountNameTitle xsi:nil="true"/>
+                                    </PaymentMethodDTO>
+                                    </paymentMethodArray>
+                                    <productIdArray>
+                                    <prodSeq>0</prodSeq>
+                                    </productIdArray>
+                                    <remarkArray xsi:nil="true"/>
+                                </ConfirmationDTO>
+                            </confirmationArray>
+                            <externalRefArray xsi:nil="true"/>
+                            <productArray>
+                                <ProductDTO>
+                                    <cost xsi:nil="true"/>
+                                    <costCurrencyCode xsi:nil="true"/>
+                                    <costUnit xsi:nil="true"/>
+                                    <startTime>2016-06-11T00:00:00.000Z</startTime>
+                                    <endTime>2016-06-15T00:00:00.000Z</endTime>
+                                    <guaranteeIndicator>D</guaranteeIndicator>
+                                    <guaranteeType>4</guaranteeType>
+                                    <guaranteeCode xsi:nil="true"/>
+                                    <reservedProductId xsi:nil="true"/>
+                                    <maxAllowedAdult xsi:nil="true"/>
+                                    <maxAllowedChild xsi:nil="true"/>
+                                    <maxAllowedRollwy xsi:nil="true"/>
+                                    <numOfAdultGst>2</numOfAdultGst>
+                                    <numOfAdultRollwy>0</numOfAdultRollwy>
+                                    <numOfChildGst>0</numOfChildGst>
+                                    <numOfChildRollwy>0</numOfChildRollwy>
+                                    <numOfCribs>0</numOfCribs>
+                                    <packageType>N</packageType>
+                                    <prodBedType>K</prodBedType>
+                                    <prodClass xsi:nil="true"/>
+                                    <tpRoomTyp>X</tpRoomTyp>
+                                    <prodCd>AK</prodCd>
+                                    <productId>22744</productId>
+                                    <propertyId xsi:nil="true"/>
+                                    <roomNumber xsi:nil="true"/>
+                                    <sequenceId>0</sequenceId>
+                                    <status>0</status>
+                                    <taxCurrencyCode xsi:nil="true"/>
+                                    <totalTax xsi:nil="true"/>
+                                    <avrgRate xsi:nil="true"/>
+                                    <upgradeBedType xsi:nil="true"/>
+                                    <upgradeProdClass xsi:nil="true"/>
+                                    <upgradeProdId xsi:nil="true"/>
+                                    <upgradeProdCd xsi:nil="true"/>
+                                    <UpgradeTpRoomTyp xsi:nil="true"/>
+                                    <checkAvail>1</checkAvail>
+                                    <upgradePath>0</upgradePath>
+                                    <chargedProdId>22744</chargedProdId>
+                                    <chargedProdCd>AK</chargedProdCd>
+                                    <chargedTpRoomTyp>X</chargedTpRoomTyp>
+                                    <chargedProdBedType>K</chargedProdBedType>
+                                    <cancelDepositAmountArray>
+                                    <CancelDepositAmountDTO>
+                                    <amount>280.0</amount>
+                                    <currency>USD</currency>
+                                    <effectiveTimestamp>2016-06-09T18:00:00.000Z</effectiveTimestamp>
+                                    <rateId>NEWMR</rateId>
+                                    <sequence xsi:nil="true"/>
+                                    <type>C</type>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    <overrideStlmt>0</overrideStlmt>
+                                    </CancelDepositAmountDTO>
+                                    <CancelDepositAmountDTO>
+                                    <amount>280.0</amount>
+                                    <currency>USD</currency>
+                                    <effectiveTimestamp>2016-06-06T11:38:19.000Z</effectiveTimestamp>
+                                    <rateId>NEWMR</rateId>
+                                    <sequence xsi:nil="true"/>
+                                    <type>D</type>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>2</orderSeq>
+                                    <overrideStlmt>0</overrideStlmt>
+                                    </CancelDepositAmountDTO>
+                                    </cancelDepositAmountArray>
+                                    <cancelDepositRuleArray>
+                                    <CancelDepositRuleDTO>
+                                    <calculationAmount>10.0</calculationAmount>
+                                    <calculationType>%</calculationType>
+                                    <daysPrior>2</daysPrior>
+                                    <timingTypeId xsi:nil="true"/>
+                                    <cancelRuleTime>1800</cancelRuleTime>
+                                    <ruleType>C</ruleType>
+                                    <nonRefundableInd>N</nonRefundableInd>
+                                    <seqId xsi:nil="true"/>
+                                    <rateId>NEWMR</rateId>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>1</orderSeq>
+                                    </CancelDepositRuleDTO>
+                                    <CancelDepositRuleDTO>
+                                    <calculationAmount>10.0</calculationAmount>
+                                    <calculationType>%</calculationType>
+                                    <daysPrior>6</daysPrior>
+                                    <timingTypeId>A</timingTypeId>
+                                    <cancelRuleTime xsi:nil="true"/>
+                                    <ruleType>D</ruleType>
+                                    <nonRefundableInd xsi:nil="true"/>
+                                    <seqId xsi:nil="true"/>
+                                    <rateId>NEWMR</rateId>
+                                    <seasonSequence xsi:nil="true"/>
+                                    <orderSeq>2</orderSeq>
+                                    </CancelDepositRuleDTO>
+                                    </cancelDepositRuleArray>
+                                    <featureArray xsi:nil="true"/>
+                                    <feeArray xsi:nil="true"/>
+                                    <guestPaymentMapArray>
+                                    <ConfirmationPaymentMethodDTO>
+                                    <confSeqId>1</confSeqId>
+                                    <paymentSequence>1</paymentSequence>
+                                    </ConfirmationPaymentMethodDTO>
+                                    </guestPaymentMapArray>
+                                    <promotionArray xsi:nil="true"/>
+                                    <rateArray>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-06-11T00:00:00.000Z</startDate>
+                                    <endDate>2016-06-11T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>700.0</grossAmount>
+                                    <netAmount>700.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>NEWMR</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-06-12T00:00:00.000Z</startDate>
+                                    <endDate>2016-06-12T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>700.0</grossAmount>
+                                    <netAmount>700.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>NEWMR</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-06-13T00:00:00.000Z</startDate>
+                                    <endDate>2016-06-13T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>700.0</grossAmount>
+                                    <netAmount>700.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>NEWMR</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode xsi:nil="true"/>
+                                    <childGrossRateAmount xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-06-14T00:00:00.000Z</startDate>
+                                    <endDate>2016-06-14T00:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount xsi:nil="true"/>
+                                    <extraPersonNetRateAmount xsi:nil="true"/>
+                                    <grossAmount>700.0</grossAmount>
+                                    <netAmount>700.0</netAmount>
+                                    <packageType>0</packageType>
+                                    <rateId>NEWMR</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId>0</groupBlockId>
+                                    <floatRateId xsi:nil="true"/>
+                                    <taxAmount>0.0</taxAmount>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment xsi:nil="true"/>
+                                    <propMarketSegment xsi:nil="true"/>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    </RateDTO>
+                                    </rateArray>
+                                    <reservedPackageArray xsi:nil="true"/>
+                                    <specialServiceArray xsi:nil="true"/>
+                                    <taxArray xsi:nil="true"/>
+                                </ProductDTO>
+                            </productArray>
+                            <remarkArray xsi:nil="true"/>
+                            <guestCommunicationArray>
+                                <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>OTHER</methodType>
+                                    <methodValue>9620096200</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode xsi:nil="true"/>
+                                    <sendConfInd>N</sendConfInd>
+                                    <comments xsi:nil="true"/>
+                                    <useType>O</useType>
+                                    <sendReceipt xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber xsi:nil="true"/>
+                                    <dialingCd xsi:nil="true"/>
+                                    <countryPrefix>IND</countryPrefix>
+                                    <extension xsi:nil="true"/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>0</isValid>
+                                    </guestCommunicationDetails>
+                                </GuestCommunicationDTO>
+                            </guestCommunicationArray>
+                        </BinderDTO>
+                    </binderArray>
+                    <guestCommunicationArray xsi:nil="true"/>
+                    <resIdArray xsi:nil="true"/>
+                </itineraryDTO>
+            </createBookingRequest>
+        </p694:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

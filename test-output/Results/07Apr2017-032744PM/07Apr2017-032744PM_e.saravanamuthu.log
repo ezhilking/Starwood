@@ -1,0 +1,3 @@
+07-Apr-2017 03:27:47:535 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+07-Apr-2017 03:27:47:544 PM Reporter   StartTest            48   INFO : Execution Started for 'sampleRDBStuff' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\07Apr2017-032744PM
+07-Apr-2017 03:27:52:176 PM DataBaseUtil <init>               153  ERROR: SQLException Exception occuredThe Network Adapter could not establish the connection

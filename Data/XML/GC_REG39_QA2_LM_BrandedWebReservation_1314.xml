@@ -1,0 +1,598 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Body>
+        <ns4:createBooking
+            xmlns:ns2="http://beans.common.framework.valhalla.starwood.com"
+            xmlns:ns3="http://dto.common.valhalla.starwood.com"
+            xmlns:ns4="http://facade.booking.valhalla.starwood.com"
+            xmlns:ns5="http://dto.common.valhalla.starwood.com/2007/08/10" xmlns:ns6="http://exception.common.valhalla.starwood.com">
+            <createBookingRequest>
+                <ns3:RequestContextBean>
+                    <ns2:RequestTransactionID>42F2E98EB99F4c814c81156b6de382e16c5fbf7</ns2:RequestTransactionID>
+                    <ns2:FlowSeqNum>1</ns2:FlowSeqNum>
+                    <ns2:GlobalContextParameters>CLIENT_CHANNEL=WEB</ns2:GlobalContextParameters>
+                    <ns2:GlobalContextParameters>EXTERNAL_CHANNEL=WEB</ns2:GlobalContextParameters>
+                    <ns2:GlobalContextParameters>LANGUAGE=en_US</ns2:GlobalContextParameters>
+                    <ns2:GlobalContextParameters>User-Agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36</ns2:GlobalContextParameters>
+                    <ns2:ContextFrames>
+                        <ns2:Name>WEB</ns2:Name>
+                        <ns2:Type>Channel </ns2:Type>
+                        <ns2:ServiceInterface>BookingFacade</ns2:ServiceInterface>
+                        <ns2:Operation>search</ns2:Operation>
+                        <ns2:IPAddress>10.132.169.254</ns2:IPAddress>
+                    </ns2:ContextFrames>
+                    <ns2:ContextFrames>
+                        <ns2:Name>NodeName</ns2:Name>
+                        <ns2:Type>NodeType</ns2:Type>
+                        <ns2:ServiceInterface>BookingFacade</ns2:ServiceInterface>
+                        <ns2:Operation>createBooking</ns2:Operation>
+                        <ns2:IPAddress>localhost</ns2:IPAddress>
+                        <ns2:LocalContextParameters>VERSION=4.3.5.0</ns2:LocalContextParameters>
+                        <ns2:LocalContextParameters>CLIENT_TIMEOUT=90000</ns2:LocalContextParameters>
+                    </ns2:ContextFrames>
+                </ns3:RequestContextBean>
+                <defaultTimeOutAction>CONFIRM</defaultTimeOutAction>
+                <delayTimeSec>0</delayTimeSec>
+                <service>CREATE</service>
+                <isIPSRequest
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <isStarlinkRequest
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <vdn
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <vdnSessionId
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <userId
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>830709</locationID>
+                    <channelID>WEB</channelID>
+                    <userID>STARNET</userID>
+                </sourceInfo>
+                <auxCommandArray
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <itineraryDTO>
+                    <itineraryId
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <name
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <status>1</status>
+                    <contactMethod>EMAIL</contactMethod>
+                    <primaryContactInfo>sachin.ganapathi@starwoodhotels.com</primaryContactInfo>
+                    <starlinkItinNumber
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>booking</lastName>
+                        <middleName
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <nmPrefix
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <nmSuffix
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <nmTitle/>
+                        <firstName>test</firstName>
+                    </primCnct>
+                    <cancelInfo
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <createInfo
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <updateInfo
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <binderArray>
+                        <BinderDTO>
+                            <countryCode
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <propertyId>1314</propertyId>
+                            <status>1</status>
+                            <resStatus
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <binderId
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <primAltInd
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <context
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <sendEmail>Y</sendEmail>
+                            <contactMethod>PHONE</contactMethod>
+                            <primContactInfo>9845215478</primContactInfo>
+                            <originalPropId
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <tourCode
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <rateCode>BARRLM</rateCode>
+                            <primCnct>
+                                <lastName>booking</lastName>
+                                <middleName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                <nmPrefix
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                <nmSuffix
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                <nmTitle/>
+                                <firstName>test</firstName>
+                            </primCnct>
+                            <createInfo
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <updateInfo
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <cancelInfo
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <confirmableUpgradeInfo
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <awardArray/>
+                            <confirmationArray>
+                                <ConfirmationDTO>
+                                    <confirmationId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <costCurrencyCode>USD</costCurrencyCode>
+                                    <arrivalDate>2016-08-25T14:00:00.000Z</arrivalDate>
+                                    <departureDate>2016-08-29T12:00:00.000Z</departureDate>
+                                    <startTime>2016-08-25T14:00:00.000Z</startTime>
+                                    <endTime>2016-08-29T12:00:00.000Z</endTime>
+                                    <langCode>ENG</langCode>
+                                    <penalty
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <propId>1314</propId>
+                                    <guestSeqId>1</guestSeqId>
+                                    <primary>true</primary>
+                                    <vipInd
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <vipLevel
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <status>1</status>
+                                    <guestStatus
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <totalCostAfterDiscounts
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <totalCostBeforeDiscounts
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <totalTax
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <sendConfToCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cancelInfo
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <externalReference
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <guestInfo>
+                                    <matchMergeReason
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <passportCountry
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <passportNumber>XXXXXX</passportNumber>
+                                    <profileId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <pmsProfileId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cpi
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <guestCommunicationArray>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>EMAIL</methodCode>
+                                    <methodType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <methodValue>sachin.ganapathi@starwoodhotels.com</methodValue>
+                                    <sequenceId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <languageCode>ENG</languageCode>
+                                    <sendConfInd>Y</sendConfInd>
+                                    <comments
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <useType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <sendReceipt
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+
+                                    <guestCommunicationDetails
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+
+                                    <guestcommunicationPermissions
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    </GuestCommunicationDTO>
+                                    <GuestCommunicationDTO>
+                                    <methodCode>PHONE</methodCode>
+                                    <methodType>HOME</methodType>
+                                    <methodValue>9845215478</methodValue>
+                                    <sequenceId>1</sequenceId>
+                                    <languageCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <sendConfInd
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <comments
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <useType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <sendReceipt
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <guestCommunicationDetails>
+                                    <normalizedNumber>+549845215478</normalizedNumber>
+                                    <dialingCd>54</dialingCd>
+                                    <countryPrefix>AR</countryPrefix>
+                                    <extension/>
+                                    <prioritySequence>1</prioritySequence>
+                                    <isValid>true</isValid>
+                                    </guestCommunicationDetails>
+
+                                    <guestcommunicationPermissions
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    </GuestCommunicationDTO>
+                                    </guestCommunicationArray>
+                                    <guestDetailsArray>
+                                    <GuestDetailsDTO>
+                                    <addrLine1>eco space</addrLine1>
+                                    <altAddrLine1
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <addrLine2
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altAddrLine2/>
+                                    <addrLine3
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altAddrLine3
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <addrLine4
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altAddrLine4
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <city>bangalore</city>
+                                    <altCity
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <country>AR</country>
+                                    <altCountry
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <state>LP</state>
+                                    <altState
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <zip>60101</zip>
+                                    <altZip
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <firstName>test</firstName>
+                                    <altFirstName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <langCode>ENG</langCode>
+                                    <altLangCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <lastName>booking</lastName>
+                                    <altLastName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <middleInitial
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <prefix/>
+                                    <altPrefix/>
+                                    <nameTitle
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altNameTitle
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <suffix
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <addrType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altAddrType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <primary
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altPrimary
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <age
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <countryOfOrigin
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altCountryOfOrigin
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <companyName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <altCompanyName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    </GuestDetailsDTO>
+                                    </guestDetailsArray>
+                                    </guestInfo>
+                                    <accountArray/>
+                                    <affiliationArray/>
+                                    <arrivalInfoArray/>
+                                    <guestPrefArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <paymentMethodArray>
+                                    <PaymentMethodDTO>
+                                    <accountNumber>4111111111111111</accountNumber>
+                                    <accountType>VI</accountType>
+                                    <currencyCode>USD</currencyCode>
+                                    <expiryMonth>07</expiryMonth>
+                                    <expiryYear>23</expiryYear>
+                                    <paymentMethod>CC</paymentMethod>
+                                    <paymentSequence>0</paymentSequence>
+                                    <securityCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <accountFirstName>test</accountFirstName>
+                                    <accountLastName>booking</accountLastName>
+                                    <accountMiddleName
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <accountNamePrefix
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <accountNameSuffix
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <accountNameTitle
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    </PaymentMethodDTO>
+                                    </paymentMethodArray>
+                                    <productIdArray>
+                                    <prodSeq>0</prodSeq>
+                                    </productIdArray>
+                                    <remarkArray/>
+                                    <departureArray/>
+                                    <resGuestMiscAttributesArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <auxCommandArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                </ConfirmationDTO>
+                            </confirmationArray>
+                            <externalRefArray
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <productArray>
+                                <ProductDTO>
+                                    <cost>800.0</cost>
+                                    <costCurrencyCode>USD</costCurrencyCode>
+                                    <costUnit
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <startTime>2016-08-25T14:00:00.000Z</startTime>
+                                    <endTime>2016-08-29T12:00:00.000Z</endTime>
+                                    <guaranteeIndicator>G</guaranteeIndicator>
+                                    <guaranteeType>3</guaranteeType>
+                                    <guaranteeCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <guaranteeMethod
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <reservedProductId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <maxAllowedAdult
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <maxAllowedChild
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <maxAllowedRollwy
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <numOfAdultGst>2</numOfAdultGst>
+                                    <numOfAdultRollwy>0</numOfAdultRollwy>
+                                    <numOfChildGst>1</numOfChildGst>
+                                    <numOfChildRollwy>0</numOfChildRollwy>
+                                    <numOfCribs>0</numOfCribs>
+                                    <baseAdultQty
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <baseChildQty
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <packageType>N</packageType>
+                                    <prodBedType>K</prodBedType>
+                                    <prodClass
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <tpRoomTyp>C</tpRoomTyp>
+                                    <prodCd>SKN</prodCd>
+                                    <productId>679521</productId>
+                                    <propertyId>1314</propertyId>
+                                    <roomNumber
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <sequenceId>0</sequenceId>
+                                    <status
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <totalTax
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <avrgRate>200.0</avrgRate>
+                                    <upgradeBedType
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <upgradeProdClass
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <upgradeProdId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <upgradeProdCd
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <UpgradeTpRoomTyp
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <checkAvail>true</checkAvail>
+                                    <upgradePath>false</upgradePath>
+                                    <chargedProdId>0</chargedProdId>
+                                    <cancelDepositAmountArray/>
+                                    <cancelDepositRuleArray/>
+                                    <featureArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <feeArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <guestPaymentMapArray>
+                                    <ConfirmationPaymentMethodDTO>
+                                    <confSeqId>1</confSeqId>
+                                    <paymentSequence>0</paymentSequence>
+                                    </ConfirmationPaymentMethodDTO>
+                                    </guestPaymentMapArray>
+                                    <promotionArray/>
+                                    <rateArray>
+                                    <RateDTO>
+                                    <changeReasonCode/>
+                                    <childGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-08-25T14:00:00.000Z</startDate>
+                                    <endDate>2016-08-25T14:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <extraPersonNetRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <grossAmount>200.0</grossAmount>
+                                    <netAmount>200.0</netAmount>
+                                    <packageType>false</packageType>
+                                    <rateId>BARB</rateId>
+                                    <rateSequenceId>0</rateSequenceId>
+                                    <rollawayGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <floatRateId/>
+                                    <floatRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment>TLDI</corpMarketSegment>
+                                    <propMarketSegment>TCR</propMarketSegment>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    <rateOverride>false</rateOverride>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode/>
+                                    <childGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-08-26T14:00:00.000Z</startDate>
+                                    <endDate>2016-08-26T14:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <extraPersonNetRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <grossAmount>200.0</grossAmount>
+                                    <netAmount>200.0</netAmount>
+                                    <packageType>false</packageType>
+                                    <rateId>BARB</rateId>
+                                    <rateSequenceId>1</rateSequenceId>
+                                    <rollawayGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <floatRateId/>
+                                    <floatRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment>TLDI</corpMarketSegment>
+                                    <propMarketSegment>TCR</propMarketSegment>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    <rateOverride>false</rateOverride>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode/>
+                                    <childGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-08-27T14:00:00.000Z</startDate>
+                                    <endDate>2016-08-27T14:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <extraPersonNetRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <grossAmount>200.0</grossAmount>
+                                    <netAmount>200.0</netAmount>
+                                    <packageType>false</packageType>
+                                    <rateId>BARB</rateId>
+                                    <rateSequenceId>2</rateSequenceId>
+                                    <rollawayGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <floatRateId/>
+                                    <floatRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment>TLDI</corpMarketSegment>
+                                    <propMarketSegment>TCR</propMarketSegment>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    <rateOverride>false</rateOverride>
+                                    </RateDTO>
+                                    <RateDTO>
+                                    <changeReasonCode/>
+                                    <childGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <childNetRateAmount>0.0</childNetRateAmount>
+                                    <cribGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <cribNetRateAmount>0.0</cribNetRateAmount>
+                                    <currencyCode>USD</currencyCode>
+                                    <startDate>2016-08-28T14:00:00.000Z</startDate>
+                                    <endDate>2016-08-28T14:00:00.000Z</endDate>
+                                    <extraPersonGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <extraPersonNetRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <grossAmount>200.0</grossAmount>
+                                    <netAmount>200.0</netAmount>
+                                    <packageType>false</packageType>
+                                    <rateId>BARB</rateId>
+                                    <rateSequenceId>3</rateSequenceId>
+                                    <rollawayGrossRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <rollawayNetRateAmount>0.0</rollawayNetRateAmount>
+                                    <groupBlockId
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <floatRateId/>
+                                    <floatRateAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxAmount
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxCurrencyCode>USD</taxCurrencyCode>
+                                    <rateCategory>0</rateCategory>
+                                    <corpMarketSegment>TLDI</corpMarketSegment>
+                                    <propMarketSegment>TCR</propMarketSegment>
+                                    <rateSuppressIndicator>N</rateSuppressIndicator>
+                                    <rateOverride>false</rateOverride>
+                                    </RateDTO>
+                                    </rateArray>
+                                    <reservedPackageArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <specialServiceArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <taxArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <childAgeArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <resProductMiscAttributesArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <trackData
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <auxCommandArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <mobileDeviceArray
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                </ProductDTO>
+                            </productArray>
+                            <remarkArray/>
+                            <guestCommunicationArray
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <resBinderMiscAttributesArray>
+                                <ResBinderMiscAttributesDTO>
+                                    <resParamTypeCd>GRNSSC</resParamTypeCd>
+                                    <paramValue>false</paramValue>
+                                </ResBinderMiscAttributesDTO>
+                            </resBinderMiscAttributesArray>
+                            <affiliationArray
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <auxCommandArray
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <nonIPSActivityStatus
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        </BinderDTO>
+                    </binderArray>
+                    <guestCommunicationArray
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <resIdArray
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </itineraryDTO>
+            </createBookingRequest>
+        </ns4:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

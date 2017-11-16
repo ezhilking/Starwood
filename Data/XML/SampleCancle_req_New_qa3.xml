@@ -1,0 +1,79 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:cancelBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <cancelBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE73163f603f6155822c8e163da2b059</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=530275921</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=testtes14</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.42</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1466767805974</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>cancelBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1466767806012</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=40000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>CANCEL</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <isTooLateToCancel>0</isTooLateToCancel>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>830361</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>testtes14</userID>
+                </sourceInfo>
+                <identificationNumber>584575287</identificationNumber>
+                <level>B</level>
+                <cancelID xsi:nil="true"/>
+                <resStatus xsi:nil="true"/>
+                <externalRefNumber xsi:nil="true"/>
+                <reasonCode xsi:nil="true"/>
+                <countryCode>US</countryCode>
+                <emailCode/>
+                <contactMethod>PHONE</contactMethod>
+                <primContactInfo>98765</primContactInfo>
+                <primCnct>
+                    <lastName>pk</lastName>
+                    <middleName/>
+                    <nmPrefix/>
+                    <nmSuffix xsi:nil="true"/>
+                    <nmTitle xsi:nil="true"/>
+                    <firstName/>
+                </primCnct>
+            </cancelBookingRequest>
+        </p694:cancelBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

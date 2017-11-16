@@ -1,0 +1,34 @@
+package support;
+
+import java.util.List;
+
+import org.apache.log4j.Level;
+import org.openqa.selenium.WebElement;
+
+import functions.CRS;
+import functions.Environment;
+import functions.Reporter;
+
+public class SUP03_CRSBookingTrgger {
+	public static void main(String[] args) {
+		CRS SW= new CRS();
+		Environment.Tower = "CRS";
+		Reporter.StartTest();
+		SW.EstablishConnection("NDSQA3");
+		List<String> res_id = SW.GetColumnValues("select res_id from BOOKING2.RES where res_create_date = '01-DEC-19'", 1);
+		if(res_id.size()>0){
+			SW.LaunchBrowser(Environment.BOOKING);
+			SW.Click("//a[@href='/BookingWeb/retriggerMsgToPMS.jsp']");
+			List<WebElement> ResID = SW.GetAllVisibleElements("//*[@name='anyIds']");
+			for(int i=0;i<res_id.size();i++){
+				ResID.get(0).sendKeys(res_id.get(i)+",");
+			}
+			Reporter.Write("AllReservationNumber", "Entered all reservation numbers into booking application", "Entered all reservation numbers into booking application", "PASS");
+			SW.Click("//input[@name='reTrigger']");
+		}else{
+			Reporter.WriteLog(Level.FATAL, "SQL query which is executed doesn't return any value");
+		}
+		Reporter.StopTest();
+	}
+
+}

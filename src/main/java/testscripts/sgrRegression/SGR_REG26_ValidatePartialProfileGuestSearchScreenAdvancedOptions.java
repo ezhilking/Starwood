@@ -1,0 +1,126 @@
+package testscripts.sgrRegression;
+/** Purpose		: Validate the partial profile in Guest search screen_using SPG member_ and Email Address_Guest Profile look up section_in Advanced Options Screen 
+ * TestCase Name: Validate the partial profile in Guest search screen_using SPG member_ and Email Address_Guest Profile look up section_in Advanced Options Screen 
+ * Created By	: Sachin G
+ * Modified By	: 	
+ * Modified Date: 
+ * Reviewed By	: 
+ * Reviewed Date: 
+ */
+import org.apache.log4j.Level;
+import org.testng.SkipException;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SGR_REG26_ValidatePartialProfileGuestSearchScreenAdvancedOptions {
+	CRM SW = new CRM();
+	String SPG,Email, FirstName, LastName;
+
+	@BeforeClass
+	public void StartTest() {
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.SGRURL);
+	}
+	@Test(priority=1)
+	public void GetGuestDataFromInhouse(){
+		SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1406");  // Stage : 1965
+		SW.Click("SGRNavigation_Home_LK");
+		SW.Wait(5);
+		SW.SwitchToFrame("SGRHomepage_InHouse_FR");
+		SW.SwitchToFrame("SGRHomepage_InHouseSVOQI_FR");
+		String FirstGuestLink="(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]";
+		SW.WaitTillElementToBeClickable("(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]");
+		SW.WaitTillElementToBeClickable(FirstGuestLink);
+		if(!SW.ObjectExists(FirstGuestLink)){
+			Environment.loger.log(Level.ERROR, "No Guest present in Inhouse list for the selected property");
+			SW.FailCurrentTest("No Guest present in Inhouse list for the selected property");
+		}
+		
+		String FristNLastName=SW.GetText(FirstGuestLink);
+		SW.Click(FirstGuestLink);
+		FirstName=FristNLastName.substring(FristNLastName.indexOf(",")+1, FristNLastName.length()).trim();
+		LastName=FristNLastName.substring(0, FristNLastName.indexOf(",")).trim();
+		SW.WaitTillElementToBeClickable("SGRGuestProfile_CreateNewEvent_BT");
+		SPG = SW.GetText("SGRGuestProfile_SPGNumber_DT");
+		SPG=SPG.substring(0, SPG.indexOf(" "));
+		if(SPG=="Enroll"){
+			Environment.loger.log(Level.ERROR, "SPG Number is not present for the selected guest");
+			SPG=null;
+		}
+		Environment.loger.log(Level.INFO, "SPG Number name Selected is :"+SPG);
+		Environment.loger.log(Level.INFO, "First name Selected is :"+FirstName);
+		Environment.loger.log(Level.INFO, "Last name Selected is :"+LastName);
+		Email= SW.GetText("SGRGuestProfile_Email_DT").trim();
+		if(Email.isEmpty()){
+			Environment.loger.log(Level.ERROR, "Email is not present for the selected guest");
+		}
+		Environment.loger.log(Level.INFO, "Email Selected is :"+Email);
+		SW.Click("SGRNavigation_Home_LK");
+		SW.Click("SGRGuestProfile_AdvancedOptions_LK");
+		SW.WaitTillElementToBeClickable("SGRProfileSearch_LastName_EB");
+	}
+	@Test(priority=2, dependsOnMethods="GetGuestDataFromInhouse")
+	public void ValidateProfileSearchFnameLname(){
+		SW.EnterValue("SGRProfileSearch_LastName_EB", LastName);
+		SW.EnterValue("SGRProfileSearch_FirstName_EB", FirstName);
+		SW.Click("SGRProfileSearch_Search_BT");
+		if(SW.ObjectExists("//table[@id='guestSearchResultsTBL']//td/a[contains(.,'"+FirstName+"')]")){
+			Environment.loger.log(Level.INFO, "Guest record is displayed with First name and Last name search");
+			SW.GetScreenshot("GuestRecordForFNameLane");
+		}else{
+			Environment.loger.log(Level.ERROR, "Guest record is not displayed First name and Last name search");
+			SW.FailCurrentTest("Guest record is not displayed First name and Last name search");
+		}
+		
+	}
+	@Test(priority=3, dependsOnMethods="GetGuestDataFromInhouse")
+	public void ValidateProfileSearchSPG(){
+		SW.ClearValue("SGRProfileSearch_FirstName_EB");
+		SW.ClearValue("SGRProfileSearch_LastName_EB");
+		if(SPG.equals("Enroll")){
+			throw new SkipException("SPG Number is not present for the selected guest");
+		}
+		SW.EnterValue("SGRProfileSearch_SPG_EB", SPG);
+		SW.Click("SGRProfileSearch_Search_BT");
+		if(SW.ObjectExists("//table[@id='guestSearchResultsTBL']//td[text()='"+SPG+"']")){
+			Environment.loger.log(Level.INFO, "Guest record is displayed with SPG number ");
+			SW.GetScreenshot("GuestRecordForFNameLName");
+		}else{
+			Environment.loger.log(Level.ERROR, "Guest record is not displayed SPG Number");
+			SW.FailCurrentTest("Guest record is not displayed SPG Number");
+		}
+		
+	}
+	@Test(priority=4, dependsOnMethods="GetGuestDataFromInhouse")
+	public void ValidateProfileSearchEmail(){
+		SW.ClearValue("SGRProfileSearch_FirstName_EB");
+		SW.ClearValue("SGRProfileSearch_LastName_EB");
+		SW.ClearValue("SGRProfileSearch_SPG_EB");
+		
+		if(Email.isEmpty()){
+			throw new SkipException("Email ID is not present for the selected guest");
+		}
+		SW.EnterValue("SGRProfileSearch_Email_EB",Email);
+		SW.Click("SGRProfileSearch_Search_BT");
+		if(SW.ObjectExists("//table[@id='guestSearchResultsTBL']//td[7]/a[text()='"+Email+"']")){
+			Environment.loger.log(Level.INFO, "Guest record is displayed with Email ID Search ");
+			SW.GetScreenshot("GuestRecordForFNameLName");
+		}else{
+			Environment.loger.log(Level.ERROR, "Guest record is not displayed with Email ID search");
+			SW.FailCurrentTest("Guest record is not displayed with Email ID search");
+		}
+		
+	}
+
+	@AfterClass
+	public void EndTest(){
+		SW.Click("SGR_Logout_LK");
+		Reporter.StopTest();	
+	}
+}

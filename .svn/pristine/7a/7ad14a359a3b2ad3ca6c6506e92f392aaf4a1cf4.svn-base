@@ -1,0 +1,122 @@
+package testscripts.meetings;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CHANNELS;
+import functions.Environment;
+import functions.Reporter;
+import org.apache.commons.lang3.text.WordUtils; 
+
+
+public class MEETINGS_REG34_WeddingVenueDetailsJapanese {
+
+	CHANNELS SW = new CHANNELS();
+	String ceremonyVenue = SW.RandomString(5);
+	String ceremonyStartDate = "2020-12-30";
+	String ReceptionVenue = WordUtils.capitalize(SW.RandomString(5)); 
+	
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CHANNELS";
+		Reporter.StartTest();
+		Environment.SetBrowserToUse("FF");
+		SW.LaunchBrowser(Environment.MEETING);
+	}
+	
+		@Test(priority=1)	
+		public void WeddingVenueDetailsWebsite(){
+			SW.MeetingsLogin(SW.TestData("SGP_UserName"), SW.TestData("SGP_Password"));
+			SW.Click("MeetingsCorporate_CreateWebsite_BT");
+			SW.DropDown_SelectByValue("MeetingsCorporate_SelectPID_DD", SW.TestData("SGP_PID"));
+			SW.SelectRadioButton("MeetingsCorporate_radioButton_BN");
+			SW.EnterValue("MeetingsCorporate_GroupBlockID_EB", SW.TestData("SGP_GroupBlockID"));
+			SW.Click("MeetingsCorporate_FindGbid_BT");
+			SW.CheckBox("MeetingsCorporate_SelectgroupBlock_CB", "ON");
+			SW.Click("MeetingsCorporate_NextButton_BT");
+			SW.DropDown_SelectByIndex("MeetingsWedding_MeetingType_DD", 3);
+			SW.DropDown_SelectByValue("MeetingsWedding_PrimaryLanguage_DD", "en:English");
+			SW.CheckBox("MeetingsWedding_SecondaryLanguage_BT", "ON");
+			SW.Click("MeetingsCorporate_NextButton_BT");
+			SW.Click("MeetingsCorporate_NextButton_BT");
+			SW.EnterValue("MeetingsWedding_EventName_EB", ceremonyVenue);
+			SW.EnterValue("MeetingsWedding_EventVenue_EB", SW.RandomString(5));
+			SW.EnterValue("MeetingsWedding_EventDate_EB", ceremonyStartDate);
+			System.out.println("ReceptionVenue is =" + ReceptionVenue);
+			SW.EnterValue("MeetingsWedding_ReceptionVenue_EB", ReceptionVenue);
+			SW.EnterValue("MeetingsWedding_EventEmail_EB", SW.RandomString(5)+"@yahoo.com");
+			SW.TakeScreenshot("Wedding Venue Details");
+			SW.Click("MeetingsCorporate_NextButton_BT");
+			SW.CheckBox("MeetingsWedding_Attendee_BT", "ON");
+			SW.Click("MeetingsCorporate_NextButton_BT");
+			try{
+				int Dropdownsize = SW.DropDown_GetSize("MeetingsCorporate_AttendeeType_DD");
+				int Random = SW.RandomNumber(0, Dropdownsize-1);
+				SW.DropDown_SelectByIndex("MeetingsCorporate_AttendeeType_DD",(Random));
+			}catch(Exception e){
+				Environment.loger.log(Level.ERROR, "Exception occured in",e);
+			}
+
+			SW.Click("MeetingsWedding_AssignRoomType_BT");
+			SW.Click("MeetingsCorporate_NextButton_BT");	
+			SW.EnterValue("MeetingsWedding_PropName_EB", SW.RandomString(5));
+			SW.EnterValue("MeetingsWedding_PropEmail_EB", SW.RandomString(5)+"@yahoo.com");
+			SW.EnterValue("MeetingsWedding_SoldOutMessage_EB", "Sold out"+SW.RandomString(6));
+			SW.EnterValue("MeetingsWedding_SoldOutEmail_BT", SW.RandomString(5)+"@yahoo.com");
+			SW.ClickAndProceed("MeetingsCorporate_NextButton_BT");
+			SW.ClickAndProceed("MeetingsWedding_SaveWebsite_BT");	
+		    SW.TakeScreenshot("Publishing Wedding Website");
+		}
+	
+		//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+		@Test(priority=2,dependsOnMethods="WeddingVenueDetailsWebsite")
+
+		public void BookingPageValidateCeremonyReception(){
+			SW.Click("MeetingsCorporateCreate_ClickonLink_BT");
+			SW.WaitForWindowCount(2);
+			SW.SwitchToWindow(2);
+
+		
+		SW.MoveToObject("MeetingsBooking_ChangeLanguage_BT");		
+		SW.Click("MeetingsBooking_ChangeLanguage_BT1");
+		SW.TakeScreenshot("Wedding Japanese Venue Details");
+		
+		try{
+			String[] Ceremony = SW.GetText("MeetingsWedding_BookingLandingCeremony_DD").split("\n");
+			System.out.println(Ceremony[0]);
+			System.out.println(Ceremony[1]);
+
+			String[] CeremonyValue = Ceremony[1].split(",");
+			System.out.println(CeremonyValue[0]);
+			System.out.println(CeremonyValue[1]);
+			System.out.println(CeremonyValue[2]);
+			if(SW.CompareText("CeremonyBookingPageValidation_DD","式典:"+"\n"+"December 30"+"\n "+"2020"+"\n "+"12:00 AM", Ceremony[0]+"\n"+CeremonyValue[0].trim()+"\n "+CeremonyValue[1].trim()+"\n "+CeremonyValue[2].trim()))
+			{
+				Reporter.WriteLog(Level.ERROR, "PASS");
+			}
+			else
+			{
+				Reporter.WriteLog(Level.ERROR, "FAIL");
+		}
+			String[] Reception = SW.GetText("MeetingsWedding_BookingLandingReception_DD").split("\n");	
+			System.out.println(Reception[0]);
+			System.out.println(Reception[1]);
+			if(SW.CompareText("ReceptionBookingPageValidation_DD", "レセプション:"+"\n"+ReceptionVenue, Reception[0]+"\n"+Reception[1]))
+			{
+				Reporter.WriteLog(Level.ERROR, "PASS");
+			}	
+			else
+			{
+				Reporter.WriteLog(Level.ERROR, "FAIL");
+			}
+		}catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured in",e);
+		}
+	}
+		
+		//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+}
+

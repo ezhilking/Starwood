@@ -1,0 +1,5 @@
+30-Mar-2017 04:41:16:920 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\ORLocator.xlsx (The system cannot find the path specified)
+30-Mar-2017 04:41:16:926 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\TestData.xls (The system cannot find the path specified)
+30-Mar-2017 04:41:17:462 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+30-Mar-2017 04:41:17:463 PM Reporter   StartTest            48   INFO : Execution Started for 'SUP03_CRSBookingTrgger' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\30Mar2017-044116PM
+30-Mar-2017 04:42:27:595 PM DataBaseUtil EstablishConnection  112  ERROR: SQLException Exception occuredThe Network Adapter could not establish the connection

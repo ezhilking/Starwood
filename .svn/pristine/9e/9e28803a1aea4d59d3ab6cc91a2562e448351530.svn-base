@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.resCon.MUSTRUN01_ResconMpMaxSixtyAlphabetAndSpecialChar"/>
+      <class name="testscripts.resCon.MUSTRUN03_ResconEccaEmailAuthIndivdualFrench"/>
+      <class name="testscripts.resCon.MUSTRUN04_ResconEccaEmailValidationEccaAuthFor"/>
+      <class name="testscripts.resCon.MUSTRUN05_ResconEccaFirstLastNameWithSpecialChar"/> 
+      <class name="testscripts.resCon.MUSTRUN06_ResconMpCopyDataInsideExcelOutsideClipboard"/>
+      <class name="testscripts.resCon.MUSTRUN07_ResconEccaVerifyPropertyID"/>
+      <class name="testscripts.resCon.MUSTRUN08_01_ResconEccaGroupEnglishMailFaill"/>
+      <class name="testscripts.resCon.MUSTRUN08_02_ResconEccaIndividualEnglishMailFail"/>
+      <class name="testscripts.resCon.MUSTRUN09_ResconEcca_InviteEmailGroupEng_Admin"/>
+      <class name="testscripts.resCon.MUSTRUN10_ResconMpMaxRoomingLists2NewFiles"/>
+      <class name="testscripts.resCon.MUSTRUN11_ResconMpExcelSpreadSheetForGroupSharedResources"/>
+      <class name="testscripts.resCon.MUSTRUN12_ResconMpSelectFileEventForNewFile"/>
+      <class name="testscripts.resCon.MUSTRUN13_ResconMpChangesIn2ndRomingList"/>
+      <class name="testscripts.resCon.SMOKE01_ResconMpFlow"/>
+      <class name="testscripts.resCon.SMOKE02_ECCAGroupEnglish"/>
+      <class name="testscripts.resCon.SMOKE03_02_EccaIndividualFrench"/>
+      <class name="testscripts.resCon.SMOKE04_ResconMpFlowInCompleteData"/>
+      <class name="testscripts.resCon.SMOKE07_ResconMpFlowReprocess"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

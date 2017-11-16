@@ -1,0 +1,336 @@
+/* Purpose		:Channels-Application related reusable methods.
+ * Developed By	:Ezhilarasan.S
+ * Modified By	:
+ * Modified Date:
+ * Reviewed By	:
+ * Reviewed Date:
+ */
+package functions;
+
+import java.util.List;
+import java.util.Random;
+
+import javax.xml.soap.SOAPMessage;
+
+import org.apache.log4j.Level;
+import org.openqa.selenium.Keys;	
+import org.openqa.selenium.WebDriver;
+
+public class CHANNELS extends Utility{
+
+	public static final String SW = null;
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public WebDriver LaunchBrowser(String URL){
+		super.LaunchBrowser(URL);
+		if (GetBrowserInfo().startsWith("IE") && GetTitle().startsWith("Certificate Error")){
+			driver.get("javascript:document.getElementById('overridelink').click();");
+		}
+		return driver;
+	}
+
+	public void WaitForPageload(){
+		super.WaitForPageload();
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public boolean MeetingsLogin(String Username,String Password){
+		boolean IsPass = false;
+		EnterValue("MeetingsLogin_Username_EB", Username);
+		EnterValue("MeetingsLogin_Password_EB", Password);
+		Click("Meetings_LoginOrContinue_BN");
+		if(!ObjectExists("MeetingsLogin_Username_EB")){
+			Environment.loger.log(Level.INFO, "Successfully logged into Meetings!!!");
+			SwitchToFrame("Meetings_SwitchFrame_FR");
+			if(ObjectExists("Meetings_AgreePageClick_BT")){
+				Click("Meetings_AgreePageClick_BT");
+			}
+			IsPass = true;
+		}
+		return IsPass;
+
+	}
+
+	public boolean ViewOnlineMB(String NonSPGViewOnline_UserName,String NonSPGViewOnline_Password){
+		boolean IsPass = false;
+		EnterValue("ResconNonSPGViewOnlinepage_Username_EB", NonSPGViewOnline_UserName);
+		EnterValue("ResconNonSPGViewOnlinepage_Password_EB", NonSPGViewOnline_Password);
+		Click("ResconNonSPGViewOnlinepage_LoginButton_BT");
+		if(!ObjectExists("ResconNonSPGViewOnlinepage_Username_EB")){
+			Environment.loger.log(Level.INFO, "Successfully logged into Meetings!!!");
+			IsPass = true;
+		}
+		return IsPass;
+	}
+
+	public boolean ResConECCALogin(String ECCALoginID,String ECCAPassword){
+		boolean IsPass = false;
+		EnterValue("ResconECCA_LoginUsername_EB",ECCALoginID);
+		EnterValue("ResconECCA_LoginPassword_EB",ECCAPassword);
+		Click("ResconLoginPage_Button_BT");
+		if(!ObjectExists("ResconLoginPage_Username_EB")){
+			Environment.loger.log(Level.INFO, "Successfully logged into Meetings!!!");
+			IsPass = true;
+		}
+		return IsPass;
+	}
+	public boolean ResConLogin(String SGP_UserName,String SGP_Password){
+		boolean IsPass = false;
+		EnterValue("ResconLoginPage_Username_EB", SGP_UserName);
+		EnterValue("ResconLoginPage_Password_EB", SGP_Password);
+		Click("ResconLoginPage_Button_BT");
+		if(!ObjectExists("ResconLoginPage_Username_EB")){
+			Environment.loger.log(Level.INFO, "Successfully logged into Meetings!!!");
+			IsPass = true;
+		}
+		return IsPass;
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-Application Reusable methods*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	//Login into 	the Navigator QA4 environment
+	public  boolean NavigatorLogin(String Username, String Password){
+		try{
+			//Login into the application
+			SwitchToFrame("NavigatorLogin_Login_FR");
+			EnterValue("NavigatorLogin_Username_EB", Username);
+			EnterValue("NavigatorLogin_Password_EB", Password);
+			WaitTillElementToBeClickable("NavigatorLogin_Login_BT");
+			Click("NavigatorLogin_Login_BT");	
+			String ErrorMessage = "Login FAiled";
+			if(ObjectExists("NavigatorLogin_Username_EB")){
+				Environment.loger.log(Level.ERROR, "Login failed for Username: "+Username+"Password: "+Password+" Error: "+ErrorMessage);
+				throw new RuntimeException("Login failed for Username: "+Username+"Password: "+Password+" Error: "+ErrorMessage);
+			}else{
+				Environment.loger.log(Level.INFO, "Navigator Login Success");
+				WaitTillElementToBeClickable("NavigatorHomePage_Close_BT");
+				Click("NavigatorHomePage_Close_BT"); // Closing the pop-up
+				if(ObjectExists("NavigatorHomePage_Close_BT"))
+					Click("NavigatorHomePage_Close_BT"); 
+				return true;
+			}
+		}catch(Exception e){
+			Environment.loger.info("Exception in login functionality of Navigator - ",e);
+			return false;
+		}
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public static String CommGroup,CommGroupItem;
+	public void SelectCommunicationType(){
+		try{
+			NormalClick("NavigatorHomePage_CommuType_BT"); //Clicking on the select a type
+			EnterValue("NavigatorHomePage_CommType_EB", TestData("CommunicationType")+ Keys.ENTER); //entering the entire-value and pressing tab
+			/*	NormalClick("NavigatorHomePage_CallCountry_BT");
+			EnterValue("NavigatorHomePage_CallCountry_EB", "US"+Keys.ENTER);*/
+			/*EnterValue("NavigatorHomePage_CommType_EB", TestData("CommunicationType")); //entering the entire-value and pressing tab
+			String commXpath = "//strong[text()='"+ TestData("CommunicationType") + "']";
+			WaitTillElementToBeClickable("NavigatorHomePage_Search_BT");
+			NormalClick(commXpath);*/
+		}catch(Exception e){
+			Environment.loger.error("Exception in selecting the communication type- "+ e);
+		}
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public String GetRandomCommunications(List<String> StringList){
+		String [] arrayOfString =(String[]) StringList.toArray();
+		Random random = new Random();
+		int select = random.nextInt(arrayOfString.length); 
+		System.out.println("Random String selected: " + arrayOfString[select]);	
+		return arrayOfString[select];
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-Search Guest using SPG number*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public void SearchGuestBySPGnumber(String SPGNumber){
+		SelectCommunicationType();
+		WaitTillElementToBeClickable("NavigatorHomePage_SPGnum_EB");
+		Click("NavigatorHomePage_SPGnum_EB");
+		EnterValue("NavigatorHomePage_SPGnum_EB", SPGNumber + Keys.TAB);
+		WaitTillElementToBeClickable("NavigatorHomePage_Search_BT");
+		Click("NavigatorHomePage_Search_BT");	  
+	}
+
+	String firstName = RandomString(10);
+	String lastName = RandomString(6);
+	String city = "Bangalore";
+	String zipCode = "560103";
+	String phoneNumber = Integer.toString(RandomInteger(5))+ Integer.toString(RandomInteger(5));
+	String emailAddress = RandomString(10)+"@gmail.com" ;  //"starGuest.profile@gmail.com";
+	static String SPGNumberCreated;
+	String Country = "India";
+	String State = "Karnataka";
+	String CountryCode = "India(+91)";
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	//Create a SPG member
+	public void GuestEnrollment(){
+		//Login into the application	
+		NavigatorLogin(TestData("NavigatorUsername"),TestData("NavigatorPassword"));
+		SelectCommunicationType();//selecting communication type
+		//Click("NavigatorHomePage_SelectCommType_LK");
+		NormalClick("NavigatorHomePage_MainMenu_BT"); //CLicking on Main-menu
+		NormalClick("NavigatorHomePage_EnrollNewMember_LK"); //Clicking on Enroll new Member
+
+		//Filling Personal Information
+		DropDown_SelectByText("NavigatorEnrollPage_Salutation_DD", "Mr.");
+		NormalClick("NavigatorEnrollPage_FirstName_EB");
+		EnterValue("NavigatorEnrollPage_FirstName_EB", firstName);
+		NormalClick("NavigatorEnrollPage_LastName_EB");
+		EnterValue("NavigatorEnrollPage_LastName_EB", lastName);
+
+
+		//Filling Contact information
+		DropDown_SelectByText("NavigatorEnrollPage_AddressType_DD", "Work"); //Address type
+		EnterValue("NavigatorEnrollPage_AddressLine1_EB", "Ecospace"); //Address line1
+		EnterValue("NavigatorEnrollPage_zipcode_EB", zipCode); // Zip code
+		Wait(2);
+		DropDown_SelectByText("NavigatorEnrollPage_Country_DD", "India"); //Country
+		NormalClick("NavigatorEnrollPage_city_EB");
+		EnterValue("NavigatorEnrollPage_city_EB", city); //CIty
+		DropDown_SelectByText("NavigatorEnrollPage_State_DD", State); //State
+
+		//Filling Communications
+		DropDown_SelectByText("NavigatorEnrollPage_PhoneType_DD", "Work Phone"); //Phone Type
+		NormalClick("NavigatorEnrollPage_SelectCountry_BT"); //Clicking on the drop down list for Phone Country
+		EnterValue("NavigatorEnrollPage_PhoneCountry_EB", CountryCode +Keys.TAB); //Entering the code
+		Wait(2);
+		NormalClick("NavigatorEnrollPage_PhoneNumber_EB");
+		do{
+			if(phoneNumber.length()!=10){
+				phoneNumber = Integer.toString(RandomInteger(5))+ Integer.toString(RandomInteger(5));
+			}
+			Environment.loger.info("Random phone number created - "+ phoneNumber);
+			EnterValue("NavigatorEnrollPage_PhoneNumber_EB", phoneNumber+ Keys.TAB); //Entering the phone number
+		}while(GetAttributeValue("NavigatorEnrollPage_PhoneNumber_EB", "value").length()!=10); //Checking whether the phone num is of 10 digits
+		DropDown_SelectByText("NavigatorEnrollPage_EmailType_DD", "Work Email");
+		NormalClick("NavigatorEnrollPage_Email_EB");
+		EnterValue("NavigatorEnrollPage_Email_EB", emailAddress);
+
+		//Submitting the Enroll request
+		NormalClick("NavigatorEnrollPage_SubmitEnrollment_BT");
+
+		//Getting values from message box
+		WaitTillElementToBeClickable("NavigatorEnrollPage_MemberEnrollMessage_ST"); //Waiting for the message confirmation
+		//String EnrollMessage = GetText("NavigatorEnrollPage_MemberEnrollMessage_ST"); //Getting the enrollment message
+		SPGNumberCreated = GetText("NavigatorEnrollPage_SPGNum_DT").substring(13); // Getting the SPG number from the message box - SPG Number : 42008341111
+		NormalClick("NavigatorEnrollPage_MemberConfirmClose_BT"); // Closing the message box
+
+		//Writing the values into the Excel
+		WriteToTestData("SPGnum_created", SPGNumberCreated); //Writing the SPG number into the test data
+		WriteToTestData("SPGmember_FirstName", firstName); //Writing the First name into the test data
+		WriteToTestData("SPGmember_LastName", lastName); //Writing the last name
+		WriteToTestData("SPGmember_PhoneNum", phoneNumber); //Writing the phone number
+		WriteToTestData("SPGmember_EmailAddress", emailAddress);
+	}
+
+	//*-*-*-*-*-*-*-*-*-Reservation SOAP Request Modification*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public SOAPMessage ChangeTransactionIDInSoapRequest(SOAPMessage SoapRequest){
+		try{
+			String TransactionID=SoapUtility.getXMLElementText(SoapRequest,"p977:RequestContextBean", "p357:RequestTransactionID");
+			String NewTransactionID=TransactionID.substring(0, 25)+GetTimeStamp("yyyyMMddhhmmss");
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "p977:RequestContextBean", "p357:RequestTransactionID",NewTransactionID);
+
+			return SoapRequest;
+		}catch(Exception e){
+			Environment.loger.error("Exception in ChangeTransactionIDInSoapRequest -  ",e);
+			return null;
+		}
+
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public SOAPMessage ChangeArrivalDepartureDateINSoapRequest(SOAPMessage SoapRequest, String FutureArrivalDate,String FutureDepartureDate ){
+		try{
+			//Get Arrival Date from Request 
+			String actualArrivalDateStamp=SoapUtility.getXMLElementText(SoapRequest, "ConfirmationDTO", "arrivalDate");
+			String actualArrivalTimeStamp=actualArrivalDateStamp.substring(10, actualArrivalDateStamp.length());
+
+			//Get DepartureDate from Request
+			String actualDepartureDateStamp=SoapUtility.getXMLElementText(SoapRequest, "ConfirmationDTO", "departureDate");
+			String actualDepartureTimeStamp=actualDepartureDateStamp.substring(10, actualDepartureDateStamp.length());
+
+			String NewArrivalTimeStamp=FutureArrivalDate+actualArrivalTimeStamp;
+
+			String NewDepartureTimeStamp=FutureDepartureDate+actualDepartureTimeStamp;
+			//Set Arrival dates
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ConfirmationDTO", "arrivalDate", NewArrivalTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ConfirmationDTO", "startTime", NewArrivalTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ProductDTO", "startTime", NewArrivalTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "RateDTO", "startDate", NewArrivalTimeStamp);
+			//Set Departure dates
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ConfirmationDTO", "departureDate", NewDepartureTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ConfirmationDTO", "endTime", NewDepartureTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "ProductDTO", "endTime", NewDepartureTimeStamp);
+			SoapRequest=SoapUtility.setXMLElementText(SoapRequest, "RateDTO", "endDate", NewArrivalTimeStamp);
+
+			return SoapRequest;
+		}catch(Exception e){
+			Environment.loger.error("Exception occured -  ",e);
+			return null;
+		}
+
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public String getStringByValue(String actualString){
+		String startingText = "id=";
+		String endingTextORLength = "10";
+		try{
+			int endString;
+			int startingIndex = actualString.indexOf(startingText)+startingText.length();
+			try{
+				endString = Integer.parseInt(endingTextORLength)+startingIndex;
+			}catch(NumberFormatException e){
+				endString = actualString.indexOf(endingTextORLength);
+			}
+			String requiredString = actualString.substring((startingIndex), (endString)).trim();
+
+			return requiredString;
+		}catch(Exception e){
+			return null;
+		}
+	}
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	public void NavigatorLogOut(){
+		try{
+			NormalClick("NavigatorHomePage_MainMenu_BT"); //CLicking on Main-menu
+			NormalClick("NavigatorHomePage_LogOff_LK");
+			NormalClick("NavigatorHomePage_LogOff_BT");
+			Wait(5);
+			WaitTillElementToBeClickable("NavigatorLogin_Login_FR");
+			if(ObjectExists("NavigatorHomePage_MainMenu_BT")){
+				Environment.loger.log(Level.ERROR,"Unable to Logout");
+				throw new RuntimeException("Unable to Logout");
+			}else{
+				Environment.loger.log(Level.INFO, "Logout Successfully!");
+			}
+		}
+		catch(Exception e){
+			Environment.loger.log(Level.ERROR,"Exception occured",e);
+		}
+	}
+
+	public String GetPassword(String EventName){
+		NavigateTo(Environment.WEBOUTLOOK);
+		String MailID = TestData("email");
+		EnterValue("Outlook_EmailInput_EB", MailID);
+		Click("Outlook_Password_EB");
+		EnterValue("Outlook_MailUserName_EB", TestData("mailUsername"));
+		EnterValue("Outlook_MailPassword_BT",TestData("mailPassword"));
+		Click("Outlook_SignIn_BT");
+		Click("Outlook_SearchBox_BT");
+		EnterValue("Outlook_SearchBox_ET", EventName);
+		Click("Outlook_Email_Searched_BT");
+		String MailPassword  =  GetText("Outlook_ClientPassword_ST");
+		return MailPassword;
+	}
+
+
+
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+}
+
+
+
+
+

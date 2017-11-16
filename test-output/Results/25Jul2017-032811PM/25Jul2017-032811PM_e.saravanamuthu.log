@@ -1,0 +1,6 @@
+25-Jul-2017 03:28:14:406 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+25-Jul-2017 03:28:14:413 PM Reporter   StartTest            48   INFO : Execution Started for 'SGR_REG09_CreateNormalReservation_Validate_Comments' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\25Jul2017-032811PM
+25-Jul-2017 03:29:38:547 PM Utility    LaunchBrowser        83   ERROR: org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: '2.48.0', revision: 'b7b081a4f1289f17e8ecd38bc67e137c2a12e34a', time: '2015-10-07 09:50:14'
+System info: host: 'BDC7-L-1CVWXC2', ip: '10.132.140.178', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_92'
+Driver info: driver.version: RemoteWebDriver

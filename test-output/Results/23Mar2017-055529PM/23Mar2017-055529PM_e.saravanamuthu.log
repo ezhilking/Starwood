@@ -1,0 +1,6 @@
+23-Mar-2017 05:55:29:482 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\ORLocator.xlsx (The system cannot find the path specified)
+23-Mar-2017 05:55:29:487 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\TestData.xls (The system cannot find the path specified)
+23-Mar-2017 05:55:30:011 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+23-Mar-2017 05:55:30:013 PM Reporter   StartTest            48   INFO : Execution Started for 'crs' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\23Mar2017-055529PM
+23-Mar-2017 05:55:36:216 PM DataBaseUtil EstablishConnection  105  INFO : Connection successfully established with DB!
+23-Mar-2017 05:56:13:594 PM Reporter   WriteLog             128  INFO : URL-http://phxengqas72.nssd.star:9245/BookingWeb/

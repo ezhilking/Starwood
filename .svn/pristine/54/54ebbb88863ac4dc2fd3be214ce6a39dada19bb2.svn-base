@@ -1,0 +1,214 @@
+package testscripts.gcRegression;
+/** Purpose		: Validate_Charactor_Count_Offer Description
+ * TestCase Name: GC_REG83_ValidateCharacterCountOfferDescription
+ * Created By	: Sindhu SR
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	: 	
+ * Reviewed Date: 
+ */
+
+import java.util.List;
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class GC_REG83_ValidateCharactorCountOfferDescription {
+
+	CRM SW = new CRM();
+	String PropertyID="110";
+	String EmailPreHeader="AHBB MPBMP Offer";
+	String Username,Password,sMessage,sMessage1;
+	String ErrorMsg="[Error...Please Correct The Following:\nOffer Description Cannot Be Greater Than 500 Characters.]";
+	List<String> ErrorMsg1;
+
+	String TestCaseName= getClass().getName();
+
+	@BeforeClass
+	public void StarTest(){
+		Environment.Tower= "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.GCURL);
+		Username=SW.TestData("GCUsername");
+		Password=SW.TestData("GCPassword");
+	}
+
+	@Test
+	public void OfferDescCharacterCount(){
+		SW.GCLogin(Username, Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+		SW.Click("GCCreateOffer_LK");
+		SW.Click("GCCreatePropertyOffer_LK");
+		SW.Click("GCOfferCreation_SBSP_LK");
+		SW.EnterValue("GCCreatePropOffer_SBSP_EB",PropertyID);
+		SW.EnterValue("GCCreateResConf_InternalOfferName_EB","TestOfferDescCharLimit");
+		SW.EnterValue("GCCreateResConf_PresentationStartDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+		SW.EnterValue("GCCreateResConf_presentationEndDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+		SW.DropDown_SelectByText("GCCreateResConf_Language_DD","English (United States)");
+		SW.Click("GCAHBBMPMOffer_Continue_BN");
+
+		SW.WaitTillElementToBeClickable("GCAHBBMPMOffer_Continue_BN");
+		SW.Click("GCAHBBMPMOffer_Continue_BN");
+
+		SW.EnterValue("GCAHBBMPMOffer_EmailSetup_Subject_EB", "AHBB MBMP Email Subject Line");
+		SW.EnterValue("GCAHBBMPMOffer_EmailSetup_PreHeader_EB", "AHBB MBMP Email Pre-header");
+
+		SW.Click("GCAHBBMPMOffer_EmailSetup_CreateOffer_BT");
+
+		SW.SelectRadioButton("GCCreateResConf_offerObjctvType_RB");
+		SW.CheckBox("GCCreateResConf_InstayBenefits_CB","ON");
+		SW.DropDown_SelectByText("GCCreateResConf_GeoScope_DD","Global");
+		SW.Click("GCAHBBMPMOffer_Continue_BN");
+
+		SW.WaitTillElementToBeClickable("GCAHBBMPMOffer_MessageSetupOfferHeading_EB");
+		SW.Wait(10);
+		SW.RefreshPage();
+		SW.Wait(10);
+		SW.EnterValue("GCAHBBMPMOffer_MessageSetupOfferHeading_EB", "AHBB MBMP Primary Offer Headline");
+		SW.EnterValue("GCAHBBMPMOffer_MessageSetupOfferSubHeading_EB", "AHBB MBMP Primary Offer Sub Headline");
+		SW.Wait(5);
+		SW.SwitchToFrame("GCAHBBMPMOffer_MessageSetupOfferDescription_FR");
+		SW.Click("GCAHBBMPMOffer_MessageSetupOfferDescription_EB");
+		sMessage=SW.RandomString(510);
+		SW.EnterValue("GCAHBBMPMOffer_MessageSetupOfferDescription_EB",sMessage);
+		SW.Wait(10);
+		SW.SwitchToFrame("");
+		SW.WaitTillElementToBeClickable("GCAHBBMPMOffer_PropertyImageExpand_IC");
+		SW.NormalClick("GCAHBBMPMOffer_PropertyImageExpand_IC");
+		SW.Wait(10);
+		if(!SW.ObjectExists("GCAHBBMPMOffer_PropertyImageSelect_IC"))
+			SW.NormalClick("GCAHBBMPMOffer_PropertyImageExpand_IC");
+		SW.NormalClick("GCAHBBMPMOffer_PropertyImageSelect_IC");
+
+
+		SW.WaitTillElementToBeClickable("GCAHBBMPMOffer_MobilePropertyImageExpand_IC");
+		SW.NormalClick("GCAHBBMPMOffer_MobilePropertyImageExpand_IC");
+		SW.Wait(10);
+		if(!SW.ObjectExists("GCAHBBMPMOffer_MobilePropertyImageSelect_IC"))
+			SW.NormalClick("GCAHBBMPMOffer_MobilePropertyImageExpand_IC");
+		SW.NormalClick("GCAHBBMPMOffer_MobilePropertyImageSelect_IC");
+		SW.EnterValue("GCAHBBMPMOffer_SecondaryPageUrl_EB", "https://www.Google.com");
+		SW.EnterValue("GCCreateResConf_Offername_EB", "AHBBMBMPTEST");
+		SW.EnterValue("GCCreateResConf_Regionname_EB", "Test1234");
+		SW.Click("GCCreateOffer_SBSP_Continue_BT");
+
+		ErrorMsg1= SW.GetAllText("GC_OfferOverview_CommentsErrorMsg_DT");
+		SW.CompareText("Error message validation", ErrorMsg, ErrorMsg1.toString());
+		SW.Wait(5);
+		SW.SwitchToFrame("GCAHBBMPMOffer_MessageSetupOfferDescription_FR");
+		SW.Click("");
+		SW.ClearValue("GCAHBBMPMOffer_MessageSetupOfferDescription_EB"); 
+		SW.Click("GCAHBBMPMOffer_MessageSetupOfferDescription_EB");
+		sMessage1 = SW.RandomString(500);
+		SW.EnterValue("GCAHBBMPMOffer_MessageSetupOfferDescription_EB",sMessage1);
+		SW.Wait(5);
+		SW.SwitchToFrame("");
+		SW.Click("GCCreateOffer_SBSP_Continue_BT");
+		SW.WaitTillElementToBeClickable("GCAHBBMPMOffer_EmailSetup_CreateOffer_BT");
+		SW.Wait(5);
+		if(SW.ObjectExists("GCAHBBMPMOffer_EmailSetup_CreateOffer_BT")){
+			Environment.loger.log(Level.INFO, "Primary offer created successfully");
+			SW.Click("GCAHBBMPMOffer_Continue_BN");
+			if(SW.ObjectExists("GCCreateResConf_Rank_EB")){
+				Environment.loger.log(Level.INFO,"Landing Page naviagation SuccessFull");
+				SW.EnterValue("GCCreateResConf_Rank_EB","1");
+				SW.Click("GCCreateResConf_RankMove_BT");
+				SW.Click("GCCreateResConf_Continue_BN");
+
+				if(SW.ObjectExists("GCCreateResConf__Submit_BN")){
+					Environment.loger.log(Level.INFO,"Ranking naviagation SuccessFull");
+					SW.Click("GCCreateResConf__Submit_BN");
+					SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+					if (SW.ObjectExists("GCHome_GreenMsg_DT")){
+						String sSuccessMessage=SW.GetText("GCHome_GreenMsg_DT");
+						Environment.loger.log(Level.INFO,sSuccessMessage );
+						String sOfferId=sSuccessMessage.substring(sSuccessMessage.indexOf("Offer")+5, sSuccessMessage.indexOf("'s")).trim();
+						Environment.loger.log(Level.INFO,"Offer is created successfully");
+						SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+						SW.Click("GCOfferCreate_Submit_BN");
+						SW.WaitTillElementToBeClickable("GCOffer_ApproveIt_IC");
+						Environment.loger.log(Level.INFO,"Created OfferId "+sOfferId);
+						if(SW.ObjectExists("GCOffer_ApproveIt_IC")){
+							SW.Click("GCOffer_ApproveIt_IC");
+							SW.WaitTillElementToBeClickable("GCCreateOffer_SBSP_Approve_BT");
+							SW.ClickAndProceed("GCOffer_Approve_BT");
+							SW.HandleAlert(true);
+							SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+							Environment.loger.log(Level.INFO, "Offer Is Approved Successfully");
+							SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+							SW.Click("GCOfferCreate_Submit_BN");
+							SW.WaitTillElementToBeClickable("GCOffer_Generate_IC");
+							if(SW.ObjectExists("GCOffer_Generate_IC")){
+								SW.Click("GCOffer_Generate_IC");
+								SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+								Environment.loger.log(Level.INFO, "Offer Is Generated Successfully");
+								SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+								SW.Click("GCOfferCreate_Submit_BN");
+								SW.WaitTillElementToBeClickable("GCOffer_Publish_IC");
+								if(SW.ObjectExists("GCOffer_Publish_IC")){
+									SW.Click("GCOffer_Publish_IC");
+									SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+									Environment.loger.log(Level.INFO, "Offer Is Published Successfully");
+									SW.EnterValue("GCOffer_SearchCriteria_EB",sOfferId);
+									SW.Click("GCOfferCreate_Submit_BN");
+									SW.WaitTillElementToBeClickable("GCOffer_Activate_IC");
+									if(SW.ObjectExists("GCOffer_Activate_IC")){
+										SW.Click("GCOffer_Activate_IC");
+										SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+										Environment.loger.log(Level.INFO, "Offer Is Activated Successfully");
+										SW.WaitTillElementToBeClickable("GCNavigation_SignOut_LK");
+										if(SW.ObjectExists("GCNavigation_SignOut_LK")){
+											SW.Click("GCNavigation_SignOut_LK");
+										}
+									}else{
+										Environment.loger.log(Level.ERROR,"Offer Id Activation Failed");
+										Reporter.Write("Offer Activation", "Offer Id Activation should be successfull", "Offer Id Activation Failed", "Fail");
+									}
+								}else{
+									Environment.loger.log(Level.ERROR,"Offer Id Publish Failed");
+									Reporter.Write("Offer Publishing", "Offer Id Publishing should be successfull", "Offer Id Publishing Failed", "Fail");
+								}
+							}else{
+								Environment.loger.log(Level.ERROR,"Offer Id Generation Failed");
+								Reporter.Write("Offer Generation", "Offer Id Generation should be successfull", "Offer Id Generation Failed", "Fail");
+							}
+						}else{
+							Environment.loger.log(Level.ERROR,"Offer Id Approval Failed");
+							Reporter.Write("Offer Approval", "Offer Id Approval should be successfull", "Offer Id Approval Failed", "Fail");
+						}
+					}else{
+						Environment.loger.log(Level.ERROR,"Error Occured after Submit");
+						Reporter.Write("Offer Submission", "Offer submitted successfully", "Error Occured after Submit", "Fail");	
+					}
+
+				}	else{
+					Environment.loger.log(Level.ERROR,"Ranking Page naviagation Failed");
+					Reporter.Write("Validate navigation from Ranking page to Offer Overview page", "Ranking naviagation SuccessFull", "Ranking naviagation Failed", "Fail");
+				}
+			}else{
+				Environment.loger.log(Level.ERROR,"Landing Page naviagation Failed");
+				Reporter.Write("Validate navigation from Landing page to Ranking page", "Landing Page naviagation SuccessFull", "Landing Page naviagation Failed", "Fail");
+			}
+		}else{
+			Environment.loger.log(Level.ERROR, "Primary offer is not created successfully");
+			Reporter.Write("Validate primary offer", "Primary offer should be created successfully", "Primary offer is not created successfully", "Fail");
+		}
+
+	}
+
+	@AfterClass
+	public void EndTest(){
+
+		Reporter.StopTest();		
+	}		
+}
+
+

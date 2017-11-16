@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.Discovery.REG01_CreateSurveyValidateTemplateUsedAndQuestions"/>
+      <class name="testscripts.Discovery.REG02_ValidateTemplateArchival"/>
+      <class name="testscripts.Discovery.REG03_ValidateAddingFollowUpQuestionForBasicLikertScale"/>
+      <class name="testscripts.Discovery.REG04_ValidateAdvancedLikertSaleQuestionTypeInTheQuestionScreen"/>
+      <class name="testscripts.Discovery.REG05_ValidateGeneratingSurveyResponseReport"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

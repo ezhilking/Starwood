@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>WeChat Test</title>
+</head>
+<body>
+	<div style="display: block; border-style: solid; border-width: 1.5px; border-color: blue; padding: 25px;">
+		<h1>Test WeChat Login (POST)</h1>
+		<form action="https://m.web4.qa.starwoodhotels.com/preferredguest/account/singleSignOn.html?SWAQ=4MTG&localeCode=en_US&language=en_US" name="loginform" id="loginform" method="POST">
+			<br>
+			<table width="80%">
+				<tr>
+					<td align="right" nowrap>Vendor ID:</td>
+					<td><input type="text" name="vid" value="Verystar" size="100px" /></td>
+				</tr>
+				<tr>
+					<td align="right" nowrap>WeChat Open Id:</td>
+					<td><input type="text" name="vendorUserId" value="rjpeTxnpuAz6UvxE1oOI75xY" size="100px" /></td>
+				</tr>
+				<tr>
+					<td align="right" nowrap>VeryStar State:</td>
+					<td><input type="text" name="vendorReference" value="Verystar State" size="100px" /></td>
+				</tr>
+                <input type="hidden" name="SWAQ" value="4MTG"/>
+			</table>
+			<br />
+			<div class="actionButton">
+				<button type="submit">Continue</button>
+			</div>
+		</form>
+	</div>
+
+    <br>
+    <br>
+    <br>
+    <div style="display: block; border-style: solid; border-width: 1.5px; border-color: blue; padding: 25px;">
+        <h1>Test WeChat Enroll (GET)</h1>
+        Change the values as required. Default values for WeChat from VeryStar<br>For
+        testing mobile, set the user agent as mobile or use emulator to
+        simulate particular mobile device.
+        <form action="https://m.web4.qa.starwoodhotels.com/preferredguest/account/enroll/index.html?vid=Verystar&vendorUserId=rjpeTxnpuAz6UvxE1oOI75xY&vendorReference=VerystarState&SWAQ=4MTG&ES=SM_WCHT_Enroll&language=en_US&localeCode=en_US" name="enrollForm" id="enrollForm" method="GET">
+            <br>
+            <table width="80%">
+                <tr>
+                    <td align="right" nowrap>Vendor ID:</td>
+                    <td><input type="text" name="vid" value="Verystar" size="100px" /></td>
+                </tr>
+               <tr>
+                    <td align="right" nowrap>WeChat Open Id:</td>
+                    <td><input type="text" name="vendorUserId" value="rjpeTxnpuAz6UvxE1oOI75xY" size="100px" /></td>
+                </tr>
+                <tr>
+                    <td align="right" nowrap>VeryStar State:</td>
+                    <td><input type="text" name="vendorReference" value="Verystar State" size="100px" /></td>
+                </tr>
+                <input type="hidden" name="language" value="en_US"/>
+                <input type="hidden" name="localeCode" value="en_US"/>
+                <input type="hidden" name="SWAQ" value="4MTG"/>
+                <input type="hidden" name="ES" value="SM_WCHT_Enroll"/>
+            </table>
+            <br />
+            <div class="actionButton">
+                <button type="submit">Continue</button>
+            </div>
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div style="display: block; border-style: solid; border-width: 1.5px; border-color: blue; padding: 25px;">
+		    <h1>Test WeChat Links</h1>
+            <a href="https://m.web4.qa.starwoodhotels.com/corporate/search/results/detail.html?SWAQ=4MTG&ES=SM_WCHT_Search&localeCode=en_US&language=en_US&latitude=&longitude=&location&complexSearchField=Shanghai%2C+China&arrivalDate=11%2F18%2F2016&departureDate=11%2F19%2F2016&numberOfRooms=1&numberOfAdults=1&numberOfChildren=0&rp=">Find a Hotel & Resort / Destination search results </a> (search parameters vary, see document)<br/>
+            <a href="https://m.web4.qa.starwoodhotels.com/preferredguest/reservations/index.html?SWAQ=4MTG&ES=SM_WCHT_Find&localeCode=en_US&language=en_US">Find a Stay</a><br/>
+            <a href="https://m.web4.qa.starwoodhotels.com/preferredguest/my_account/index.html?SWAQ=4MTG&localeCode=en_US&language=en_US">My Account</a> (login required)<br/>
+            <a href="https://m.web4.qa.starwoodhotels.com/preferredguest/account/starpoints/index.html?txnType=ALL&SWAQ=4MTG&localeCode=en_US&language=en_US">My Starpoints Activity</a> (login required)<br/>
+            <a href="https://m.web4.qa.starwoodhotels.com/preferredguest/account/reservations/index.html?SWAQ=4MTG&localeCode=en_US&language=en_US">My Stays</a> (login required)<br/>
+    </div>
+</body>
+</html>

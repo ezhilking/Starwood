@@ -1,0 +1,6 @@
+10-Apr-2017 02:42:06:462 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+10-Apr-2017 02:42:06:467 PM Reporter   StartTest            48   INFO : Execution Started for 'SGR_REG08_ValidatingLeadDetailExplorerPreview' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\10Apr2017-024204PM
+10-Apr-2017 02:42:31:757 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+10-Apr-2017 02:42:33:475 PM Reporter   WriteLog             134  DEBUG: PASS>>>
+10-Apr-2017 02:42:33:475 PM Reporter   WriteLog             134  ERROR: fail>>>
+10-Apr-2017 02:42:35:775 PM Reporter   StopTest             59   INFO : Execution Ended for 'SGR_REG08_ValidatingLeadDetailExplorerPreview' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\10Apr2017-024204PM

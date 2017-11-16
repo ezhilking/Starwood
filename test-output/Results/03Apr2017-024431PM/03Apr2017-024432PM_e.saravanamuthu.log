@@ -1,0 +1,6 @@
+03-Apr-2017 02:44:32:157 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\ORLocator.xlsx (The system cannot find the path specified)
+03-Apr-2017 02:44:32:168 PM ExcelUtil  <init>               62   ERROR: Unable to read the Excel from Shared folder. S:\Automation_Selenium\Data\TestData.xls (The system cannot find the path specified)
+03-Apr-2017 02:44:32:688 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+03-Apr-2017 02:44:32:690 PM Reporter   StartTest            48   INFO : Execution Started for 'sampleRDBStuff' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\03Apr2017-024431PM
+03-Apr-2017 02:44:33:033 PM DataBaseUtil <init>               147  INFO : Connection successfully established with DB-mysql
+03-Apr-2017 02:44:38:523 PM DataBaseUtil <init>               147  INFO : Connection successfully established with DB-oracle

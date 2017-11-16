@@ -1,0 +1,154 @@
+package testscripts.gcRegression;
+/** Purpose		: Validate_Delete_BroadcastMessage
+ * TestCase Name: GC_REG87_ValidateDeleteBroadcastMessage
+ * Created By	: Sindhu SR
+ * Modified By	: 
+ * Modified Date: 
+ * Reviewed By	: 	
+ * Reviewed Date: 
+ */
+import java.util.Calendar;
+import java.util.List;
+
+import javax.xml.soap.SOAPMessage;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.w3c.dom.NodeList;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+import functions.SoapUtility;
+public class GC_REG87_ValidateDeleteBroadcastMessage {
+	CRM SW = new CRM();
+	String Username, Password;
+	String Headline, Message, BrodacastHeadline, BroadcastMessage;
+	List<String> sSuccessMessage;
+	
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower= "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.GCURL);
+		Username=SW.TestData("GCUsername");
+		Password=SW.TestData("GCPassword");
+	}
+	
+	@Test(priority=1)
+	public void EditBroadcastMessage(){
+		SW.GCLogin(Username, Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+		SW.Click("GCHome_Admin_LK");
+		SW.Click("GCHome_BroadCastMsg_LK");
+		SW.Click("GC_ActiveInternalCommunication_LK");
+		if(!SW.ObjectExists("GC_ExistingBroadcastMessage_WT")){
+			SW.Click("GC_CreateCommunicationMessage_LK");
+			SW.Wait(10);
+			SW.EnterValue("GC_BroadcastMessageStartDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+			SW.EnterValue("GC_BroadcastMessageEndDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+			Headline=SW.RandomString(20);
+			SW.EnterValue("GC_EditBroadCastMessageSubject_EB", Headline);
+			Environment.loger.log(Level.INFO,  "Entered 'Broadcast and Internal Communications' Headline");
+			SW.SwitchToFrame("GC_SwitchToMessageFrame_FR");
+			SW.Click("GC_EditBroadCastMessage_EB");
+			Message=SW.RandomString(20);
+			SW.EnterValue("GC_EditBroadCastMessage_EB", Message);
+			Environment.loger.log(Level.INFO,  "Entered 'Broadcast and Internal Communications' Message");
+			SW.SwitchToFrame("");
+			SW.Click("GC_PublishCommunicationMessage_BT");
+			SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");
+			if (SW.ObjectExists("GCHome_GreenMsg_DT"))
+			{
+			sSuccessMessage=SW.GetAllText("GCHome_GreenMsg_DT");
+			Environment.loger.log(Level.INFO,sSuccessMessage.toString());
+			SW.DoubleClick("GC_MyAccount_IC");
+			SW.Click("GC_MyAccount_SignOut_LK");
+			}else{
+			Environment.loger.log(Level.ERROR, "'Broadcast and Internal Communications' Message has not been Published");
+			}
+		}else{
+			Environment.loger.log(Level.INFO,"'Broadcast and Internal Communications' message exists");
+			SW.Click("GC_EditBroadCastMessage_IC");
+			SW.Wait(10);
+			SW.EnterValue("GC_BroadcastMessageStartDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+			SW.EnterValue("GC_BroadcastMessageEndDate_EB",  SW.GetTimeStamp("MM/dd/yyyy"));
+			Headline=SW.RandomString(20);
+			SW.EnterValue("GC_EditBroadCastMessageSubject_EB", Headline);
+			Environment.loger.log(Level.INFO,  "Updated 'Broadcast and Internal Communications' Headline");
+			SW.SwitchToFrame("GC_SwitchToMessageFrame_FR");
+			SW.Click("GC_EditBroadCastMessage_EB");
+			Message=SW.RandomString(20);
+			SW.EnterValue("GC_EditBroadCastMessage_EB", Message);
+			SW.SwitchToFrame("");
+			SW.Click("GC_BroadCastMessageUpdate_BT");
+			Environment.loger.log(Level.INFO,  "Updated 'Broadcast and Internal Communications' Message");
+			SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");;
+			if (SW.ObjectExists("GCHome_GreenMsg_DT"))
+				{
+				sSuccessMessage=SW.GetAllText("GCHome_GreenMsg_DT");
+				Environment.loger.log(Level.INFO,sSuccessMessage.toString());
+				SW.DoubleClick("GC_MyAccount_IC");
+				SW.Click("GC_MyAccount_SignOut_LK");
+				}else{
+					Environment.loger.log(Level.ERROR, "'Broadcast and Internal Communications' Message has not been updated");
+				}
+			}
+	}
+			
+
+	@Test(priority=2, dependsOnMethods="EditBroadcastMessage")
+	public void UpdatedCommunicationMessageValidation(){
+		SW.GCLogin(Username, Password);
+		if(SW.ObjectExists("GCHome_Message_DT")){
+			BrodacastHeadline=SW.GetText("GC_CaptureCommunicationHeadline_ST");
+			SW.CompareTextContained("Validate Communication Message Headline", Headline, BrodacastHeadline );
+			Environment.loger.log(Level.INFO, " Updated communication 'Headline' is displayed in the broadcast window");
+			BroadcastMessage=SW.GetText("GC_CaptureCommunicationMessage_ST");
+			SW.CompareTextContained("Validate Communication Message", Message, BroadcastMessage);
+			Environment.loger.log(Level.INFO, "Updated communication 'Message' is displayed in the broadcast window");
+			SW.Wait(5);
+			SW.NormalClick("GCHome_Message_Close_IC");
+		}
+	}
+	
+	
+	@Test(priority=3, dependsOnMethods="UpdatedCommunicationMessageValidation")
+	public void DeleteBroadCommunicationMessage(){
+		SW.Click("GCHome_Admin_LK");
+		SW.Click("GCHome_BroadCastMsg_LK");
+		SW.Click("GC_ActiveInternalCommunication_LK");
+		SW.Click("GC_DeleteBroadcastmessage_IC");
+		SW.ClickAndProceed("GC_DeleteBroadcastmessage_IC");
+		SW.HandleAlert(true);
+		SW.WaitTillElementToBeClickable("GCHome_GreenMsg_DT");;
+		if (SW.ObjectExists("GCHome_GreenMsg_DT")){
+			sSuccessMessage=SW.GetAllText("GCHome_GreenMsg_DT");
+			Environment.loger.log(Level.INFO,sSuccessMessage.toString());
+			SW.DoubleClick("GC_MyAccount_IC");
+			SW.Click("GC_MyAccount_SignOut_LK");
+			}else{
+				Environment.loger.log(Level.ERROR, "'Broadcast and Internal Communications' Message has not been deleted");
+			}
+	}
+	
+	@Test(priority=4, dependsOnMethods="DeleteBroadCommunicationMessage")
+	public void ValidateNoBroadcatMessageAfterDeletion(){
+		SW.GCLogin(Username, Password);
+		if(!SW.ObjectExists("GCHome_Message_DT")){
+			Environment.loger.log(Level.INFO,  "'Broadcast and Internal Communications' window has not been populated as the message is deleted successfully");
+		}else{
+			Environment.loger.log(Level.ERROR, "'Broadcast and Internal Communications' window is populated as the message has not been deleted");
+			Reporter.Write("Validate Deleted Broadcast Message", "'Broadcast and Internal Communications' Message has been deleted", "'Broadcast and Internal Communications' Message has not been deleted", "Fail");
+		}
+	}
+	
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();
+	}
+	}

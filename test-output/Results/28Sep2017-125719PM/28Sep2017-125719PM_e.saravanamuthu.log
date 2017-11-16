@@ -1,0 +1,5 @@
+28-Sep-2017 12:57:21:973 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+28-Sep-2017 12:57:21:987 PM Reporter   StartTest            48   INFO : Execution Started for 'db' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\28Sep2017-125719PM
+28-Sep-2017 12:57:27:561 PM DataBaseUtil EstablishConnection  106  INFO : Connection successfully established with DB!
+28-Sep-2017 12:58:00:374 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00936: missing expression
+

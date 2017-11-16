@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.CEM_AMB.CEM_REG_05_ValidateMyGuestsTabGuestTaggedDifferentAmbassador"/>
+      <class name="testscripts.CEM_AMB.CEM_REG_06_ValidateRequestSectionCSVfromCSF"/>
+      <class name="testscripts.CEM_AMB.CEM_REG_02_ValidateCreateAncillaryForGuet"/>
+      <class name="testscripts.CEM_AMB.CEM_REG_08_ValidateAddingAndRemovingEmailNotificationDistributionFromSGR"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

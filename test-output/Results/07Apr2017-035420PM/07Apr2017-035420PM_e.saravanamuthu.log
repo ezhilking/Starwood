@@ -1,0 +1,43 @@
+07-Apr-2017 03:54:23:973 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+07-Apr-2017 03:54:23:978 PM Reporter   StartTest            48   INFO : Execution Started for 'sampleRDBStuff' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\07Apr2017-035420PM
+07-Apr-2017 03:54:26:699 PM DataBaseUtil <init>               153  ERROR: SQLException Exception occuredThe Network Adapter could not establish the connection
+07-Apr-2017 03:54:26:979 PM DataBaseUtil <init>               147  INFO : Connection successfully established with DB-mysql
+07-Apr-2017 03:54:27:036 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.ITIN(ITIN_ID,CHNL_CD,USERID,ITIN_NAME,CREATE_TMSTMP,PRIM_CONTACT_LAST_NAME,PRIM_CONTACT_MTHD_CD,STS_CD,PRIM_CONTACT_INFO,PRIM_CONTACT_MI,PRIM_CONTACT_SUFFIX,PRIM_CONTACT_FIRST_NAME,PRIM_CONTACT_PREFIX,PRIM_CONTACT_TITLE,EXTL_ENTITY_ID,STARLINK_ITIN_ID,PRC_STATE_TYPE_ID) values ('I10155767975','','','Test','','sesi','PHONE','1','932947','','','','','','','','1')
+07-Apr-2017 03:54:27:037 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:112)
+07-Apr-2017 03:54:27:040 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.gst_conf (GST_CONF_ID,TOT_COST_BEFORE_DISC_AMT,GST_RES_START_TIME,GST_RES_END_TIME,CREATE_TMSTMP,TOT_TAX_AMT,TOT_COST_AFTER_DISC_AMT,GST_CONF_STS_CD,COST_CUR_CD,TAX_CUR_CD,GST_ARV_DATE,GST_DPRT_DATE,PSPT_NUM,PSPT_NUM_ID,PSPT_NUM_HASH,ENC_TYPE,PSPT_CNTRY_CD,RES_ID,GST_MASTER_PROF_ID,GST_CONF_CHNL_CD,CREATE_USER_ID,MATCH_MERGE_REASON_TEXT,PROP_ID,PRIM_LANG_CD,GST_CONF_CREATE_LOC_ID,PMS_GST_PROFILE_ID,PRIM_GST_CONF_IND,VIP_IND,CUST_PROF_ID,GST_NAME_PREFIX_CD,GST_NAME_TITLE_CD,GST_FIRST_NAME,GST_MI_NAME,GST_LAST_NAME,GST_NAME_SUFFIX_CD,PRIM_GST_IND,ADDR_TYPE_CD,ADDR_LN_1_TEXT,ADDR_LN_2_TEXT,ADDR_LN_3_TEXT,ADDR_LN_4_TEXT,CITY_NAME,STATE_PROV_CD,ZIP_POSTAL_CD,CNTRY_CD,GST_ORIGIN_CNTRY_CD,GST_AGE,SPG_MBRSHP_ID,VIP_LEVEL_CD,SEND_CONF_CD,GST_COMPANY_NAME,ALT_GST_COMPANY_NAME,ALT_GST_NAME_TITLE_CD,ALT_GST_NAME_PREFIX_CD,ALT_GST_FIRST_NAME,ALT_GST_MI_NAME,ALT_GST_LAST_NAME,ALT_GST_NAME_SUFFIX_CD,ALT_ADDR_TYPE_CD,ALT_ADDR_LN_1_TEXT,ALT_ADDR_LN_2_TEXT,ALT_ADDR_LN_3_TEXT,ALT_ADDR_LN_4_TEXT,ALT_CITY_NAME,ALT_STATE_PROV_CD,ALT_ZIP_POSTAL_CD,ALT_CNTRY_NAME,ALT_GST_ORIGIN_CNTRY_NAME,GST_DTL_LOCALE_CD,LOYALTY_SEGMENT_DESC) values ('C10205982202','null','13-MAR-17','14-MAR-17','','null','null','1','USD','GBP','13-MAR-17','14-MAR-17','','299923840','','D','','112272437','43281588983','','','','1005','ENG','','','1','','','','','sesi','','sesi','','','','1 starpoint','','','','stamford','CT','06905','US','','','','','','','','','','','','','','','','','','','','','','','','','')
+07-Apr-2017 03:54:27:041 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:113)
+07-Apr-2017 03:54:27:042 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.res (RES_ID,CREATE_USER_ID,PRIM_CONTACT_LAST_NAME,PRIM_CONTACT_MTHD_CD,PRIM_CONTACT_PREFIX_CD,RES_STS_CD,RES_CREATE_DATE,PRIM_CONTACT_FIRST_NAME,PRIM_CONTACT_MI_NAME,PRIM_CONTACT_TITLE_CD,ITIN_ID,RES_CHNL_CD,PRIM_CONTACT_SUFFIX_CD,PROP_ID,PRIM_CONTACT_INFO,CREATE_RES_LOC_ID,PROP_VIEW_CD,CALL_SRCE_CNTRY_CD,EMAIL_CD,PRIM_CHOICE_IND,LAST_MOD_LOC_ID,RES_ARV_DATE,RES_DPRT_DATE,ORIG_PROP_ID,RES_CREATE_MBRSHP_ID,RES_CREATE_MRKTG_PGM,PRC_STATE_TYPE_ID,LOCALE_CD,CHNL_RATE_CD,TLT_CANCEL_IND,TOUR_CD) values ('112272437','sesi','sesi','PHONE','','1','24-FEB-17','','','','I10166976986','','','1005','2898983484','830366','','US','','P','','13-MAR-17','14-MAR-17','1005','','','1','','','0','')
+07-Apr-2017 03:54:27:042 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:114)
+07-Apr-2017 03:54:27:043 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.resrvd_product (RESRVD_PRODUCT_ID,RES_ID,PRDCT_BKNG_START_TMSTMP,PRDCT_CD,PRDCT_BKNG_END_TMSTMP,PRDCT_COST_AMT,COST_UNIT_CD,STS_CD,TOT_TAX_AMT,COST_CUR_CD,TAX_CUR_CD,PKG_TYPE_CD,RATE_DSPL_IND,PRODUCT_ID,GUAR_IND,GUAR_TYPE_ID,PROP_ID,ADLT_GST_QTY,CHLD_GST_QTY,UPGRADE_PRODUCT_ID,UPGRADE_PRODUCT_CD,ADLT_ROLWY_QTY,CHLD_ROLWY_QTY,CRIB_QTY,PRDCT_BED_TYPE_CD,UPGRADE_PRDCT_BED_TYPE_CD,ROOM_NUM,AVG_PRDCT_RATE,UPGRADE_TP_ROOM_TYPE_CD,THIRD_PARTY_RM_TYPE_CD,GUAR_MTHD_CD,ADLT_GST_BASE_QTY,CHLD_GST_BASE_QTY,CHARG_PRDCT_ID,CHARG_PRDCT_CD,CHARG_TP_RM_TYPE_CD,CHARG_PRDCT_BED_TYPE_CD,RM_TYPE_DSPL_IND,EXTENDED_BLOCK_RSN_CD,EXTENDED_BLOCK_RSN_DESC,RM_CARD_TRACK_3_DATA) values ('52579701','112272437','13-MAR-17','AD','14-MAR-17','null','','0','null','','','N','','22747','D','4','1005','1','0','null','','0','0','0','2D','','','null','','V','','null','null','22747','AD','V','2D','RTA','','','')
+07-Apr-2017 03:54:27:043 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:115)
+07-Apr-2017 03:54:27:044 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.resrvd_product_rate (RESRVD_PRODUCT_ID,RATE_ID,RATE_START_DATE,RATE_END_DATE,RATE_NET_AMT,RATE_GROSS_AMT,CUR_CD,RATE_CHNG_REASON_CD,EXTRA_PRSN_NET_RATE_AMT,CHLD_NET_RATE_AMT,CHLD_GROSS_RATE_AMT,CRIB_NET_RATE_AMT,CRIB_GROSS_RATE_AMT,ROLLWY_NET_RATE_AMT,ROLLWY_GROSS_RATE_AMT,EXTRA_PRSN_GROSS_RATE_AMT,RATE_SEQ_ID,GROUP_BLOCK,FLOAT_RATE_ID,TAX_AMT,TAX_CUR_CDE,CORP_MKTSG_CD,PROP_MKTSG_CD,RATE_CATG_ID,RATE_DSPL_IND,PKG_RP_IND,FLOAT_RATE_AMT,RATE_OVRD_IND,EXTL_DRR_PROMO_CD) values ('52417030','RACK','13-MAR-17','13-MAR-17','400','400','USD','','null','null','null','null','null','null','null','null','0','0','','null','','','','0','N','0','null','','')
+07-Apr-2017 03:54:27:044 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:116)
+07-Apr-2017 03:54:27:045 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into BOOKING2.gstconf_resrvdprdct_xref (RESRVD_PRDCT_ID,GST_CONF_ID,CREATE_DATE,CREATE_USER_ID,UPDATE_DATE,UPDATE_USER_ID) values ('52417030','C10200311154','24-FEB-17','','','')
+07-Apr-2017 03:54:27:045 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:117)
+07-Apr-2017 03:54:27:048 PM sampleRDBStuff ConstructQuery       170  INFO : Insert into booking2.access_log (ACCESS_ID,ITIN_ID,CHNL_CD,USER_ID,ACCESS_TYPE_CD,RES_ID,ACCESS_TMSTMP,GST_CONF_ID,LOC_ID,SESSION_ID,VDN_NUM,RES_DPRT_DATE,BKNG_PRC_TMSTMP,TXN_ID,USER_AGENT) values ('615025939','I10169798586','CCC','testtes14','CREATE','777776391','21-FEB-17','','830366','','null','14-MAR-17','24-FEB-17','005056TV301KF8578WU18027106229895142554','')
+07-Apr-2017 03:54:27:048 PM DataBaseUtil AddBatch             246  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.AddBatch(DataBaseUtil.java:242)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:118)
+07-Apr-2017 03:54:27:049 PM sampleRDBStuff main                 152  ERROR: Exception occured
+java.lang.NullPointerException
+	at functions.DataBaseUtil.ExecuteBatch(DataBaseUtil.java:252)
+	at tbd.sampleRDBStuff.main(sampleRDBStuff.java:120)

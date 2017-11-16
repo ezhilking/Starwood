@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.SimplifiGRC.MUSTRUN01_Corporate_Contract_check_in"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN02_Property_Contract_Check_IN"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN03_ABCD_DocumentUpload"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN04_eLocker_Matter"/>      
+      <class name="testscripts.SimplifiGRC.MUSTRUN05_eLockerMatterSearch"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN06_DocumentSearch"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN08_eLockerContent_MultipleCheckinZip"/>
+      <class name="testscripts.SimplifiGRC.MUSTRUN09_eLockerContent_MultipleFileSepCheckin"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

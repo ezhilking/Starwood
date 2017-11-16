@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="228836" started-at="2017-05-19T10:07:38Z" finished-at="2017-05-19T10:11:27Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="228836" started-at="2017-05-19T10:07:38Z" finished-at="2017-05-19T10:11:27Z">
+      <class name="support.SUP02_EnvironmentCheck5App">
+        <test-method status="PASS" signature="StartTest()[pri:0, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="StartTest" is-config="true" duration-ms="40977" started-at="2017-05-19T15:37:38Z" finished-at="2017-05-19T15:38:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="SGR()[pri:1, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="SGR" duration-ms="47653" started-at="2017-05-19T15:38:19Z" finished-at="2017-05-19T15:39:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SGR -->
+        <test-method status="PASS" signature="CEM()[pri:2, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="CEM" duration-ms="71909" started-at="2017-05-19T15:39:07Z" finished-at="2017-05-19T15:40:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CEM -->
+        <test-method status="PASS" signature="GC()[pri:3, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="GC" duration-ms="33486" started-at="2017-05-19T15:40:19Z" finished-at="2017-05-19T15:40:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GC -->
+        <test-method status="PASS" signature="Discovery()[pri:4, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="Discovery" duration-ms="32318" started-at="2017-05-19T15:40:52Z" finished-at="2017-05-19T15:41:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Discovery -->
+        <test-method status="PASS" signature="EndTest()[pri:0, instance:support.SUP02_EnvironmentCheck5App@72d818d1]" name="EndTest" is-config="true" duration-ms="2461" started-at="2017-05-19T15:41:24Z" finished-at="2017-05-19T15:41:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EndTest -->
+      </class> <!-- support.SUP02_EnvironmentCheck5App -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

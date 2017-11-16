@@ -1,0 +1,154 @@
+/* Purpose		:  
+ * TestCase Name:  
+ * Created By	:  Muneeb
+ * Modified By	:
+ * Modified Date:
+ * Reviewed By	: 
+ * Reviewed Date: 
+ */
+
+
+package testscripts.vpRegression;
+
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRS;
+import functions.Environment;
+import functions.Reporter;
+
+public class MUSTRUN09_GalaxyBar {
+	
+	CRS SW = new CRS();
+	String RatePlanID = SW.RandomString(2).toUpperCase()+SW.RandomInteger(2);
+
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower = "CRS";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.VPURL);
+	}
+	
+	@Test(priority=0)
+    public void TransientRatePlan(){
+    SW.SwitchToFrame("VP_MainFrame_FR");
+	SW.EnterValue("VP_Username_EB", SW.TestData("VP_Username"));
+	SW.EnterValue("VP_Password_EB", SW.TestData("VP_Password"));
+	SW.VPClick("VP_Submit_BT");
+	SW.EnterValue("VP_PropertyID_EB",SW.TestData("NonRosPropID_Galaxy"));
+	SW.Click("VP_PropClick_BT");
+	SW.NormalClick("VP_MenuSearch_EB");
+	SW.EnterValue("VP_MenuSearch_EB","Property Rates Configuration");
+	SW.Click("VPProp_RateConfig_BT");
+	SW.SwitchToFrame("VP_MainFrame_FR");
+	//SW.GetText(Identifier)
+	//SW.EnterValue("VPProp_PropRateDiffertials_FR", 1215);
+	
+	String BarRatePlan= SW.GetAttributeValue("VPProp_Bar&DayRatePlan_DT", "value");
+	Reporter.WriteLog(Level.INFO,BarRatePlan);
+	//	SW.VPClick("VPProp_Bar&DayRatePlanSave_TB");
+	SW.SwitchToFrame("");
+
+	SW.Click("VP_MenuSearch_EB");	
+	SW.EnterValue("VP_MenuSearch_EB","Rate Plan List");
+	//		SW.Click("VPProp_RatePlanlist_ST");
+	SW.Click("VPProp_RatePlanlist_ST");
+
+
+	SW.SwitchToFrame("VP_MainFrame_FR");
+	SW.EnterValue("VpRates_RateListForm_EB",BarRatePlan);
+	SW.VPClick("VpRates_Search_BT");
+	//		SW.Click("VpRates_RateListForm_EB");
+	SW.CheckBox("VpRates_RatePlanId_CB", "ON");
+	//	SW.VPClick("VpRates_Modify_BT");
+	if(SW.IsEnabled("VpRates_Modify_BT", "Enabled")){
+		Reporter.Write("VpRates_Modify_BT", "Modify button should be enabled", "Modify button is enabled", "PASS");
+	}else{
+		Reporter.Write("VpRates_Modify_BT", "Modify button should be enabled", "Modify button is enabled", "FAIL");
+		SW.DropDown_SelectByValue("VpRates_SelectStatus_DD", "Work In Progress");
+		SW.VPClick("VpRates_Search_BT");
+		//	for (int i = 0; i < 2; i++) {
+
+
+		SW.CheckBox("VpRates_RatePlanId_CB", "ON");
+
+		SW.NormalClick("VpRates_Delete_BT");
+		//			
+	//	SW.IsAlertPresent();//dlt
+
+		SW.HandleAlert(true);
+		//			}
+
+		String ErrorMsgInfo= SW.GetText("VPRates_RPinfoMsg_DT");
+		Reporter.WriteLog(Level.INFO,ErrorMsgInfo);
+		SW.DropDown_SelectByValue("VpRates_SelectStatus_DD", "Active");
+		SW.VPClick("VpRates_Search_BT");
+		//	SW.VPClick("VpRates_RatePlanId_RB");
+		//	SW.VPClick("VpRates_Modify_BT");	
+	}
+	SW.CheckBox("VpRates_RatePlanId_CB", "ON");
+	SW.VPClick("VpRates_Modify_BT");
+	//	SW.IsAlertPresent();
+	//	SW.HandleAlert(true);
+	SW.EnterValue("Vprates_ChangeDiscription_EB", "Successfull");
+	SW.VPClick("VPRates_RPHeaderSave_BT");//
+	SW.VPClick("VPRates_RPAssociationSave_BT");
+	SW.CheckBoxIsSelected("VpRates_ActiveAll_CB");
+
+
+	//			SW.CheckBox("VpRates_ActiveAll_CB","ON");//
+	//			SW.CheckBox("VpRates_ActiveAll_CB","ON");
+	//			SW.HandleAlert(true);
+	//			
+	//			//	SW.VPVPClick("VpRates_SuperiorRoomClass_CB"); //
+	//			SW.CheckBox("Vprates_Active1_CB", "ON");
+	//			SW.HandleAlert(true);
+	//			
+	//			SW.DropDown_SelectByValue("Vprates_ProductDiff1_DD", "Fixed");
+	//			SW.EnterValue("VPRates_SinglePersonRateR1_EB", 300);
+	//			SW.EnterValue("VPRates_DoublePersonRateR1_EB", 300);
+	//			SW.EnterValue("VPRates_ExtraPersonRateR1_EB", 300);
+	//			SW.EnterValue("VPRates_ExtraChildRateR1_EB", 300);///block this line for Galaxay
+
+	//
+	//			SW.CheckBox("Vprates_Active2_CB", "ON");
+	//			SW.HandleAlert(true);
+	SW.DropDown_SelectByValue("Vprates_ProductDiff2_DD", "Fixed");
+	SW.EnterValue("VPRates_SinglePersonRateR2_EB", 300);
+	SW.EnterValue("VPRates_DoublePersonRateR2_EB", 300);
+	SW.EnterValue("VPRates_ExtraPersonRateR2_EB", 300);
+	SW.EnterValue("VPRates_ExtraChildRateR2_EB", 300);//block this line for Galaxay
+
+	//			SW.CheckBox("Vprates_Active3_CB", "ON");
+	//			SW.HandleAlert(true);
+	//			SW.DropDown_SelectByValue("Vprates_ProductDiff3_DD", "Fixed");
+	//			SW.EnterValue("VPRates_SinglePersonRateR3_EB", 300);
+	//			SW.EnterValue("VPRates_DoublePersonRateR3_EB", 300);
+	//			SW.EnterValue("VPRates_ExtraPersonRateR3_EB", 300);
+	//			SW.EnterValue("VPRates_ExtraChildRateR3_EB", 300);//block this line for Galaxay
+
+
+	SW.VPClick("VPRates_DynamicSeasonSave_BT");//todo Webpage Dialog and validate and print msg
+	String ErrorMsgInfo1= SW.GetText("VPRates_ErrMsg_DT");
+	Reporter.WriteLog(Level.INFO,ErrorMsgInfo1);
+
+	SW.VPClick("VPRates_SellSequanceSave_BT");
+	SW.VPClick("VPRates_Save&Publish_BT");
+	String ErrMsg= SW.GetText("VPRates_CriticalErrMsg_BT");
+
+	Reporter.WriteLog(Level.INFO,ErrMsg);
+
+}
+
+
+
+@AfterClass
+public void EndTest(){
+	Reporter.StopTest();		
+}
+
+
+
+}

@@ -1,0 +1,95 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <InternationalizationContext soapenv:mustUnderstand="0" xmlns="http://www.ibm.com/webservices/InternationalizationContext">
+            <Locales xmlns="">
+                <Locale>
+                    <LanguageCode>en</LanguageCode>
+                </Locale>
+            </Locales>
+            <TimeZoneId xmlns="">GMT</TimeZoneId>
+        </InternationalizationContext>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:splitResGuest xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <splitResGuestRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE7316318031815b0f11abd3b8a0dd54</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=CCC</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en-US</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">CALL_SESSION=531139837</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">AGENT_ID=testtes14</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>CCC</p357:Name>
+                        <p357:Type>Channel</p357:Type>
+                        <p357:ServiceInterface>com.starwood.saratoga.RequestContextBeanHelper</p357:ServiceInterface>
+                        <p357:Operation>getContext</p357:Operation>
+                        <p357:IPAddress>10.132.170.42</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1490606468051</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>splitResGuest</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1490606468054</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.1</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=40000</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service>SPLITRESGST</service>
+                <isIPSRequest xsi:nil="true"/>
+                <isStarlinkRequest xsi:nil="true"/>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>830361</locationID>
+                    <channelID>CCC</channelID>
+                    <userID>testtes14</userID>
+                </sourceInfo>
+                <binderNumber>574618637</binderNumber>
+                <confirmationIdArray>
+                    <confirmationId>C10032791561</confirmationId>
+                </confirmationIdArray>
+                <rsnCde>test</rsnCde>
+                <itinHeaderDTO>
+                    <contactMethod xsi:nil="true"/>
+                    <itineraryId>I10034913657</itineraryId>
+                    <name>Move Test</name>
+                    <primaryContactInfo xsi:nil="true"/>
+                    <primCnct>
+                        <lastName>sr</lastName>
+                        <middleName/>
+                        <nmPrefix xsi:nil="true"/>
+                        <nmSuffix xsi:nil="true"/>
+                        <nmTitle xsi:nil="true"/>
+                        <firstName>sindhu</firstName>
+                    </primCnct>
+                    <status xsi:nil="true"/>
+                    <destBinder>
+                        <binderId xsi:nil="true"/>
+                        <contactMethod>Phone</contactMethod>
+                        <primCnct>
+                            <lastName>sr</lastName>
+                            <middleName/>
+                            <nmPrefix xsi:nil="true"/>
+                            <nmSuffix xsi:nil="true"/>
+                            <nmTitle xsi:nil="true"/>
+                            <firstName>sindhu</firstName>
+                        </primCnct>
+                        <primContactInfo>4646464646</primContactInfo>
+                        <countryCode xsi:nil="true"/>
+                        <emailCode xsi:nil="true"/>
+                    </destBinder>
+                </itinHeaderDTO>
+            </splitResGuestRequest>
+        </p694:splitResGuest>
+    </soapenv:Body>
+</soapenv:Envelope>

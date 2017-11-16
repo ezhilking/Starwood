@@ -1,0 +1,8 @@
+19-May-2017 03:44:16:836 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+19-May-2017 03:44:16:840 PM Reporter   StartTest            48   INFO : Execution Started for 'SUP02_EnvironmentCheck5App' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\19May2017-034413PM
+19-May-2017 03:45:05:134 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+19-May-2017 03:45:25:436 PM Reporter   WriteLog             134  ERROR: FAIL>BOBApplicationLoginPage>Discovery login page should work as expected>Discovery login page not working as expected
+19-May-2017 03:46:27:452 PM Utility    GetObject            296  ERROR: Object not found: 'BopLogin_UserName_EB'
+19-May-2017 03:46:27:455 PM Utility    EnterValue           656  ERROR: Unable to enter the value in BopLogin_UserName_EB
+19-May-2017 03:47:29:339 PM Utility    GetObject            296  ERROR: Object not found: 'BopLogin_Password_EB'
+19-May-2017 03:47:29:341 PM Utility    EnterValue           656  ERROR: Unable to enter the value in BopLogin_Password_EB

@@ -1,0 +1,108 @@
+package testscripts.sgrRegression;
+/** Purpose		: Validate Guest Follow Up functionality
+ * TestCase Name: Validate Guest Follow Up functionality
+ * Created By	: Sachin G
+ * Modified By	: 	
+ * Modified Date: 
+ * Reviewed By	: 
+ * Reviewed Date: 
+ */
+import org.apache.log4j.Level;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+
+public class SGR_REG28_Validate_GuestFollowUp_functionality {
+	CRM SW = new CRM();
+	String EventNotes,EventID;
+	
+	@BeforeClass
+	public void StartTest() {
+		Environment.Tower = "CRM";
+		Reporter.StartTest();
+		SW.LaunchBrowser(Environment.SGRURL);
+	}
+	@Test(priority=1)
+	public void CreateEventForGuestSaveNCopy(){
+		SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1967"); //	Stage	:	1965
+		SW.Click("SGRNavigation_Home_LK");
+		SW.Wait(15);
+		SW.SwitchToFrame("SGRHomepage_Arriving_FR");
+		SW.SwitchToFrame("SGRHomepage_ArrivingSVOQI_FR");
+		String FirstGuestLink="(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]";
+		SW.WaitTillElementToBeClickable("(//div[@class='t']//a[contains(@href, 'resConf' and not (contains(@href,'gmp=0')))])[1]");
+		if(!SW.ObjectExists(FirstGuestLink)){
+			Environment.loger.log(Level.ERROR, "No Guest present in Inhouse list for the selected property");
+			SW.FailCurrentTest("No Guest present in Inhouse list for the selected property");
+		}
+		SW.Click(FirstGuestLink);
+		SW.WaitTillElementToBeClickable("SGRGuestProfile_CreateNewEvent_BT");
+		SW.Click("SGRGuestProfile_CreateNewEvent_BT");
+		//SW.EnterValue("SGRCreateEvent_Where_EB", "TBD");
+		SW.EnterValue("SGRAddEvent_What_EB", "hotel");
+		SW.Wait(5);
+		SW.Click("//ul[@class='ac_results']//li[1]/span");
+		SW.DropDown_SelectByText("SGRCreateEvent_Department_DD", "ACCOUNTING");
+		SW.DropDown_SelectByIndex("SGRCreateEvent_AssignTo_DD", 1);
+		SW.CheckBox("SGRCreateEvent_GuestFollowup_CB", "ON");
+		SW.CheckBox("SGRCreateEvent_Escalation_CB", "OFF");
+		EventNotes=SW.RandomString(10);
+		SW.EnterValue("SGRCreateEvent_Noted_EB", EventNotes);
+		SW.Click("SGRCreateEvent_Save_BN");
+		EventID=SW.GetEventNumbeID();
+		Environment.loger.log(Level.INFO, "Created Event ID - "+EventID);
+	}
+	@Test(priority=2, dependsOnMethods="CreateEventForGuestSaveNCopy")
+	public void ConcludeEvent(){
+		SW.Click("SGRNavigation_Events_LK");
+		SW.CheckBox("//td[text()='"+EventID+"']//..//input", "ON");
+		SW.Click("SGREvents_CompleteEvent_LK");
+		SW.Wait(8);
+		SW.Click("SGREvents_CompletedCanceled_LK");
+		if(SW.ObjectExists("//td[text()='"+EventID+"']")){
+			Environment.loger.log(Level.INFO, "Event is present in the Completed list");
+			SW.GetScreenshot("EventPresence");
+		}else{
+			Environment.loger.log(Level.INFO, "Event is not present in the completed list");
+			SW.FailCurrentTest("Event is not present in the concluded list");
+		}
+	}
+	@Test(priority=3, dependsOnMethods="CreateEventForGuestSaveNCopy")
+	public void ValidateEventInFollowUp(){
+		SW.Click("SGRCreateEvent_FollowupTab_LK");
+		SW.Wait(8);
+		if(SW.ObjectExists("//td[text()='"+EventID+"']")){
+			Environment.loger.log(Level.INFO, "Event is present in the Follow-Up list");
+			SW.GetScreenshot("EventPresenceInFollowUp");
+			SW.Click("//td[text()='"+EventID+"']/..//td[last()]");//click on flag
+			SW.Wait(15);
+			
+		}else{
+			Environment.loger.log(Level.INFO, "Event is not present in the Follow-Up list");
+			SW.FailCurrentTest("Event is not present in the Follow-Up list");
+		}
+	}
+	@Test(priority=4, dependsOnMethods="ValidateEventInFollowUp")
+	public void ValidateInConcludeEvent(){
+		
+		SW.Click("SGREvents_CompletedCanceled_LK");
+		SW.Wait(8);
+		if(SW.ObjectExists("//td[text()='"+EventID+"']/..//td[last()]/img[@id='tick']")){
+			Environment.loger.log(Level.INFO, "Event is present in the concluded list and tick mark is present for the event");
+			SW.GetScreenshot("EventPresenceAfterFollowUp");
+		}else{
+			Environment.loger.log(Level.INFO, "Event is not present in the concluded list after follow-up completion");
+			SW.FailCurrentTest("Event is not present in the concluded list after follow-up completion");
+		}
+	}
+	
+	@AfterClass
+	public void EndTest(){
+		SW.Click("SGR_Logout_LK");
+		Reporter.StopTest();	
+	}
+}

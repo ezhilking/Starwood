@@ -1,0 +1,148 @@
+package testscripts.sgrRegression;
+/* Purpose		: Validate the Amb request Status
+ * TestCase Name: Validate the Amb request Status_HD_HN_Your 24 Approved_HC Y24
+ * Created By	: Sachin G 
+ * Modified By	:
+ * Modified Date:
+ * Reviewed By	:
+ * Reviewed Date:
+ */
+import java.util.Calendar;
+
+import org.apache.log4j.Level;
+import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions.CRM;
+import functions.Environment;
+import functions.Reporter;
+import functions.Utility;
+
+public class SGR_REG10_Validate_AMBRequestStatus_Approved {
+
+	CRM SW = new CRM();
+	@BeforeClass
+	public void StartTest(){
+		Environment.Tower="CRM";
+		Reporter.StartTest();
+		Environment.SetBrowserToUse("GC");
+		SW.LaunchBrowser(Environment.BWURL+"1965");
+	}
+
+	String ReservationNo, AmbFileID;
+	@Test(priority=0)
+	public void createNewReservationForAMBGuest(){
+		try{
+			SW.NormalClick("BWLogin_SignInUserNameSPG_BN");
+			SW.EnterValue("BWLogin_Username_SPGNo_EB", SW.TestData("BWAMBUsername"));
+			SW.EnterValue("BWLogin_Password_EB", SW.TestData("BWAMBPassword"));
+			SW.Click("BWLogin_SignIn_BN");
+			// If Security Question appears give answer otherwise proceed 
+			if(SW.ObjectExists("BWSecurityQuestions_VerbelPassword_TB")){
+
+				String SecurityQn=SW.GetText("//form[@id='securityQForm']//div[@class='outerContainer']//p");
+				String lastWord = SecurityQn.substring(SecurityQn.lastIndexOf(" ")+1, SecurityQn.indexOf("?"));
+				SW.EnterValue("BWSecurityQuestions_VerbelPassword_TB", lastWord.trim());
+				SW.Click("BWSecurityQuestions_Submit_BN");
+			}
+			if(!SW.ObjectExists("BWLogin_CheckInDate_TB")){
+
+				Environment.loger.log(Level.ERROR, "login is not successfull");
+				SW.FailCurrentTest("login is not successfull");
+
+			}
+			// Enter the Check-in and Check-out time
+			SW.EnterValue("BWLogin_CheckInDate_TB", SW.DateAddDays(SW.GetTimeStamp("MM/dd/yyyy"),"MM/dd/yyyy",5,Calendar.DATE));
+			SW.EnterValue("BWLogin_CheckOutDate_TB", SW.DateAddDays(SW.GetTimeStamp("MM/dd/yyyy"),"MM/dd/yyyy",6,Calendar.DATE)+Keys.TAB);
+			SW.Click("BWLogin_BookNow_BN");
+			if(SW.ObjectExists("BWGeneral_FeedBackPopUp_BN"))
+				SW.Click("BWGeneral_FeedBackPopUp_BN");
+			SW.Click("BWSelectRoom_SelectYourRate_BN");
+			SW.NormalClick("BWSelectRoom_Reserve_BN");
+
+			//Select Arrival time 
+			SW.DropDown_SelectByIndex("BWReviewReservation_ReqArrivalTime_DD", 1);
+			String SelectedArrivalTime = SW.DropDown_GetSelectedText("BWReviewReservation_ReqArrivalTime_DD");
+			Environment.loger.log(Level.INFO, "Selected Arrival Time : "+SelectedArrivalTime);
+
+			//Select Departure time 
+			SW.DropDown_SelectByIndex("BWReviewReservation_ReqDepartureTime_DD", 1);
+			String SelectedDepartureTime = SW.DropDown_GetSelectedText("BWReviewReservation_ReqDepartureTime_DD");
+			Environment.loger.log(Level.INFO, "Selected Departure Time : "+SelectedDepartureTime);
+			SW.NormalClick("BWReviewReservation_CompleteYourReservation_BN");
+			if(SW.ObjectExists("BWGeneral_FeedBackPopUp_BN"))
+				SW.Click("BWGeneral_FeedBackPopUp_BN");
+			SW.WaitTillElementToBeClickable("BWReservationConfirmation_ConfirmationNum_DT");
+			ReservationNo = SW.GetText("BWReservationConfirmation_ConfirmationNum_DT");
+			Environment.loger.log(Level.INFO, "Reservation Confirmation Number is :"+ReservationNo);
+			SW.Click("BWGeneral_UserName_ST");
+			SW.Click("BWGeneral_SignOut_LK");
+			Utility.CloseBrowser();
+		}catch(Exception e){
+			Environment.loger.log(Level.ERROR, "Exception occured: "+e.getMessage());
+			SW.FailCurrentTest("Exception occured!!");
+		}
+	}
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-SGR Validation*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	@Test(priority=1, dependsOnMethods="createNewReservationForAMBGuest")
+	public void validateAMBStatusInSGR(){
+	
+		Environment.SetBrowserToUse("IE");
+		SW.LaunchBrowser(Environment.SGRURL);//TODO
+		SW.SGRLogin(SW.TestData("SGRUsername"), SW.TestData("SGRPassword"), "1965");
+		SW.Click("SGRNavigation_AMBRequests_LK");
+		SW.Click("SGRAmbRequest_SearchAmbRequests_LK");
+		SW.EnterValue("SGRAmbRequest_ResconfNumber_TB", ReservationNo);
+		SW.Click("SGRAmbRequest_Search_BN");
+		// Check for the AMB file in SGR By Reservation number 
+		if(!SW.ObjectExists("SGRAmbRequest_RecordView_LK")){
+			Environment.loger.log(Level.ERROR, "AMB Request for given reservation is not available");
+			SW.FailCurrentTest("AMB Request for given reservation is not available");
+		}else{
+			AmbFileID = SW.GetText("SGRAmbRequest_FileID_DT");
+			SW.Click("SGRAmbRequest_RecordView_LK");
+			SW.WaitTillElementToBeClickable("SGRAmbFileDetails_Edit_LK");
+			SW.Click("SGRAmbFileDetails_Edit_LK");
+			SW.DropDown_SelectByValue("SGRAMBEditRequest_Status_DD", "HC");
+			SW.DropDown_SelectByValue("SGRAMBEditRequest_Department_DD", "2");
+			SW.DropDown_SelectByIndex("SGRAMBEditRequest_AssignTo_DD", 1);
+			SW.Click("SGRAMBEditRequest_SaveChanges_LK");
+			String AMBFileStatusINSGR = SW.GetText("SGRAmbFileDetails_FileStatus_DT");
+			//Validate the AMB file status in SGR
+			SW.CompareText("CompareTheFileStatusInSGR", "HC", AMBFileStatusINSGR);
+			SW.Click("SGR_Logout_LK");
+		}
+	}
+
+	//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- CEM Validation*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+	@Test(priority=2, dependsOnMethods="validateAMBStatusInSGR")
+	public void validateAMBStatusInCEM(){
+		SW.NavigateTo(Environment.CEMURL);
+		SW.EnterValue("CEMLogin_Username_BN", SW.TestData("CEMUsername") );
+		SW.EnterValue("CEMLogin_Password_BN",  SW.TestData("CEMPassword"));
+		SW.Click("CEMLogin_Submit_BN");
+		SW.ClickAndProceed("CEMNavigation_Home_LK");
+		if(SW.ObjectExists("CEMHome_AcknowledgeMsg_LK"))
+			SW.ClickAndProceed("CEMHome_AcknowledgeMsg_LK");
+		SW.HandleAlert(true);
+		SW.EnterValue("CEMHome_EnterCSFID_TB", AmbFileID);
+		SW.Click("CEMHome_GO_BN");
+		String AMBFileStatusINCEM=SW.GetText("CEMAmbFileDetails_Status_DT");
+		if(SW.CompareText("HC", AMBFileStatusINCEM) || SW.CompareText("CL", AMBFileStatusINCEM)){
+			Environment.loger.log(Level.INFO, "CompareTheFileStatusInSGR is Passed");	
+		}else{
+			Environment.loger.log(Level.ERROR, "CompareTheFileStatusInSGR is Failed");
+			SW.FailCurrentTest("AMB File satus in CEM is not HC or CL");
+		}
+		SW.ClickAndProceed("CEM_Logout_LK");
+		SW.HandleAlert(true);
+	}
+
+	@AfterClass
+	public void EndTest(){
+		Reporter.StopTest();		
+	}
+}
+

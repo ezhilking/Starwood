@@ -1,0 +1,8 @@
+27-Apr-2017 01:34:52:547 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+27-Apr-2017 01:34:52:551 PM Reporter   StartTest            48   INFO : Execution Started for 'SGR_REG03_04_PMSMappingVIP' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\27Apr2017-013448PM
+27-Apr-2017 01:35:27:689 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+27-Apr-2017 01:35:52:741 PM Utility    LaunchBrowser        81   INFO : https://stg-sgr.starwoodhotels.com/sgr/
+27-Apr-2017 01:41:28:590 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+27-Apr-2017 01:41:31:615 PM Utility    LaunchBrowser        82   INFO : https://stg-sgr.starwoodhotels.com/sgr/
+27-Apr-2017 01:42:35:947 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/
+27-Apr-2017 01:45:21:921 PM Reporter   WriteLog             134  INFO : URL-https://stg-sgr.starwoodhotels.com/sgr/

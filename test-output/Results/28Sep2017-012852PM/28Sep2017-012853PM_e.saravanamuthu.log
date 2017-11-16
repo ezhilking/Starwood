@@ -1,0 +1,13 @@
+28-Sep-2017 01:28:55:208 PM Reporter   StartTest            47   INFO : * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * -  * - * - * - * - * - * - * - * - * - 
+28-Sep-2017 01:28:55:214 PM Reporter   StartTest            48   INFO : Execution Started for 'db' - C:\Automation\Workspace\Starwood_Automation\test-output\Results\28Sep2017-012852PM
+28-Sep-2017 01:29:01:528 PM DataBaseUtil EstablishConnection  106  INFO : Connection successfully established with DB!
+28-Sep-2017 01:34:27:883 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00904: "ROWNUMBER": invalid identifier
+
+28-Sep-2017 01:38:58:966 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00900: invalid SQL statement
+
+28-Sep-2017 01:39:12:704 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00933: SQL command not properly ended
+
+28-Sep-2017 01:39:52:773 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00933: SQL command not properly ended
+
+28-Sep-2017 01:39:59:426 PM DataBaseUtil ExecuteQuery         209  ERROR: SQLException Exception occuredORA-00933: SQL command not properly ended
+

@@ -1,0 +1,87 @@
+<soapenv:Envelope
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header>
+        <WSCorIDSOAPHeader
+            CorID="73586FD10A84A83535F235F2B2444B9A,1:1:1,0,0,phxchlqas71|MTG_QA3_WebSphere|MTG-Q3-MTG-A-PHXCHLQAS71-9185|WebServices|Client|http_//booking.qa3.nssd.star_9245/BookingWeb/services/BookingPort|cancelBooking,2,AgAAALZIQgAAAAFGAAAAAQAAABFqYXZhLnV0aWwuSGFzaE1hcAAAAAJIQgAAAAJGAAAAAgAAABBqYXZhLmxhbmcuU3RyaW5nAApUeG5UcmFjZUlkSEIAAAADRQAAAAIAJDczNTg2NDlDMEE4NEE4MzUzQkE0M0JBNDkxN0UzRDdFMjMyOEhCAAAABEUAAAACAA9DYWxsZXJUaW1lc3RhbXBIQgAAAAVFAAAAAgANMTQ2NjUxOTAyMzc1Mg==" xmlns="http://www.wilytech.com/"/>
+        <WSCorIDSOAPHeader
+            CorID="73586FD10A84A83535F235F2B2444B9A,1:1:1,0,0,phxchlqas71|MTG_QA3_WebSphere|MTG-Q3-MTG-A-PHXCHLQAS71-9185|WebServices|Client|http_//booking.qa3.nssd.star_9245/BookingWeb/services/BookingPort|cancelBooking,2,AgAAALZIQgAAAAFGAAAAAQAAABFqYXZhLnV0aWwuSGFzaE1hcAAAAAJIQgAAAAJGAAAAAgAAABBqYXZhLmxhbmcuU3RyaW5nAApUeG5UcmFjZUlkSEIAAAADRQAAAAIAJDczNTg2NDlDMEE4NEE4MzUzQkE0M0JBNDkxN0UzRDdFMjMyOEhCAAAABEUAAAACAA9DYWxsZXJUaW1lc3RhbXBIQgAAAAVFAAAAAgANMTQ2NjUxOTAyMzc1Mg==" xmlns="http://www.wilytech.com/"/>
+    </soapenv:Header>
+    <soapenv:Body>
+        <p694:cancelBooking xmlns:p694="http://facade.booking.valhalla.starwood.com">
+            <cancelBookingRequest>
+                <p977:RequestContextBean xmlns:p977="http://dto.common.valhalla.starwood.com">
+                    <p357:RequestTransactionID xmlns:p357="http://beans.common.framework.valhalla.starwood.com">005056BE3A056cdd6cdd15573586fb67493d7b7</p357:RequestTransactionID>
+                    <p357:FlowSeqNum xmlns:p357="http://beans.common.framework.valhalla.starwood.com">1.1</p357:FlowSeqNum>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">EXTERNAL_CHANNEL=TS</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">USER=TS</p357:GlobalContextParameters>
+                    <p357:GlobalContextParameters xmlns:p357="http://beans.common.framework.valhalla.starwood.com">LANGUAGE=en</p357:GlobalContextParameters>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>TS</p357:Name>
+                        <p357:Type>Engine</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.ts.inbound.listener.TSJmsListenerBean</p357:ServiceInterface>
+                        <p357:Operation>createRequestContext</p357:Operation>
+                        <p357:IPAddress>10.132.168.53</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1466519023542</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>=</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>PMSDEST=MTE</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>MTECONTRACT=ZR83</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>PROPTRANSID=005056BE3A056cdd6cdd15573586fb67493d7b7</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>PMSFUNC=UNDEFINED</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>SOURCE_TYPE=PMS2MTG</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>JMSCorrelationID=null</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>JMSMessageID=ID:414d5120514d504d5351303320202020031bfa56f44b8d25</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>PROP_UID=0124378999</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>JMS_TIMESTAMP=1466519022651</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>MTE</p357:Name>
+                        <p357:Type>Engine</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.mte.transeq.webservice.MteTranSeqWebservice_PortType</p357:ServiceInterface>
+                        <p357:Operation>mteTranSeqWebserviceInvoke</p357:Operation>
+                        <p357:IPAddress>10.132.168.53</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1466519023565</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>CLIENT_TIMEOUT=480000</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=Unknown Version</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                    <p357:ContextFrames xmlns:p357="http://beans.common.framework.valhalla.starwood.com">
+                        <p357:Name>NodeName</p357:Name>
+                        <p357:Type>NodeType</p357:Type>
+                        <p357:ServiceInterface>com.starwood.valhalla.booking.facade.BookingFacade</p357:ServiceInterface>
+                        <p357:Operation>cancelBooking</p357:Operation>
+                        <p357:IPAddress>localhost</p357:IPAddress>
+                        <p357:LocalContextParameters>CTX_UTC=1466519023741</p357:LocalContextParameters>
+                        <p357:LocalContextParameters>VERSION=4.3.2.0</p357:LocalContextParameters>
+                    </p357:ContextFrames>
+                </p977:RequestContextBean>
+                <defaultTimeOutAction xsi:nil="true"/>
+                <delayTimeSec xsi:nil="true"/>
+                <service xsi:nil="true"/>
+                <isIPSRequest>1</isIPSRequest>
+                <isStarlinkRequest>0</isStarlinkRequest>
+                <isTLPEProperty>0</isTLPEProperty>
+                <vdn xsi:nil="true"/>
+                <vdnSessionId xsi:nil="true"/>
+                <sourceInfo>
+                    <locationID>1513</locationID>
+                    <channelID>MTG</channelID>
+                    <userID>NO SHOW</userID>
+                    <timestamp>2016-06-14T07:22:38.660Z</timestamp>
+                </sourceInfo>
+                <identificationNumber>044574137</identificationNumber>
+                <level>B</level>
+                <cancelID>498766437</cancelID>
+                <resStatus>DNA</resStatus>
+                <externalRefNumber xsi:nil="true"/>
+                <reasonCode xsi:nil="true"/>
+                <countryCode/>
+                <emailCode xsi:nil="true"/>
+                <contactMethod xsi:nil="true"/>
+                <primContactInfo xsi:nil="true"/>
+                <primCnct xsi:nil="true"/>
+            </cancelBookingRequest>
+        </p694:cancelBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

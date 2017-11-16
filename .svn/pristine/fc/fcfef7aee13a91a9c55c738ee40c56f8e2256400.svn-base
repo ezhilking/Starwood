@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testscripts.rescon.SMOKE01_ResconMpFlow"/>
+      <class name="testscripts.rescon.SMOKE02_ECCAGroupEnglish"/>
+      <class name="testscripts.rescon.SMOKE03_01_EccaGroupFrench"/>
+      <class name="testscripts.rescon.SMOKE03_02_EccaIndividualFrench"/>
+      <class name="testscripts.rescon.SMOKE04_ResconMpFlowInCompleteData"/>     
+      <class name="testscripts.rescon.SMOKE05_01_MasterbillNonSPGAdminUser"/>
+      <class name="testscripts.rescon.SMOKE06_01_MasterbillSPGAdminUser"/>
+      <class name="testscripts.rescon.SMOKE07_ResconMpFlowReprocess"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
